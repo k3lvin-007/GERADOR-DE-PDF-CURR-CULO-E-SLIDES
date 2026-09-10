@@ -1,355 +1,857 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GreenTools</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<title>KFTools — Ferramentas online</title>
 
-    body {
-      background: #050805;
-      color: #fff;
-      min-height: 100vh;
-    }
+<style>
+:root{
+  --bg:#080b09;
+  --surface:#101512;
+  --surface2:#151b17;
+  --border:#26322b;
+  --green:#22c55e;
+  --green-dark:#15803d;
+  --text:#f4f7f5;
+  --muted:#9aa69e;
+}
 
-    header {
-      padding: 25px 20px;
-      text-align: center;
-      background: #081008;
-      border-bottom: 1px solid #19ff55;
-    }
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
-    header h1 {
-      color: #19ff55;
-      font-size: 32px;
-    }
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  min-height:100vh;
+}
 
-    header p {
-      color: #aaa;
-      margin-top: 8px;
-    }
+button,
+input,
+textarea{
+  font:inherit;
+}
 
-    .container {
-      width: 92%;
-      max-width: 1100px;
-      margin: 30px auto;
-    }
+button{
+  cursor:pointer;
+}
 
-    .tools {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
+/* HEADER */
 
-    .card {
-      background: #0b110b;
-      border: 1px solid #123b1c;
-      border-radius: 15px;
-      padding: 22px;
-      box-shadow: 0 0 20px rgba(25,255,85,.06);
-    }
+header{
+  border-bottom:1px solid var(--border);
+  background:#090d0b;
+  position:sticky;
+  top:0;
+  z-index:20;
+}
 
-    .card h2 {
-      color: #19ff55;
-      margin-bottom: 8px;
-    }
+.nav{
+  width:min(1180px,92%);
+  margin:auto;
+  min-height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
 
-    .card p {
-      color: #aaa;
-      line-height: 1.5;
-      margin-bottom: 18px;
-    }
+.logo{
+  font-size:25px;
+  font-weight:800;
+  letter-spacing:-1px;
+}
 
-    input,
-    textarea {
-      width: 100%;
-      background: #050805;
-      color: #fff;
-      border: 1px solid #245c31;
-      border-radius: 8px;
-      padding: 12px;
-      margin-bottom: 12px;
-      outline: none;
-    }
+.logo span{
+  color:var(--green);
+}
 
-    input:focus,
-    textarea:focus {
-      border-color: #19ff55;
-    }
+.nav small{
+  color:var(--muted);
+}
 
-    textarea {
-      min-height: 180px;
-      resize: vertical;
-    }
+/* HERO */
 
-    button {
-      width: 100%;
-      border: none;
-      border-radius: 8px;
-      padding: 13px;
-      background: #19ff55;
-      color: #031006;
-      font-weight: bold;
-      cursor: pointer;
-      transition: .2s;
-    }
+.hero{
+  width:min(1050px,92%);
+  margin:65px auto 45px;
+  text-align:center;
+}
 
-    button:hover {
-      background: #0dcc40;
-      transform: translateY(-1px);
-    }
+.badge{
+  display:inline-block;
+  border:1px solid #285036;
+  color:#8ee6aa;
+  background:#0d1a12;
+  padding:7px 13px;
+  border-radius:30px;
+  font-size:13px;
+  margin-bottom:18px;
+}
 
-    .section {
-      display: none;
-      margin-top: 25px;
-    }
+.hero h1{
+  font-size:clamp(35px,7vw,65px);
+  line-height:1.05;
+  letter-spacing:-2px;
+  margin-bottom:18px;
+}
 
-    .section.active {
-      display: block;
-    }
+.hero h1 span{
+  color:var(--green);
+}
 
-    .menu {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 25px;
-    }
+.hero p{
+  max-width:650px;
+  margin:auto;
+  color:var(--muted);
+  line-height:1.7;
+  font-size:17px;
+}
 
-    .menu button {
-      width: auto;
-      flex: 1;
-      min-width: 150px;
-    }
+/* TOOLS */
 
-    .preview {
-      margin-top: 20px;
-      padding: 25px;
-      background: white;
-      color: #111;
-      border-radius: 10px;
-      min-height: 250px;
-    }
+.container{
+  width:min(1180px,92%);
+  margin:auto;
+}
 
-    .preview h2 {
-      color: #111;
-      margin-bottom: 10px;
-    }
+.tools{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-bottom:60px;
+}
 
-    .curriculo-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
+.tool-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:25px;
+  transition:.2s;
+}
 
-    @media (max-width: 650px) {
-      .curriculo-grid {
-        grid-template-columns: 1fr;
-      }
+.tool-card:hover{
+  border-color:#356743;
+  transform:translateY(-3px);
+}
 
-      header h1 {
-        font-size: 26px;
-      }
-    }
-  </style>
+.icon{
+  width:45px;
+  height:45px;
+  display:grid;
+  place-items:center;
+  background:#122017;
+  border:1px solid #294b34;
+  border-radius:12px;
+  font-size:22px;
+  margin-bottom:18px;
+}
+
+.tool-card h2{
+  font-size:21px;
+  margin-bottom:9px;
+}
+
+.tool-card p{
+  color:var(--muted);
+  line-height:1.55;
+  font-size:14px;
+  margin-bottom:22px;
+}
+
+.open-btn{
+  width:100%;
+  border:1px solid #2c663d;
+  background:#132219;
+  color:#b8f4ca;
+  padding:12px;
+  border-radius:9px;
+}
+
+.open-btn:hover{
+  background:#193321;
+}
+
+/* SECTIONS */
+
+.section{
+  display:none;
+  width:min(850px,92%);
+  margin:0 auto 60px;
+}
+
+.section.active{
+  display:block;
+}
+
+.panel{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:28px;
+}
+
+.panel-header{
+  margin-bottom:24px;
+}
+
+.panel-header h2{
+  font-size:26px;
+  margin-bottom:7px;
+}
+
+.panel-header p{
+  color:var(--muted);
+  line-height:1.5;
+}
+
+/* FORM */
+
+label{
+  display:block;
+  color:#dce5df;
+  font-size:14px;
+  margin:17px 0 7px;
+}
+
+input,
+textarea{
+  width:100%;
+  background:#090d0b;
+  border:1px solid var(--border);
+  color:white;
+  border-radius:9px;
+  padding:13px;
+  outline:none;
+}
+
+input:focus,
+textarea:focus{
+  border-color:var(--green-dark);
+}
+
+textarea{
+  min-height:180px;
+  resize:vertical;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+.primary{
+  width:100%;
+  margin-top:20px;
+  padding:14px;
+  border:0;
+  border-radius:9px;
+  background:var(--green);
+  color:#061109;
+  font-weight:700;
+}
+
+.primary:hover{
+  background:#35d66d;
+}
+
+.secondary{
+  padding:11px 15px;
+  border:1px solid var(--border);
+  background:#121814;
+  color:#ddd;
+  border-radius:8px;
+}
+
+/* CURRICULO */
+
+.cv-preview{
+  margin-top:25px;
+  background:white;
+  color:#161616;
+  padding:42px;
+  border-radius:10px;
+  display:none;
+}
+
+.cv-preview.show{
+  display:block;
+}
+
+.cv-name{
+  font-size:30px;
+  font-weight:800;
+  margin-bottom:7px;
+}
+
+.cv-contact{
+  color:#555;
+  font-size:13px;
+  margin-bottom:25px;
+}
+
+.cv-line{
+  height:2px;
+  background:#222;
+  margin-bottom:20px;
+}
+
+.cv-preview h3{
+  font-size:14px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  margin:19px 0 7px;
+}
+
+.cv-preview p{
+  white-space:pre-wrap;
+  line-height:1.55;
+  font-size:14px;
+}
+
+/* SLIDES */
+
+.slides-preview{
+  margin-top:25px;
+}
+
+.slide{
+  background:#101713;
+  border:1px solid #2b4433;
+  border-radius:14px;
+  padding:35px;
+  min-height:220px;
+  margin-bottom:15px;
+  position:relative;
+  overflow:hidden;
+}
+
+.slide-number{
+  color:#6d7b71;
+  font-size:12px;
+  margin-bottom:25px;
+}
+
+.slide h3{
+  color:white;
+  font-size:27px;
+  margin-bottom:15px;
+}
+
+.slide p{
+  color:#b8c3bb;
+  white-space:pre-wrap;
+  line-height:1.6;
+}
+
+.slide img{
+  width:100%;
+  max-height:230px;
+  object-fit:cover;
+  border-radius:10px;
+  margin-top:20px;
+}
+
+.slide-actions{
+  display:flex;
+  gap:10px;
+  margin-top:20px;
+  flex-wrap:wrap;
+}
+
+/* FOOTER */
+
+footer{
+  border-top:1px solid var(--border);
+  padding:30px 20px;
+  text-align:center;
+  color:#68736c;
+  font-size:13px;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:800px){
+  .tools{
+    grid-template-columns:1fr;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+    gap:0;
+  }
+
+  .hero{
+    margin-top:45px;
+  }
+}
+
+@media(max-width:500px){
+  .nav small{
+    display:none;
+  }
+
+  .panel{
+    padding:20px;
+  }
+
+  .cv-preview{
+    padding:25px;
+  }
+
+  .slide{
+    padding:25px;
+  }
+}
+
+@media print{
+
+  body *{
+    visibility:hidden !important;
+  }
+
+  #cvPrint,
+  #cvPrint *{
+    visibility:visible !important;
+  }
+
+  #cvPrint{
+    display:block !important;
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    margin:0;
+    border:0;
+    border-radius:0;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <h1>GreenTools</h1>
-  <p>Ferramentas simples para criar, organizar e transformar suas ideias.</p>
+  <div class="nav">
+    <div class="logo">KF<span>Tools</span></div>
+    <small>Ferramentas online simples e úteis</small>
+  </div>
 </header>
+
+
+<main>
+
+<section class="hero">
+  <div class="badge">Ferramentas online</div>
+
+  <h1>
+    Crie. Converta.<br>
+    <span>Resolva.</span>
+  </h1>
+
+  <p>
+    Ferramentas rápidas para transformar textos em documentos,
+    criar currículos profissionais e montar apresentações.
+  </p>
+</section>
+
 
 <div class="container">
 
-  <div class="menu">
-    <button onclick="mostrar('pdf')">📄 Texto → PDF</button>
-    <button onclick="mostrar('curriculo')">👤 Currículo PDF</button>
-    <button onclick="mostrar('slides')">📊 Gerador de Slides</button>
-  </div>
+  <section class="tools">
 
-  <!-- TEXTO PARA PDF -->
-  <section id="pdf" class="section active">
-    <div class="card">
-      <h2>📄 Texto → PDF</h2>
+    <div class="tool-card">
+      <div class="icon">📄</div>
+
+      <h2>Texto → PDF</h2>
+
       <p>
-        Digite ou cole qualquer texto e transforme o conteúdo
-        em um documento PDF.
+        Transforme qualquer texto em um documento pronto para
+        imprimir ou salvar em PDF.
       </p>
+
+      <button class="open-btn" onclick="abrir('pdf')">
+        Abrir ferramenta
+      </button>
+    </div>
+
+
+    <div class="tool-card">
+      <div class="icon">👤</div>
+
+      <h2>Currículo</h2>
+
+      <p>
+        Preencha seus dados e gere um currículo organizado
+        e profissional.
+      </p>
+
+      <button class="open-btn" onclick="abrir('curriculo')">
+        Criar currículo
+      </button>
+    </div>
+
+
+    <div class="tool-card">
+      <div class="icon">📊</div>
+
+      <h2>Slides</h2>
+
+      <p>
+        Crie apresentações separando automaticamente cada
+        bloco de conteúdo em um slide.
+      </p>
+
+      <button class="open-btn" onclick="abrir('slides')">
+        Criar slides
+      </button>
+    </div>
+
+  </section>
+
+
+  <!-- PDF -->
+
+  <section id="pdf" class="section">
+
+    <div class="panel">
+
+      <div class="panel-header">
+        <h2>📄 Texto → PDF</h2>
+
+        <p>
+          Digite seu conteúdo, escolha um nome e salve como PDF.
+        </p>
+      </div>
+
+      <label>Nome do arquivo</label>
 
       <input
+        id="pdfNome"
         type="text"
-        id="nomePdf"
-        placeholder="Nome do PDF"
+        placeholder="Meu documento"
       >
 
+      <label>Conteúdo</label>
+
       <textarea
-        id="textoPdf"
-        placeholder="Digite ou cole aqui o conteúdo que deseja transformar em PDF..."
+        id="pdfTexto"
+        placeholder="Digite ou cole seu texto aqui..."
       ></textarea>
 
-      <button onclick="gerarPDF()">
-        Gerar PDF
+      <button class="primary" onclick="salvarTextoPDF()">
+        Salvar como PDF
       </button>
+
     </div>
+
   </section>
 
-  <!-- CURRÍCULO -->
+
+  <!-- CURRICULO -->
+
   <section id="curriculo" class="section">
-    <div class="card">
 
-      <h2>👤 Gerador de Currículo</h2>
+    <div class="panel">
 
-      <p>
-        Preencha seus dados e gere uma estrutura de currículo
-        profissional.
-      </p>
+      <div class="panel-header">
+        <h2>👤 Criar currículo</h2>
 
-      <div class="curriculo-grid">
+        <p>
+          Preencha as informações abaixo. O formulário não aparecerá
+          no PDF final.
+        </p>
+      </div>
 
-        <input id="nome" placeholder="Nome completo">
 
-        <input id="email" placeholder="E-mail">
+      <div class="form-grid">
 
-        <input id="telefone" placeholder="Telefone">
+        <div>
+          <label>Nome completo</label>
+          <input id="cvNome" placeholder="Seu nome">
+        </div>
 
-        <input id="cidade" placeholder="Cidade / Estado">
+        <div>
+          <label>E-mail</label>
+          <input id="cvEmail" placeholder="seu@email.com">
+        </div>
 
-        <input id="objetivo" placeholder="Objetivo profissional">
+        <div>
+          <label>Telefone</label>
+          <input id="cvTelefone" placeholder="(00) 00000-0000">
+        </div>
 
-        <input id="linkedin" placeholder="LinkedIn">
+        <div>
+          <label>Cidade / Estado</label>
+          <input id="cvCidade" placeholder="João Pessoa - PB">
+        </div>
 
       </div>
 
-      <textarea
-        id="formacao"
-        placeholder="Formação acadêmica&#10;Ex.: Ciência da Computação - 1º período"
-      ></textarea>
+
+      <label>LinkedIn</label>
+
+      <input
+        id="cvLinkedin"
+        placeholder="linkedin.com/in/seu-nome"
+      >
+
+
+      <label>Objetivo profissional</label>
 
       <textarea
-        id="experiencia"
-        placeholder="Experiência profissional"
+        id="cvObjetivo"
+        placeholder="Ex.: Busco minha primeira oportunidade de estágio na área de tecnologia..."
       ></textarea>
+
+
+      <label>Formação acadêmica</label>
 
       <textarea
-        id="cursos"
-        placeholder="Cursos e certificados&#10;Ex.: Excel Avançado, Informática, Logística..."
+        id="cvFormacao"
+        placeholder="Curso, instituição, período..."
       ></textarea>
+
+
+      <label>Experiência profissional</label>
 
       <textarea
-        id="habilidades"
-        placeholder="Habilidades e competências&#10;Ex.: Organização, comunicação, informática, trabalho em equipe..."
+        id="cvExperiencia"
+        placeholder="Empresa, cargo e principais atividades..."
       ></textarea>
 
-      <button onclick="gerarCurriculo()">
-        Gerar Currículo
+
+      <label>Cursos e certificações</label>
+
+      <textarea
+        id="cvCursos"
+        placeholder="Liste seus cursos e certificados..."
+      ></textarea>
+
+
+      <label>Habilidades e competências</label>
+
+      <textarea
+        id="cvHabilidades"
+        placeholder="Ex.: Comunicação, Excel, informática, trabalho em equipe..."
+      ></textarea>
+
+
+      <button class="primary" onclick="gerarCurriculo()">
+        Gerar currículo
       </button>
 
-      <div id="curriculoPreview" class="preview">
-        <h2>Pré-visualização</h2>
-        <p>Seu currículo aparecerá aqui.</p>
+
+      <div id="cvPrint" class="cv-preview">
+
+        <div class="cv-name" id="outNome"></div>
+
+        <div class="cv-contact" id="outContato"></div>
+
+        <div class="cv-line"></div>
+
+        <h3>Objetivo profissional</h3>
+        <p id="outObjetivo"></p>
+
+        <h3>Formação acadêmica</h3>
+        <p id="outFormacao"></p>
+
+        <h3>Experiência profissional</h3>
+        <p id="outExperiencia"></p>
+
+        <h3>Cursos e certificações</h3>
+        <p id="outCursos"></p>
+
+        <h3>Habilidades e competências</h3>
+        <p id="outHabilidades"></p>
+
       </div>
 
+
+      <button
+        id="btnSalvarCV"
+        class="primary"
+        style="display:none"
+        onclick="salvarCurriculo()"
+      >
+        💾 Salvar currículo em PDF
+      </button>
+
     </div>
+
   </section>
+
 
   <!-- SLIDES -->
+
   <section id="slides" class="section">
-    <div class="card">
 
-      <h2>📊 Gerador de Slides</h2>
+    <div class="panel">
 
-      <p>
-        Digite o conteúdo abaixo. Cada bloco separado por uma
-        linha em branco será considerado um novo slide.
-      </p>
+      <div class="panel-header">
+
+        <h2>📊 Gerador de Slides</h2>
+
+        <p>
+          Separe cada slide deixando uma linha em branco entre os conteúdos.
+        </p>
+
+      </div>
+
+
+      <label>Título da apresentação</label>
 
       <input
-        id="tituloSlides"
-        placeholder="Título da apresentação"
+        id="slideTitulo"
+        placeholder="Minha apresentação"
       >
 
+
+      <label>Conteúdo dos slides</label>
+
       <textarea
-        id="textoSlides"
-        placeholder="Slide 1&#10;Introdução ao assunto.&#10;&#10;Slide 2&#10;Principais informações.&#10;&#10;Slide 3&#10;Conclusão."
+        id="slideTexto"
+        placeholder="Introdução à tecnologia
+Aqui começa a apresentação.
+
+Inteligência Artificial
+A inteligência artificial está transformando diversas áreas.
+
+Conclusão
+Principais pontos apresentados."
       ></textarea>
 
-      <button onclick="gerarSlides()">
-        Gerar Slides
+
+      <button class="primary" onclick="gerarSlides()">
+        Criar apresentação
       </button>
 
-      <div id="slidesPreview"></div>
+
+      <div id="slidesPreview" class="slides-preview"></div>
+
+
+      <button
+        id="btnSalvarSlides"
+        class="primary"
+        style="display:none"
+        onclick="salvarSlides()"
+      >
+        💾 Salvar apresentação
+      </button>
 
     </div>
+
   </section>
 
 </div>
 
+</main>
+
+
+<footer>
+  © 2026 KFTools — Ferramentas online
+</footer>
+
+
 <script>
 
-function mostrar(secao) {
-  document.querySelectorAll(".section").forEach(function(el) {
-    el.classList.remove("active");
+/* =========================
+   NAVEGAÇÃO
+========================= */
+
+function abrir(id){
+
+  document.querySelectorAll(".section").forEach(function(sec){
+    sec.classList.remove("active");
   });
 
-  document.getElementById(secao).classList.add("active");
+  document.getElementById(id).classList.add("active");
+
+  window.scrollTo({
+    top:document.getElementById(id).offsetTop - 90,
+    behavior:"smooth"
+  });
 }
 
 
-// TEXTO → PDF
-function gerarPDF() {
+/* =========================
+   TEXTO → PDF
+========================= */
+
+function salvarTextoPDF(){
 
   const nome =
-    document.getElementById("nomePdf").value.trim() ||
-    "documento";
+    document.getElementById("pdfNome").value.trim()
+    || "documento";
 
   const texto =
-    document.getElementById("textoPdf").value.trim();
+    document.getElementById("pdfTexto").value.trim();
 
-  if (!texto) {
-    alert("Digite algum texto primeiro.");
+  if(!texto){
+    alert("Digite algum texto antes de gerar o PDF.");
     return;
   }
 
   const janela = window.open("", "_blank");
 
+  const textoSeguro =
+    texto
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;");
+
   janela.document.write(`
     <!DOCTYPE html>
-    <html>
+    <html lang="pt-BR">
+
     <head>
+
+      <meta charset="UTF-8">
+
       <title>${nome}</title>
 
       <style>
-        body {
-          font-family: Arial;
-          padding: 50px;
-          line-height: 1.6;
-          white-space: pre-wrap;
+
+        body{
+          font-family:Arial,sans-serif;
+          padding:45px;
+          color:#171717;
+          line-height:1.7;
         }
 
-        h1 {
-          margin-bottom: 30px;
+        h1{
+          font-size:26px;
+          margin-bottom:30px;
         }
+
+        .texto{
+          white-space:pre-wrap;
+        }
+
       </style>
+
     </head>
 
     <body>
+
       <h1>${nome}</h1>
-      <div>${texto.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</div>
+
+      <div class="texto">${textoSeguro}</div>
 
       <script>
-        window.onload = function() {
+        window.onload=function(){
           window.print();
-        }
+        };
       <\/script>
+
     </body>
+
     </html>
   `);
 
@@ -357,146 +859,1398 @@ function gerarPDF() {
 }
 
 
-// CURRÍCULO
-function gerarCurriculo() {
+/* =========================
+   CURRÍCULO
+========================= */
 
-  const nome =
-    document.getElementById("nome").value || "Seu Nome";
-
-  const email =
-    document.getElementById("email").value;
-
-  const telefone =
-    document.getElementById("telefone").value;
-
-  const cidade =
-    document.getElementById("cidade").value;
-
-  const objetivo =
-    document.getElementById("objetivo").value;
-
-  const linkedin =
-    document.getElementById("linkedin").value;
-
-  const formacao =
-    document.getElementById("formacao").value;
-
-  const experiencia =
-    document.getElementById("experiencia").value;
-
-  const cursos =
-    document.getElementById("cursos").value;
-
-  const habilidades =
-    document.getElementById("habilidades").value;
-
-  const preview =
-    document.getElementById("curriculoPreview");
-
-  preview.innerHTML = `
-
-    <h1>${nome}</h1>
-
-    <p>
-      ${email}
-      ${telefone ? " | " + telefone : ""}
-      ${cidade ? " | " + cidade : ""}
-    </p>
-
-    ${
-      linkedin
-      ? `<p><strong>LinkedIn:</strong> ${linkedin}</p>`
-      : ""
-    }
-
-    <hr style="margin:20px 0">
-
-    <h2>Objetivo</h2>
-    <p>${objetivo || "Objetivo profissional"}</p>
-
-    <h2>Formação Acadêmica</h2>
-    <p>${formacao || "Não informado"}</p>
-
-    <h2>Experiência Profissional</h2>
-    <p>${experiencia || "Não informado"}</p>
-
-    <h2>Cursos e Certificações</h2>
-    <p>${cursos || "Não informado"}</p>
-
-    <h2>Habilidades e Competências</h2>
-    <p>${habilidades || "Não informado"}</p>
-
-    <br>
-
-    <button onclick="window.print()">
-      Imprimir / Salvar como PDF
-    </button>
-  `;
+function valor(id){
+  return document.getElementById(id).value.trim();
 }
 
 
-// SLIDES
-function gerarSlides() {
+function gerarCurriculo(){
+
+  const nome = valor("cvNome") || "Seu Nome";
+
+  const email = valor("cvEmail");
+  const telefone = valor("cvTelefone");
+  const cidade = valor("cvCidade");
+  const linkedin = valor("cvLinkedin");
+
+  document.getElementById("outNome").textContent = nome;
+
+  let contato = [
+    email,
+    telefone,
+    cidade
+  ].filter(Boolean).join(" • ");
+
+  if(linkedin){
+    contato += contato ? " • " + linkedin : linkedin;
+  }
+
+  document.getElementById("outContato").textContent = contato;
+
+  document.getElementById("outObjetivo").textContent =
+    valor("cvObjetivo") || "Não informado.";
+
+  document.getElementById("outFormacao").textContent =
+    valor("cvFormacao") || "Não informado.";
+
+  document.getElementById("outExperiencia").textContent =
+    valor("cvExperiencia") || "Não informado.";
+
+  document.getElementById("outCursos").textContent =
+    valor("cvCursos") || "Não informado.";
+
+  document.getElementById("outHabilidades").textContent =
+    valor("cvHabilidades") || "Não informado.";
+
+  document.getElementById("cvPrint").classList.add("show");
+
+  document.getElementById("btnSalvarCV").style.display = "block";
+
+  document.getElementById("cvPrint").scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+}
+
+
+function salvarCurriculo(){
+
+  const originalTitle = document.title;
+
+  document.title =
+    (valor("cvNome") || "curriculo")
+      .replace(/[^\w\s-]/gi,"")
+      .replace(/\s+/g,"-");
+
+  window.print();
+
+  setTimeout(function(){
+    document.title = originalTitle;
+  },1000);
+}
+
+
+/* =========================
+   SLIDES
+========================= */
+
+function gerarSlides(){
 
   const titulo =
-    document.getElementById("tituloSlides").value ||
-    "Minha Apresentação";
+    valor("slideTitulo") || "Minha apresentação";
 
   const texto =
-    document.getElementById("textoSlides").value.trim();
+    valor("slideTexto");
 
-  if (!texto) {
-    alert("Digite o conteúdo dos slides.");
+  if(!texto){
+
+    alert("Digite o conteúdo da apresentação.");
+
     return;
   }
 
-  const blocos = texto.split(/\n\s*\n/);
+  const blocos =
+    texto.split(/\n\s*\n/);
 
   const area =
     document.getElementById("slidesPreview");
 
   area.innerHTML = "";
 
-  blocos.forEach(function(bloco, index) {
+  blocos.forEach(function(bloco,index){
 
-    const partes = bloco.split("\n");
+    const linhas =
+      bloco.trim().split("\n");
 
     const tituloSlide =
-      partes[0] ||
-      `Slide ${index + 1}`;
+      linhas.shift() || "Slide " + (index + 1);
 
     const conteudo =
-      partes.slice(1).join("\n");
+      linhas.join("\n");
 
     const slide =
       document.createElement("div");
 
-    slide.style.cssText = `
-      background:#101810;
-      border:1px solid #19ff55;
-      border-radius:15px;
-      padding:25px;
-      margin-top:20px;
-      min-height:180px;
-    `;
+    slide.className = "slide";
 
     slide.innerHTML = `
-      <h2 style="color:#19ff55">
-        ${tituloSlide}
-      </h2>
 
-      <p style="
-        color:#ddd;
-        white-space:pre-wrap;
-        line-height:1.6;
-        margin-top:15px;
-      ">
-        ${conteudo}
-      </p>
+      <div class="slide-number">
+        ${titulo} • SLIDE ${index + 1}
+      </div>
+
+      <h3>${escapar(tituloSlide)}</h3>
+
+      <p>${escapar(conteudo)}</p>
+
     `;
 
     area.appendChild(slide);
+
   });
+
+  document.getElementById("btnSalvarSlides").style.display = "block";
+
+  area.scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+}
+
+
+function escapar(texto){
+
+  return texto
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+
+function salvarSlides(){
+
+  const titulo =
+    valor("slideTitulo") || "apresentacao";
+
+  const slides =
+    document.getElementById("slidesPreview").innerHTML;
+
+  const janela =
+    window.open("", "_blank");
+
+  janela.document.write(`
+
+    <!DOCTYPE html>
+
+    <html lang="pt-BR">
+
+    <head>
+
+      <meta charset="UTF-8">
+
+      <title>${escapar(titulo)}</title>
+
+      <style>
+
+        *{
+          box-sizing:border-box;
+        }
+
+        body{
+          margin:0;
+          background:#eee;
+          font-family:Arial,sans-serif;
+        }
+
+        .apresentacao{
+          max-width:1000px;
+          margin:auto;
+        }
+
+        .slide{
+          background:#101713;
+          color:white;
+          min-height:560px;
+          margin:30px auto;
+          padding:55px;
+          border-radius:12px;
+          page-break-after:always;
+        }
+
+        .slide-number{
+          color:#8a978e;
+          font-size:13px;
+          margin-bottom:35px;
+        }
+
+        .slide h3{
+          font-size:38px;
+          margin-bottom:25px;
+        }
+
+        .slide p{
+          color:#d1d8d3;
+          white-space:pre-wrap;
+          font-size:20px;
+          line-height:1.6;
+        }
+
+        @media print{
+
+          body{
+            background:white;
+          }
+
+          .slide{
+            margin:0;
+            border-radius:0;
+            min-height:100vh;
+          }
+
+        }
+
+      </style>
+
+    </head>
+
+    <body>
+
+      <div class="apresentacao">
+
+        ${slides}
+
+      </div>
+
+      <script>
+
+        window.onload=function(){
+          window.print();
+        };
+
+      <\/script>
+
+    </body>
+
+    </html>
+
+  `);
+
+  janela.document.close();
+}
+
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KFTools — Ferramentas online</title>
+
+<style>
+:root{
+  --bg:#080b09;
+  --surface:#101512;
+  --surface2:#151b17;
+  --border:#26322b;
+  --green:#22c55e;
+  --green-dark:#15803d;
+  --text:#f4f7f5;
+  --muted:#9aa69e;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  min-height:100vh;
+}
+
+button,
+input,
+textarea{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+/* HEADER */
+
+header{
+  border-bottom:1px solid var(--border);
+  background:#090d0b;
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+
+.nav{
+  width:min(1180px,92%);
+  margin:auto;
+  min-height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.logo{
+  font-size:25px;
+  font-weight:800;
+  letter-spacing:-1px;
+}
+
+.logo span{
+  color:var(--green);
+}
+
+.nav small{
+  color:var(--muted);
+}
+
+/* HERO */
+
+.hero{
+  width:min(1050px,92%);
+  margin:65px auto 45px;
+  text-align:center;
+}
+
+.badge{
+  display:inline-block;
+  border:1px solid #285036;
+  color:#8ee6aa;
+  background:#0d1a12;
+  padding:7px 13px;
+  border-radius:30px;
+  font-size:13px;
+  margin-bottom:18px;
+}
+
+.hero h1{
+  font-size:clamp(35px,7vw,65px);
+  line-height:1.05;
+  letter-spacing:-2px;
+  margin-bottom:18px;
+}
+
+.hero h1 span{
+  color:var(--green);
+}
+
+.hero p{
+  max-width:650px;
+  margin:auto;
+  color:var(--muted);
+  line-height:1.7;
+  font-size:17px;
+}
+
+/* TOOLS */
+
+.container{
+  width:min(1180px,92%);
+  margin:auto;
+}
+
+.tools{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-bottom:60px;
+}
+
+.tool-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:25px;
+  transition:.2s;
+}
+
+.tool-card:hover{
+  border-color:#356743;
+  transform:translateY(-3px);
+}
+
+.icon{
+  width:45px;
+  height:45px;
+  display:grid;
+  place-items:center;
+  background:#122017;
+  border:1px solid #294b34;
+  border-radius:12px;
+  font-size:22px;
+  margin-bottom:18px;
+}
+
+.tool-card h2{
+  font-size:21px;
+  margin-bottom:9px;
+}
+
+.tool-card p{
+  color:var(--muted);
+  line-height:1.55;
+  font-size:14px;
+  margin-bottom:22px;
+}
+
+.open-btn{
+  width:100%;
+  border:1px solid #2c663d;
+  background:#132219;
+  color:#b8f4ca;
+  padding:12px;
+  border-radius:9px;
+}
+
+.open-btn:hover{
+  background:#193321;
+}
+
+/* SECTIONS */
+
+.section{
+  display:none;
+  width:min(850px,92%);
+  margin:0 auto 60px;
+}
+
+.section.active{
+  display:block;
+}
+
+.panel{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:28px;
+}
+
+.panel-header{
+  margin-bottom:24px;
+}
+
+.panel-header h2{
+  font-size:26px;
+  margin-bottom:7px;
+}
+
+.panel-header p{
+  color:var(--muted);
+  line-height:1.5;
+}
+
+/* FORM */
+
+label{
+  display:block;
+  color:#dce5df;
+  font-size:14px;
+  margin:17px 0 7px;
+}
+
+input,
+textarea{
+  width:100%;
+  background:#090d0b;
+  border:1px solid var(--border);
+  color:white;
+  border-radius:9px;
+  padding:13px;
+  outline:none;
+}
+
+input:focus,
+textarea:focus{
+  border-color:var(--green-dark);
+}
+
+textarea{
+  min-height:180px;
+  resize:vertical;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+.primary{
+  width:100%;
+  margin-top:20px;
+  padding:14px;
+  border:0;
+  border-radius:9px;
+  background:var(--green);
+  color:#061109;
+  font-weight:700;
+}
+
+.primary:hover{
+  background:#35d66d;
+}
+
+.secondary{
+  padding:11px 15px;
+  border:1px solid var(--border);
+  background:#121814;
+  color:#ddd;
+  border-radius:8px;
+}
+
+/* CURRICULO */
+
+.cv-preview{
+  margin-top:25px;
+  background:white;
+  color:#161616;
+  padding:42px;
+  border-radius:10px;
+  display:none;
+}
+
+.cv-preview.show{
+  display:block;
+}
+
+.cv-name{
+  font-size:30px;
+  font-weight:800;
+  margin-bottom:7px;
+}
+
+.cv-contact{
+  color:#555;
+  font-size:13px;
+  margin-bottom:25px;
+}
+
+.cv-line{
+  height:2px;
+  background:#222;
+  margin-bottom:20px;
+}
+
+.cv-preview h3{
+  font-size:14px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  margin:19px 0 7px;
+}
+
+.cv-preview p{
+  white-space:pre-wrap;
+  line-height:1.55;
+  font-size:14px;
+}
+
+/* SLIDES */
+
+.slides-preview{
+  margin-top:25px;
+}
+
+.slide{
+  background:#101713;
+  border:1px solid #2b4433;
+  border-radius:14px;
+  padding:35px;
+  min-height:220px;
+  margin-bottom:15px;
+  position:relative;
+  overflow:hidden;
+}
+
+.slide-number{
+  color:#6d7b71;
+  font-size:12px;
+  margin-bottom:25px;
+}
+
+.slide h3{
+  color:white;
+  font-size:27px;
+  margin-bottom:15px;
+}
+
+.slide p{
+  color:#b8c3bb;
+  white-space:pre-wrap;
+  line-height:1.6;
+}
+
+.slide img{
+  width:100%;
+  max-height:230px;
+  object-fit:cover;
+  border-radius:10px;
+  margin-top:20px;
+}
+
+.slide-actions{
+  display:flex;
+  gap:10px;
+  margin-top:20px;
+  flex-wrap:wrap;
+}
+
+/* FOOTER */
+
+footer{
+  border-top:1px solid var(--border);
+  padding:30px 20px;
+  text-align:center;
+  color:#68736c;
+  font-size:13px;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:800px){
+  .tools{
+    grid-template-columns:1fr;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+    gap:0;
+  }
+
+  .hero{
+    margin-top:45px;
+  }
+}
+
+@media(max-width:500px){
+  .nav small{
+    display:none;
+  }
+
+  .panel{
+    padding:20px;
+  }
+
+  .cv-preview{
+    padding:25px;
+  }
+
+  .slide{
+    padding:25px;
+  }
+}
+
+@media print{
+
+  body *{
+    visibility:hidden !important;
+  }
+
+  #cvPrint,
+  #cvPrint *{
+    visibility:visible !important;
+  }
+
+  #cvPrint{
+    display:block !important;
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    margin:0;
+    border:0;
+    border-radius:0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">KF<span>Tools</span></div>
+    <small>Ferramentas online simples e úteis</small>
+  </div>
+</header>
+
+
+<main>
+
+<section class="hero">
+  <div class="badge">Ferramentas online</div>
+
+  <h1>
+    Crie. Converta.<br>
+    <span>Resolva.</span>
+  </h1>
+
+  <p>
+    Ferramentas rápidas para transformar textos em documentos,
+    criar currículos profissionais e montar apresentações.
+  </p>
+</section>
+
+
+<div class="container">
+
+  <section class="tools">
+
+    <div class="tool-card">
+      <div class="icon">📄</div>
+
+      <h2>Texto → PDF</h2>
+
+      <p>
+        Transforme qualquer texto em um documento pronto para
+        imprimir ou salvar em PDF.
+      </p>
+
+      <button class="open-btn" onclick="abrir('pdf')">
+        Abrir ferramenta
+      </button>
+    </div>
+
+
+    <div class="tool-card">
+      <div class="icon">👤</div>
+
+      <h2>Currículo</h2>
+
+      <p>
+        Preencha seus dados e gere um currículo organizado
+        e profissional.
+      </p>
+
+      <button class="open-btn" onclick="abrir('curriculo')">
+        Criar currículo
+      </button>
+    </div>
+
+
+    <div class="tool-card">
+      <div class="icon">📊</div>
+
+      <h2>Slides</h2>
+
+      <p>
+        Crie apresentações separando automaticamente cada
+        bloco de conteúdo em um slide.
+      </p>
+
+      <button class="open-btn" onclick="abrir('slides')">
+        Criar slides
+      </button>
+    </div>
+
+  </section>
+
+
+  <!-- PDF -->
+
+  <section id="pdf" class="section">
+
+    <div class="panel">
+
+      <div class="panel-header">
+        <h2>📄 Texto → PDF</h2>
+
+        <p>
+          Digite seu conteúdo, escolha um nome e salve como PDF.
+        </p>
+      </div>
+
+      <label>Nome do arquivo</label>
+
+      <input
+        id="pdfNome"
+        type="text"
+        placeholder="Meu documento"
+      >
+
+      <label>Conteúdo</label>
+
+      <textarea
+        id="pdfTexto"
+        placeholder="Digite ou cole seu texto aqui..."
+      ></textarea>
+
+      <button class="primary" onclick="salvarTextoPDF()">
+        Salvar como PDF
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- CURRICULO -->
+
+  <section id="curriculo" class="section">
+
+    <div class="panel">
+
+      <div class="panel-header">
+        <h2>👤 Criar currículo</h2>
+
+        <p>
+          Preencha as informações abaixo. O formulário não aparecerá
+          no PDF final.
+        </p>
+      </div>
+
+
+      <div class="form-grid">
+
+        <div>
+          <label>Nome completo</label>
+          <input id="cvNome" placeholder="Seu nome">
+        </div>
+
+        <div>
+          <label>E-mail</label>
+          <input id="cvEmail" placeholder="seu@email.com">
+        </div>
+
+        <div>
+          <label>Telefone</label>
+          <input id="cvTelefone" placeholder="(00) 00000-0000">
+        </div>
+
+        <div>
+          <label>Cidade / Estado</label>
+          <input id="cvCidade" placeholder="João Pessoa - PB">
+        </div>
+
+      </div>
+
+
+      <label>LinkedIn</label>
+
+      <input
+        id="cvLinkedin"
+        placeholder="linkedin.com/in/seu-nome"
+      >
+
+
+      <label>Objetivo profissional</label>
+
+      <textarea
+        id="cvObjetivo"
+        placeholder="Ex.: Busco minha primeira oportunidade de estágio na área de tecnologia..."
+      ></textarea>
+
+
+      <label>Formação acadêmica</label>
+
+      <textarea
+        id="cvFormacao"
+        placeholder="Curso, instituição, período..."
+      ></textarea>
+
+
+      <label>Experiência profissional</label>
+
+      <textarea
+        id="cvExperiencia"
+        placeholder="Empresa, cargo e principais atividades..."
+      ></textarea>
+
+
+      <label>Cursos e certificações</label>
+
+      <textarea
+        id="cvCursos"
+        placeholder="Liste seus cursos e certificados..."
+      ></textarea>
+
+
+      <label>Habilidades e competências</label>
+
+      <textarea
+        id="cvHabilidades"
+        placeholder="Ex.: Comunicação, Excel, informática, trabalho em equipe..."
+      ></textarea>
+
+
+      <button class="primary" onclick="gerarCurriculo()">
+        Gerar currículo
+      </button>
+
+
+      <div id="cvPrint" class="cv-preview">
+
+        <div class="cv-name" id="outNome"></div>
+
+        <div class="cv-contact" id="outContato"></div>
+
+        <div class="cv-line"></div>
+
+        <h3>Objetivo profissional</h3>
+        <p id="outObjetivo"></p>
+
+        <h3>Formação acadêmica</h3>
+        <p id="outFormacao"></p>
+
+        <h3>Experiência profissional</h3>
+        <p id="outExperiencia"></p>
+
+        <h3>Cursos e certificações</h3>
+        <p id="outCursos"></p>
+
+        <h3>Habilidades e competências</h3>
+        <p id="outHabilidades"></p>
+
+      </div>
+
+
+      <button
+        id="btnSalvarCV"
+        class="primary"
+        style="display:none"
+        onclick="salvarCurriculo()"
+      >
+        💾 Salvar currículo em PDF
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- SLIDES -->
+
+  <section id="slides" class="section">
+
+    <div class="panel">
+
+      <div class="panel-header">
+
+        <h2>📊 Gerador de Slides</h2>
+
+        <p>
+          Separe cada slide deixando uma linha em branco entre os conteúdos.
+        </p>
+
+      </div>
+
+
+      <label>Título da apresentação</label>
+
+      <input
+        id="slideTitulo"
+        placeholder="Minha apresentação"
+      >
+
+
+      <label>Conteúdo dos slides</label>
+
+      <textarea
+        id="slideTexto"
+        placeholder="Introdução à tecnologia
+Aqui começa a apresentação.
+
+Inteligência Artificial
+A inteligência artificial está transformando diversas áreas.
+
+Conclusão
+Principais pontos apresentados."
+      ></textarea>
+
+
+      <button class="primary" onclick="gerarSlides()">
+        Criar apresentação
+      </button>
+
+
+      <div id="slidesPreview" class="slides-preview"></div>
+
+
+      <button
+        id="btnSalvarSlides"
+        class="primary"
+        style="display:none"
+        onclick="salvarSlides()"
+      >
+        💾 Salvar apresentação
+      </button>
+
+    </div>
+
+  </section>
+
+</div>
+
+</main>
+
+
+<footer>
+  © 2026 KFTools — Ferramentas online
+</footer>
+
+
+<script>
+
+/* =========================
+   NAVEGAÇÃO
+========================= */
+
+function abrir(id){
+
+  document.querySelectorAll(".section").forEach(function(sec){
+    sec.classList.remove("active");
+  });
+
+  document.getElementById(id).classList.add("active");
+
+  window.scrollTo({
+    top:document.getElementById(id).offsetTop - 90,
+    behavior:"smooth"
+  });
+}
+
+
+/* =========================
+   TEXTO → PDF
+========================= */
+
+function salvarTextoPDF(){
+
+  const nome =
+    document.getElementById("pdfNome").value.trim()
+    || "documento";
+
+  const texto =
+    document.getElementById("pdfTexto").value.trim();
+
+  if(!texto){
+    alert("Digite algum texto antes de gerar o PDF.");
+    return;
+  }
+
+  const janela = window.open("", "_blank");
+
+  const textoSeguro =
+    texto
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;");
+
+  janela.document.write(`
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+
+    <head>
+
+      <meta charset="UTF-8">
+
+      <title>${nome}</title>
+
+      <style>
+
+        body{
+          font-family:Arial,sans-serif;
+          padding:45px;
+          color:#171717;
+          line-height:1.7;
+        }
+
+        h1{
+          font-size:26px;
+          margin-bottom:30px;
+        }
+
+        .texto{
+          white-space:pre-wrap;
+        }
+
+      </style>
+
+    </head>
+
+    <body>
+
+      <h1>${nome}</h1>
+
+      <div class="texto">${textoSeguro}</div>
+
+      <script>
+        window.onload=function(){
+          window.print();
+        };
+      <\/script>
+
+    </body>
+
+    </html>
+  `);
+
+  janela.document.close();
+}
+
+
+/* =========================
+   CURRÍCULO
+========================= */
+
+function valor(id){
+  return document.getElementById(id).value.trim();
+}
+
+
+function gerarCurriculo(){
+
+  const nome = valor("cvNome") || "Seu Nome";
+
+  const email = valor("cvEmail");
+  const telefone = valor("cvTelefone");
+  const cidade = valor("cvCidade");
+  const linkedin = valor("cvLinkedin");
+
+  document.getElementById("outNome").textContent = nome;
+
+  let contato = [
+    email,
+    telefone,
+    cidade
+  ].filter(Boolean).join(" • ");
+
+  if(linkedin){
+    contato += contato ? " • " + linkedin : linkedin;
+  }
+
+  document.getElementById("outContato").textContent = contato;
+
+  document.getElementById("outObjetivo").textContent =
+    valor("cvObjetivo") || "Não informado.";
+
+  document.getElementById("outFormacao").textContent =
+    valor("cvFormacao") || "Não informado.";
+
+  document.getElementById("outExperiencia").textContent =
+    valor("cvExperiencia") || "Não informado.";
+
+  document.getElementById("outCursos").textContent =
+    valor("cvCursos") || "Não informado.";
+
+  document.getElementById("outHabilidades").textContent =
+    valor("cvHabilidades") || "Não informado.";
+
+  document.getElementById("cvPrint").classList.add("show");
+
+  document.getElementById("btnSalvarCV").style.display = "block";
+
+  document.getElementById("cvPrint").scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+}
+
+
+function salvarCurriculo(){
+
+  const originalTitle = document.title;
+
+  document.title =
+    (valor("cvNome") || "curriculo")
+      .replace(/[^\w\s-]/gi,"")
+      .replace(/\s+/g,"-");
+
+  window.print();
+
+  setTimeout(function(){
+    document.title = originalTitle;
+  },1000);
+}
+
+
+/* =========================
+   SLIDES
+========================= */
+
+function gerarSlides(){
+
+  const titulo =
+    valor("slideTitulo") || "Minha apresentação";
+
+  const texto =
+    valor("slideTexto");
+
+  if(!texto){
+
+    alert("Digite o conteúdo da apresentação.");
+
+    return;
+  }
+
+  const blocos =
+    texto.split(/\n\s*\n/);
+
+  const area =
+    document.getElementById("slidesPreview");
+
+  area.innerHTML = "";
+
+  blocos.forEach(function(bloco,index){
+
+    const linhas =
+      bloco.trim().split("\n");
+
+    const tituloSlide =
+      linhas.shift() || "Slide " + (index + 1);
+
+    const conteudo =
+      linhas.join("\n");
+
+    const slide =
+      document.createElement("div");
+
+    slide.className = "slide";
+
+    slide.innerHTML = `
+
+      <div class="slide-number">
+        ${titulo} • SLIDE ${index + 1}
+      </div>
+
+      <h3>${escapar(tituloSlide)}</h3>
+
+      <p>${escapar(conteudo)}</p>
+
+    `;
+
+    area.appendChild(slide);
+
+  });
+
+  document.getElementById("btnSalvarSlides").style.display = "block";
+
+  area.scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+}
+
+
+function escapar(texto){
+
+  return texto
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+
+function salvarSlides(){
+
+  const titulo =
+    valor("slideTitulo") || "apresentacao";
+
+  const slides =
+    document.getElementById("slidesPreview").innerHTML;
+
+  const janela =
+    window.open("", "_blank");
+
+  janela.document.write(`
+
+    <!DOCTYPE html>
+
+    <html lang="pt-BR">
+
+    <head>
+
+      <meta charset="UTF-8">
+
+      <title>${escapar(titulo)}</title>
+
+      <style>
+
+        *{
+          box-sizing:border-box;
+        }
+
+        body{
+          margin:0;
+          background:#eee;
+          font-family:Arial,sans-serif;
+        }
+
+        .apresentacao{
+          max-width:1000px;
+          margin:auto;
+        }
+
+        .slide{
+          background:#101713;
+          color:white;
+          min-height:560px;
+          margin:30px auto;
+          padding:55px;
+          border-radius:12px;
+          page-break-after:always;
+        }
+
+        .slide-number{
+          color:#8a978e;
+          font-size:13px;
+          margin-bottom:35px;
+        }
+
+        .slide h3{
+          font-size:38px;
+          margin-bottom:25px;
+        }
+
+        .slide p{
+          color:#d1d8d3;
+          white-space:pre-wrap;
+          font-size:20px;
+          line-height:1.6;
+        }
+
+        @media print{
+
+          body{
+            background:white;
+          }
+
+          .slide{
+            margin:0;
+            border-radius:0;
+            min-height:100vh;
+          }
+
+        }
+
+      </style>
+
+    </head>
+
+    <body>
+
+      <div class="apresentacao">
+
+        ${slides}
+
+      </div>
+
+      <script>
+
+        window.onload=function(){
+          window.print();
+        };
+
+      <\/script>
+
+    </body>
+
+    </html>
+
+  `);
+
+  janela.document.close();
 }
 
 </script>
