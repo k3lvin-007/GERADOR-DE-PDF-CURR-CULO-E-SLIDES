@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GreenTools</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #050805;
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 25px 20px;
+      text-align: center;
+      background: #081008;
+      border-bottom: 1px solid #19ff55;
+    }
+
+    header h1 {
+      color: #19ff55;
+      font-size: 32px;
+    }
+
+    header p {
+      color: #aaa;
+      margin-top: 8px;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 1100px;
+      margin: 30px auto;
+    }
+
+    .tools {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #0b110b;
+      border: 1px solid #123b1c;
+      border-radius: 15px;
+      padding: 22px;
+      box-shadow: 0 0 20px rgba(25,255,85,.06);
+    }
+
+    .card h2 {
+      color: #19ff55;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: #aaa;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      background: #050805;
+      color: #fff;
+      border: 1px solid #245c31;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 12px;
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #19ff55;
+    }
+
+    textarea {
+      min-height: 180px;
+      resize: vertical;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      padding: 13px;
+      background: #19ff55;
+      color: #031006;
+      font-weight: bold;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    button:hover {
+      background: #0dcc40;
+      transform: translateY(-1px);
+    }
+
+    .section {
+      display: none;
+      margin-top: 25px;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .menu {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+    }
+
+    .menu button {
+      width: auto;
+      flex: 1;
+      min-width: 150px;
+    }
+
+    .preview {
+      margin-top: 20px;
+      padding: 25px;
+      background: white;
+      color: #111;
+      border-radius: 10px;
+      min-height: 250px;
+    }
+
+    .preview h2 {
+      color: #111;
+      margin-bottom: 10px;
+    }
+
+    .curriculo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    @media (max-width: 650px) {
+      .curriculo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      header h1 {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>GreenTools</h1>
+  <p>Ferramentas simples para criar, organizar e transformar suas ideias.</p>
+</header>
+
+<div class="container">
+
+  <div class="menu">
+    <button onclick="mostrar('pdf')">📄 Texto → PDF</button>
+    <button onclick="mostrar('curriculo')">👤 Currículo PDF</button>
+    <button onclick="mostrar('slides')">📊 Gerador de Slides</button>
+  </div>
+
+  <!-- TEXTO PARA PDF -->
+  <section id="pdf" class="section active">
+    <div class="card">
+      <h2>📄 Texto → PDF</h2>
+      <p>
+        Digite ou cole qualquer texto e transforme o conteúdo
+        em um documento PDF.
+      </p>
+
+      <input
+        type="text"
+        id="nomePdf"
+        placeholder="Nome do PDF"
+      >
+
+      <textarea
+        id="textoPdf"
+        placeholder="Digite ou cole aqui o conteúdo que deseja transformar em PDF..."
+      ></textarea>
+
+      <button onclick="gerarPDF()">
+        Gerar PDF
+      </button>
+    </div>
+  </section>
+
+  <!-- CURRÍCULO -->
+  <section id="curriculo" class="section">
+    <div class="card">
+
+      <h2>👤 Gerador de Currículo</h2>
+
+      <p>
+        Preencha seus dados e gere uma estrutura de currículo
+        profissional.
+      </p>
+
+      <div class="curriculo-grid">
+
+        <input id="nome" placeholder="Nome completo">
+
+        <input id="email" placeholder="E-mail">
+
+        <input id="telefone" placeholder="Telefone">
+
+        <input id="cidade" placeholder="Cidade / Estado">
+
+        <input id="objetivo" placeholder="Objetivo profissional">
+
+        <input id="linkedin" placeholder="LinkedIn">
+
+      </div>
+
+      <textarea
+        id="formacao"
+        placeholder="Formação acadêmica&#10;Ex.: Ciência da Computação - 1º período"
+      ></textarea>
+
+      <textarea
+        id="experiencia"
+        placeholder="Experiência profissional"
+      ></textarea>
+
+      <textarea
+        id="cursos"
+        placeholder="Cursos e certificados&#10;Ex.: Excel Avançado, Informática, Logística..."
+      ></textarea>
+
+      <textarea
+        id="habilidades"
+        placeholder="Habilidades e competências&#10;Ex.: Organização, comunicação, informática, trabalho em equipe..."
+      ></textarea>
+
+      <button onclick="gerarCurriculo()">
+        Gerar Currículo
+      </button>
+
+      <div id="curriculoPreview" class="preview">
+        <h2>Pré-visualização</h2>
+        <p>Seu currículo aparecerá aqui.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SLIDES -->
+  <section id="slides" class="section">
+    <div class="card">
+
+      <h2>📊 Gerador de Slides</h2>
+
+      <p>
+        Digite o conteúdo abaixo. Cada bloco separado por uma
+        linha em branco será considerado um novo slide.
+      </p>
+
+      <input
+        id="tituloSlides"
+        placeholder="Título da apresentação"
+      >
+
+      <textarea
+        id="textoSlides"
+        placeholder="Slide 1&#10;Introdução ao assunto.&#10;&#10;Slide 2&#10;Principais informações.&#10;&#10;Slide 3&#10;Conclusão."
+      ></textarea>
+
+      <button onclick="gerarSlides()">
+        Gerar Slides
+      </button>
+
+      <div id="slidesPreview"></div>
+
+    </div>
+  </section>
+
+</div>
+
+<script>
+
+function mostrar(secao) {
+  document.querySelectorAll(".section").forEach(function(el) {
+    el.classList.remove("active");
+  });
+
+  document.getElementById(secao).classList.add("active");
+}
+
+
+// TEXTO → PDF
+function gerarPDF() {
+
+  const nome =
+    document.getElementById("nomePdf").value.trim() ||
+    "documento";
+
+  const texto =
+    document.getElementById("textoPdf").value.trim();
+
+  if (!texto) {
+    alert("Digite algum texto primeiro.");
+    return;
+  }
+
+  const janela = window.open("", "_blank");
+
+  janela.document.write(`
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>${nome}</title>
+
+      <style>
+        body {
+          font-family: Arial;
+          padding: 50px;
+          line-height: 1.6;
+          white-space: pre-wrap;
+        }
+
+        h1 {
+          margin-bottom: 30px;
+        }
+      </style>
+    </head>
+
+    <body>
+      <h1>${nome}</h1>
+      <div>${texto.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</div>
+
+      <script>
+        window.onload = function() {
+          window.print();
+        }
+      <\/script>
+    </body>
+    </html>
+  `);
+
+  janela.document.close();
+}
+
+
+// CURRÍCULO
+function gerarCurriculo() {
+
+  const nome =
+    document.getElementById("nome").value || "Seu Nome";
+
+  const email =
+    document.getElementById("email").value;
+
+  const telefone =
+    document.getElementById("telefone").value;
+
+  const cidade =
+    document.getElementById("cidade").value;
+
+  const objetivo =
+    document.getElementById("objetivo").value;
+
+  const linkedin =
+    document.getElementById("linkedin").value;
+
+  const formacao =
+    document.getElementById("formacao").value;
+
+  const experiencia =
+    document.getElementById("experiencia").value;
+
+  const cursos =
+    document.getElementById("cursos").value;
+
+  const habilidades =
+    document.getElementById("habilidades").value;
+
+  const preview =
+    document.getElementById("curriculoPreview");
+
+  preview.innerHTML = `
+
+    <h1>${nome}</h1>
+
+    <p>
+      ${email}
+      ${telefone ? " | " + telefone : ""}
+      ${cidade ? " | " + cidade : ""}
+    </p>
+
+    ${
+      linkedin
+      ? `<p><strong>LinkedIn:</strong> ${linkedin}</p>`
+      : ""
+    }
+
+    <hr style="margin:20px 0">
+
+    <h2>Objetivo</h2>
+    <p>${objetivo || "Objetivo profissional"}</p>
+
+    <h2>Formação Acadêmica</h2>
+    <p>${formacao || "Não informado"}</p>
+
+    <h2>Experiência Profissional</h2>
+    <p>${experiencia || "Não informado"}</p>
+
+    <h2>Cursos e Certificações</h2>
+    <p>${cursos || "Não informado"}</p>
+
+    <h2>Habilidades e Competências</h2>
+    <p>${habilidades || "Não informado"}</p>
+
+    <br>
+
+    <button onclick="window.print()">
+      Imprimir / Salvar como PDF
+    </button>
+  `;
+}
+
+
+// SLIDES
+function gerarSlides() {
+
+  const titulo =
+    document.getElementById("tituloSlides").value ||
+    "Minha Apresentação";
+
+  const texto =
+    document.getElementById("textoSlides").value.trim();
+
+  if (!texto) {
+    alert("Digite o conteúdo dos slides.");
+    return;
+  }
+
+  const blocos = texto.split(/\n\s*\n/);
+
+  const area =
+    document.getElementById("slidesPreview");
+
+  area.innerHTML = "";
+
+  blocos.forEach(function(bloco, index) {
+
+    const partes = bloco.split("\n");
+
+    const tituloSlide =
+      partes[0] ||
+      `Slide ${index + 1}`;
+
+    const conteudo =
+      partes.slice(1).join("\n");
+
+    const slide =
+      document.createElement("div");
+
+    slide.style.cssText = `
+      background:#101810;
+      border:1px solid #19ff55;
+      border-radius:15px;
+      padding:25px;
+      margin-top:20px;
+      min-height:180px;
+    `;
+
+    slide.innerHTML = `
+      <h2 style="color:#19ff55">
+        ${tituloSlide}
+      </h2>
+
+      <p style="
+        color:#ddd;
+        white-space:pre-wrap;
+        line-height:1.6;
+        margin-top:15px;
+      ">
+        ${conteudo}
+      </p>
+    `;
+
+    area.appendChild(slide);
+  });
+}
+
+</script>
+
+</body>
+</html>
