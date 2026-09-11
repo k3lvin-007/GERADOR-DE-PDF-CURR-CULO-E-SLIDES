@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>KFTools — Ferramentas Online</title>
 
@@ -15,341 +21,619 @@
 }
 
 :root{
+
     --bg:#080b09;
     --surface:#101512;
     --surface2:#151b17;
     --border:#263129;
+
     --green:#65c96b;
     --green2:#8be38f;
+
     --text:#f3f5f3;
     --muted:#9ba59d;
+
     --danger:#d85c5c;
+
 }
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     background:var(--bg);
+
     color:var(--text);
+
     min-height:100vh;
+
 }
+
 
 header{
+
     background:#0b0e0c;
-    border-bottom:1px solid #1d251f;
-    padding:20px 6%;
+
+    border-bottom:
+        1px solid #1d251f;
+
+    padding:
+        20px 6%;
+
     position:sticky;
+
     top:0;
+
     z-index:100;
+
 }
+
 
 .logo{
+
     font-size:29px;
+
     font-weight:800;
+
     letter-spacing:-1px;
+
 }
+
 
 .logo span{
+
     color:var(--green);
+
 }
+
 
 nav{
+
     display:flex;
+
     gap:8px;
+
     flex-wrap:wrap;
+
     margin-top:16px;
+
 }
 
+
 nav button{
+
     background:#111612;
+
     color:#bfc7c1;
-    border:1px solid var(--border);
+
+    border:
+        1px solid var(--border);
+
     border-radius:9px;
-    padding:10px 15px;
+
+    padding:
+        10px 15px;
+
     cursor:pointer;
+
     transition:.2s;
+
 }
+
 
 nav button:hover,
 nav button.active{
+
     background:#17331d;
+
     border-color:#3e7544;
+
     color:var(--green2);
+
 }
+
 
 .container{
+
     width:92%;
+
     max-width:1200px;
-    margin:35px auto;
+
+    margin:
+        35px auto;
+
 }
+
 
 .tool{
+
     display:none;
+
 }
+
 
 .tool.active{
+
     display:block;
+
 }
+
 
 .hero{
+
     margin-bottom:24px;
+
 }
+
 
 .hero h1{
+
     font-size:34px;
+
     margin-bottom:10px;
+
 }
+
 
 .hero p{
+
     color:var(--muted);
+
     line-height:1.6;
+
 }
+
 
 .card{
+
     background:var(--surface);
-    border:1px solid var(--border);
+
+    border:
+        1px solid var(--border);
+
     border-radius:16px;
+
     padding:20px;
+
     margin-bottom:20px;
+
 }
 
+
 label{
+
     display:block;
+
     color:#e0e7e1;
+
     font-weight:bold;
+
     margin-bottom:8px;
+
 }
+
 
 input,
 textarea,
 select{
+
     width:100%;
+
     background:#090c0a;
+
     color:#fff;
-    border:1px solid #303b33;
+
+    border:
+        1px solid #303b33;
+
     border-radius:10px;
+
     padding:12px;
+
     font-size:15px;
+
     outline:none;
+
 }
+
 
 input:focus,
 textarea:focus,
 select:focus{
+
     border-color:var(--green);
+
 }
+
 
 textarea{
+
     min-height:180px;
+
     resize:vertical;
+
     line-height:1.5;
+
 }
+
 
 .row{
+
     display:flex;
+
     gap:12px;
+
     flex-wrap:wrap;
+
 }
+
 
 .row > *{
+
     flex:1;
+
     min-width:180px;
+
 }
+
 
 .btn{
+
     background:var(--green);
+
     color:#071008;
+
     border:none;
+
     border-radius:10px;
-    padding:12px 17px;
+
+    padding:
+        12px 17px;
+
     font-weight:bold;
+
     cursor:pointer;
-    margin:5px 4px 5px 0;
+
+    margin:
+        5px 4px 5px 0;
+
 }
+
 
 .btn:hover{
+
     background:#82e387;
+
 }
+
 
 .btn.secondary{
+
     background:#172019;
+
     color:#d2dad4;
-    border:1px solid #344238;
+
+    border:
+        1px solid #344238;
+
 }
+
 
 .btn.secondary:hover{
+
     background:#223027;
+
 }
+
 
 .btn.danger{
+
     background:#35191b;
+
     color:#ffaaaa;
-    border:1px solid #683033;
+
+    border:
+        1px solid #683033;
+
 }
+
 
 .toolbar{
+
     display:flex;
+
     gap:7px;
+
     flex-wrap:wrap;
+
     padding:10px;
+
     background:#0b0e0c;
-    border:1px solid #263029;
-    border-radius:10px 10px 0 0;
+
+    border:
+        1px solid #263029;
+
+    border-radius:
+        10px 10px 0 0;
+
 }
+
 
 .toolbar button{
+
     background:#171d19;
+
     color:#ddd;
-    border:1px solid #303a33;
-    padding:8px 10px;
+
+    border:
+        1px solid #303a33;
+
+    padding:
+        8px 10px;
+
     border-radius:7px;
+
     cursor:pointer;
+
 }
+
 
 .toolbar button:hover{
+
     background:#26352a;
+
 }
+
 
 .editor{
+
     min-height:250px;
+
     padding:18px;
+
     background:#fff;
+
     color:#111;
-    border-radius:0 0 10px 10px;
+
+    border-radius:
+        0 0 10px 10px;
+
     outline:none;
+
     line-height:1.6;
+
 }
+
 
 .preview{
+
     background:#fff;
+
     color:#111;
+
     border-radius:12px;
+
     padding:25px;
+
     min-height:300px;
+
     overflow:auto;
+
 }
+
 
 .cv-preview{
+
     max-width:850px;
+
     margin:auto;
+
     background:#fff;
+
     color:#111;
+
     padding:45px;
+
     min-height:900px;
+
 }
+
 
 .cv-preview h1{
+
     font-size:32px;
+
     margin-bottom:5px;
+
 }
+
 
 .cv-preview h2{
+
     font-size:19px;
+
     margin-top:25px;
-    border-bottom:2px solid #222;
+
+    border-bottom:
+        2px solid #222;
+
     padding-bottom:5px;
+
 }
+
 
 .cv-preview p{
+
     margin:7px 0;
+
     line-height:1.5;
+
 }
+
 
 .photo-preview{
+
     width:130px;
+
     height:130px;
+
     object-fit:cover;
+
     border-radius:12px;
+
     display:none;
+
     margin-top:10px;
+
 }
+
 
 .hidden{
+
     display:none!important;
+
 }
+
 
 .badge{
+
     display:inline-block;
+
     background:#142319;
-    border:1px solid #304f35;
+
+    border:
+        1px solid #304f35;
+
     color:#86d98b;
-    padding:6px 9px;
+
+    padding:
+        6px 9px;
+
     border-radius:30px;
+
     font-size:12px;
+
     margin:3px;
+
 }
+
 
 .style-grid{
+
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(140px,1fr)
+        );
+
     gap:10px;
+
     margin-top:10px;
+
 }
+
 
 .style-option{
+
     background:#0b0f0c;
-    border:1px solid #2b372e;
+
+    border:
+        1px solid #2b372e;
+
     border-radius:10px;
+
     padding:13px;
+
     color:#bbb;
+
     cursor:pointer;
+
     text-align:center;
+
     transition:.2s;
+
 }
+
 
 .style-option:hover{
+
     border-color:#4c7651;
+
 }
+
 
 .style-option.selected{
+
     border-color:var(--green);
+
     background:#142319;
+
     color:var(--green2);
+
 }
+
 
 .loading{
+
     padding:15px;
+
     text-align:center;
+
     color:var(--green2);
+
 }
 
+
 footer{
+
     text-align:center;
+
     color:#69716b;
+
     padding:35px;
+
     margin-top:50px;
+
 }
-</head>
+
+
+        </style></head>
 
 <body>
 
 <header>
 
-  <div class="logo">
-    KF<span>Tools</span>
-  </div>
+    <div class="logo">
+        KF<span>Tools</span>
+    </div>
 
-  <nav>
+    <nav>
 
-    <button
-      class="active"
-      onclick="abrirFerramenta('pdf',this)"
-    >
-      Texto → PDF
-    </button>
+        <button
+            class="active"
+            onclick="abrirFerramenta('pdf',this)"
+        >
+            Texto → PDF
+        </button>
 
-    <button
-      onclick="abrirFerramenta('cv',this)"
-    >
-      Currículo
-    </button>
+        <button
+            onclick="abrirFerramenta('cv',this)"
+        >
+            Currículo
+        </button>
 
-    <button
-      onclick="abrirFerramenta('slides',this)"
-    >
-      Slides
-    </button>
+        <button
+            onclick="abrirFerramenta('slides',this)"
+        >
+            Slides
+        </button>
 
-  </nav>
+    </nav>
 
 </header>
 
@@ -357,431 +641,476 @@ footer{
 <main class="container">
 
 
-<!-- ================= TEXTO PARA PDF ================= -->
+<!-- =====================================================
+     TEXTO → PDF
+===================================================== -->
 
-<section id="pdf" class="tool active">
+<section
+    id="pdf"
+    class="tool active"
+>
 
-  <div class="hero">
+    <div class="hero">
 
-    <h1>Texto para PDF</h1>
+        <h1>
+            Texto para PDF
+        </h1>
 
-    <p>
-      Escreva, formate e transforme seu texto em um PDF.
-    </p>
+        <p>
+            Escreva, formate e transforme seu texto em um PDF.
+        </p>
 
-  </div>
+    </div>
 
 
-  <div class="card">
+    <div class="card">
 
-    <div class="toolbar">
+        <div class="toolbar">
 
-      <button onclick="formatar('bold')">
-        <b>B</b>
-      </button>
+            <button
+                onclick="formatar('bold')"
+            >
+                <b>B</b>
+            </button>
 
-      <button onclick="formatar('italic')">
-        <i>I</i>
-      </button>
+            <button
+                onclick="formatar('italic')"
+            >
+                <i>I</i>
+            </button>
 
-      <button onclick="formatar('underline')">
-        <u>U</u>
-      </button>
+            <button
+                onclick="formatar('underline')"
+            >
+                <u>U</u>
+            </button>
 
-      <button onclick="formatar('justifyLeft')">
-        Esquerda
-      </button>
+            <button
+                onclick="formatar('justifyLeft')"
+            >
+                Esquerda
+            </button>
 
-      <button onclick="formatar('justifyCenter')">
-        Centro
-      </button>
+            <button
+                onclick="formatar('justifyCenter')"
+            >
+                Centro
+            </button>
 
-      <button onclick="formatar('justifyRight')">
-        Direita
-      </button>
+            <button
+                onclick="formatar('justifyRight')"
+            >
+                Direita
+            </button>
 
-      <button onclick="formatar('justifyFull')">
-        Justificar
-      </button>
+            <button
+                onclick="formatar('justifyFull')"
+            >
+                Justificar
+            </button>
 
-      <button onclick="alterarTamanho(-2)">
-        A−
-      </button>
+            <button
+                onclick="alterarTamanho(-2)"
+            >
+                A−
+            </button>
 
-      <button onclick="alterarTamanho(2)">
-        A+
-      </button>
+            <button
+                onclick="alterarTamanho(2)"
+            >
+                A+
+            </button>
 
-      <input
-        type="color"
-        id="corTexto"
-        value="#111111"
-        onchange="document.execCommand('foreColor',false,this.value)"
-        style="width:45px;padding:3px"
-      >
+            <input
+                type="color"
+                id="corTexto"
+                value="#111111"
+                onchange="document.execCommand('foreColor',false,this.value)"
+                style="width:45px;padding:3px"
+            >
+
+        </div>
+
+
+        <div
+            id="editor"
+            class="editor"
+            contenteditable="true"
+            spellcheck="true"
+        >Digite ou cole seu texto aqui...</div>
+
+
+        <br>
+
+
+        <label>
+            Adicionar imagem
+        </label>
+
+        <input
+            type="file"
+            id="fotoPDF"
+            accept="image/*"
+        >
+
+        <img
+            id="previewFotoPDF"
+            class="photo-preview"
+            alt=""
+        >
+
+
+        <br>
+
+
+        <button
+            class="btn"
+            onclick="previewPDF()"
+        >
+            Visualizar PDF
+        </button>
+
+        <button
+            class="btn secondary"
+            onclick="salvarPDF()"
+        >
+            Salvar PDF
+        </button>
+
+        <button
+            class="btn danger"
+            onclick="limparPDF()"
+        >
+            Limpar
+        </button>
 
     </div>
 
 
     <div
-      id="editor"
-      class="editor"
-      contenteditable="true"
-      spellcheck="true"
-    >
-      Digite ou cole seu texto aqui...
-    </div>
-
-
-    <br>
-
-
-    <label>
-      Adicionar imagem
-    </label>
-
-    <input
-      type="file"
-      id="fotoPDF"
-      accept="image/*"
-    >
-
-    <img
-      id="previewFotoPDF"
-      class="photo-preview"
-    >
-
-
-    <br>
-
-
-    <button
-      class="btn"
-      onclick="previewPDF()"
-    >
-      Visualizar PDF
-    </button>
-
-    <button
-      class="btn secondary"
-      onclick="salvarPDF()"
-    >
-      Salvar PDF
-    </button>
-
-    <button
-      class="btn danger"
-      onclick="limparPDF()"
-    >
-      Limpar
-    </button>
-
-  </div>
-
-
-  <div
-    id="pdfPreview"
-    class="preview hidden"
-  ></div>
+        id="pdfPreview"
+        class="preview hidden"
+    ></div>
 
 </section>
 
 
 
-<!-- ================= CURRÍCULO ================= -->
+<!-- =====================================================
+     CURRÍCULO
+===================================================== -->
 
-<section id="cv" class="tool">
+<section
+    id="cv"
+    class="tool"
+>
 
-  <div class="hero">
+    <div class="hero">
 
-    <h1>Criador de Currículo</h1>
+        <h1>
+            Criador de Currículo
+        </h1>
 
-    <p>
-      Monte um currículo profissional e pronto para enviar.
-    </p>
-
-  </div>
-
-
-  <div class="card">
-
-    <div class="row">
-
-      <div>
-
-        <label>
-          Nome completo
-        </label>
-
-        <input
-          id="cvNome"
-          placeholder="Seu nome"
-        >
-
-      </div>
-
-
-      <div>
-
-        <label>
-          Objetivo profissional
-        </label>
-
-        <input
-          id="cvObjetivo"
-          placeholder="Ex.: Estudante de Ciência da Computação"
-        >
-
-      </div>
+        <p>
+            Monte um currículo profissional e pronto para enviar.
+        </p>
 
     </div>
 
 
-    <br>
+    <div class="card">
+
+        <div class="row">
+
+            <div>
+
+                <label>
+                    Nome completo
+                </label>
+
+                <input
+                    id="cvNome"
+                    placeholder="Seu nome"
+                >
+
+            </div>
 
 
-    <div class="row">
+            <div>
 
-      <div>
+                <label>
+                    Objetivo profissional
+                </label>
+
+                <input
+                    id="cvObjetivo"
+                    placeholder="Ex.: Estudante de Ciência da Computação"
+                >
+
+            </div>
+
+        </div>
+
+
+        <br>
+
+
+        <div class="row">
+
+            <div>
+
+                <label>
+                    E-mail
+                </label>
+
+                <input
+                    id="cvEmail"
+                    type="email"
+                    placeholder="seu@email.com"
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Telefone
+                </label>
+
+                <input
+                    id="cvTelefone"
+                    placeholder="(00) 00000-0000"
+                >
+
+            </div>
+
+        </div>
+
+
+        <br>
+
+
+        <div class="row">
+
+            <div>
+
+                <label>
+                    Cidade
+                </label>
+
+                <input
+                    id="cvCidade"
+                    placeholder="Cidade - Estado"
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    LinkedIn
+                </label>
+
+                <input
+                    id="cvLinkedin"
+                    placeholder="linkedin.com/in/seuperfil"
+                >
+
+            </div>
+
+        </div>
+
+
+        <br>
+
 
         <label>
-          E-mail
+            Resumo profissional
         </label>
 
-        <input
-          id="cvEmail"
-          placeholder="seu@email.com"
-        >
-
-      </div>
+        <textarea
+            id="cvResumo"
+            placeholder="Escreva um breve resumo sobre você..."
+        ></textarea>
 
 
-      <div>
+        <br>
+
 
         <label>
-          Telefone
+            Formação
         </label>
 
-        <input
-          id="cvTelefone"
-          placeholder="(00) 00000-0000"
-        >
+        <textarea
+            id="cvFormacao"
+            placeholder="Curso, instituição e período..."
+        ></textarea>
 
-      </div>
+
+        <br>
+
+
+        <label>
+            Experiência profissional
+        </label>
+
+        <textarea
+            id="cvExperiencia"
+            placeholder="Empresa, cargo e atividades..."
+        ></textarea>
+
+
+        <br>
+
+
+        <label>
+            Cursos e habilidades
+        </label>
+
+        <textarea
+            id="cvCursos"
+            placeholder="Ex.: Excel Avançado, Informática, Python..."
+        ></textarea>
+
+
+        <br>
+
+
+        <button
+            class="btn"
+            onclick="gerarCV()"
+        >
+            Gerar currículo
+        </button>
+
+        <button
+            class="btn secondary"
+            onclick="salvarCV()"
+        >
+            Salvar PDF
+        </button>
+
+        <button
+            class="btn danger"
+            onclick="limparCV()"
+        >
+            Limpar
+        </button>
 
     </div>
 
 
-    <br>
+    <div class="card">
+
+        <h2 style="margin-bottom:15px">
+            Pré-visualização
+        </h2>
 
 
-    <div class="row">
-
-      <div>
-
-        <label>
-          Cidade
-        </label>
-
-        <input
-          id="cvCidade"
-          placeholder="Cidade - Estado"
+        <div
+            id="cvPreview"
+            class="cv-preview"
         >
 
-      </div>
+            <h1>
+                Seu Nome
+            </h1>
+
+            <p>
+                Seu objetivo profissional
+            </p>
 
 
-      <div>
+            <h2>
+                Contato
+            </h2>
 
-        <label>
-          LinkedIn
-        </label>
-
-        <input
-          id="cvLinkedin"
-          placeholder="linkedin.com/in/seuperfil"
-        >
-
-      </div>
-
-    </div>
+            <p>
+                Preencha seus dados acima.
+            </p>
 
 
-    <br>
+            <h2>
+                Resumo profissional
+            </h2>
 
+            <p>
+                Seu resumo aparecerá aqui.
+            </p>
 
-    <label>
-      Resumo profissional
-    </label>
-
-    <textarea
-      id="cvResumo"
-      placeholder="Escreva um breve resumo sobre você..."
-    ></textarea>
-
-
-    <br>
-
-
-    <label>
-      Formação
-    </label>
-
-    <textarea
-      id="cvFormacao"
-      placeholder="Curso, instituição e período..."
-    ></textarea>
-
-
-    <br>
-
-
-    <label>
-      Experiência profissional
-    </label>
-
-    <textarea
-      id="cvExperiencia"
-      placeholder="Empresa, cargo e atividades..."
-    ></textarea>
-
-
-    <br>
-
-
-    <label>
-      Cursos e habilidades
-    </label>
-
-    <textarea
-      id="cvCursos"
-      placeholder="Ex.: Excel Avançado, Informática, Python..."
-    ></textarea>
-
-
-    <br>
-
-
-    <button
-      class="btn"
-      onclick="gerarCV()"
-    >
-      Gerar currículo
-    </button>
-
-    <button
-      class="btn secondary"
-      onclick="salvarCV()>
-      Salvar PDF
-    </button>
-
-    <button
-      class="btn danger"
-      onclick="limparCV()"
-    >
-      Limpar
-    </button>
-
-  </div>
-
-
-  <div class="card">
-
-    <h2 style="margin-bottom:15px">
-      Pré-visualização
-    </h2>
-
-    <div
-      id="cvPreview"
-      class="cv-preview"
-    >
-
-      <h1>
-        Seu Nome
-      </h1>
-
-      <p>
-        Seu objetivo profissional
-      </p>
-
-      <h2>
-        Contato
-      </h2>
-
-      <p>
-        Preencha seus dados acima.
-      </p>
-
-      <h2>
-        Resumo profissional
-      </h2>
-
-      <p>
-        Seu resumo aparecerá aqui.
-      </p>
+        </div>
 
     </div>
-
-  </div>
 
 </section>
 
 
-<!-- ================= SLIDES ================= -->
 
-<section id="slides" class="tool">
+<!-- =====================================================
+     SLIDES
+===================================================== -->
 
-  <div class="hero">
+<section
+    id="slides"
+    class="tool"
+>
 
-    <h1>
-      Criador de Slides
-    </h1>
+    <div class="hero">
 
-    <p>
-      Crie apresentações automaticamente usando
-      títulos e conteúdos. As imagens serão pesquisadas
-      em fontes abertas.
-    </p>
+        <h1>
+            Criador de Slides
+        </h1>
 
-    <div style="margin-top:12px">
+        <p>
+            Crie apresentações automaticamente usando
+            títulos e conteúdos. As imagens serão pesquisadas
+            em fontes abertas.
+        </p>
 
-      <span class="badge">
-        Sem API Key
-      </span>
 
-      <span class="badge">
-        Imagens automáticas
-      </span>
+        <div style="margin-top:12px">
 
-      <span class="badge">
-        16:9
-      </span>
+            <span class="badge">
+                Sem API Key
+            </span>
+
+            <span class="badge">
+                Imagens automáticas
+            </span>
+
+            <span class="badge">
+                16:9
+            </span>
+
+        </div>
 
     </div>
 
-  </div>
+
+    <div class="card">
+
+        <label>
+            Conteúdo da apresentação
+        </label>
 
 
-  <div class="card">
+        <p
+            style="
+                color:#858d88;
+                font-size:13px;
+                margin-bottom:10px;
+            "
+        >
+            Separe cada slide com uma linha em branco.
+            A primeira linha de cada bloco será o título.
+        </p>
 
-    <label>
-      Conteúdo da apresentação
-    </label>
 
-    <p
-      style="
-        color:#858d88;
-        font-size:13px;
-        margin-bottom:10px;
-      "
-    >
-      Separe cada slide com uma linha em branco.
-      A primeira linha de cada bloco será o título.
-    </p>
-
-    <textarea
-      id="slideTexto"
-      placeholder="Introdução à Inteligência Artificial
+        <textarea
+            id="slideTexto"
+            placeholder="Introdução à Inteligência Artificial
 O que é IA e como ela funciona.
 
 Aplicações da IA
@@ -789,131 +1118,149 @@ Saúde, educação, empresas e tecnologia.
 
 Conclusão
 A inteligência artificial está transformando o mundo."
-    ></textarea>
+        ></textarea>
 
-    <br>
 
-    <label>
-      Estilo da apresentação
-    </label>
+        <br>
 
-    <div class="style-grid">
 
-      <div
-        class="style-option selected"
-        data-style="classic"
-        onclick="selecionarEstilo(this,'classic')"
-      >
-        Clássico
-      </div>
+        <label>
+            Estilo da apresentação
+        </label>
 
-      <div
-        class="style-option"
-        data-style="right"
-        onclick="selecionarEstilo(this,'right')"
-      >
-        Imagem direita
-      </div>
 
-      <div
-        class="style-option"
-        data-style="full"
-        onclick="selecionarEstilo(this,'full')"
-      >
-        Imagem inteira
-      </div>
+        <div class="style-grid">
 
-      <div
-        class="style-option"
-        data-style="text"
-        onclick="selecionarEstilo(this,'text')"
-      >
-        Somente texto
-      </div>
+            <div
+                class="style-option selected"
+                data-style="classic"
+                onclick="selecionarEstilo(this,'classic')"
+            >
+                Clássico
+            </div>
+
+
+            <div
+                class="style-option"
+                data-style="right"
+                onclick="selecionarEstilo(this,'right')"
+            >
+                Imagem direita
+            </div>
+
+
+            <div
+                class="style-option"
+                data-style="full"
+                onclick="selecionarEstilo(this,'full')"
+            >
+                Imagem inteira
+            </div>
+
+
+            <div
+                class="style-option"
+                data-style="text"
+                onclick="selecionarEstilo(this,'text')"
+            >
+                Somente texto
+            </div>
+
+        </div>
+
+
+        <br>
+
+
+        <button
+            class="btn"
+            onclick="gerarSlides()"
+        >
+            Gerar slides
+        </button>
+
+
+        <button
+            class="btn secondary"
+            onclick="adicionarSlide()"
+        >
+            + Adicionar slide
+        </button>
+
+
+        <button
+            class="btn secondary"
+            onclick="apresentarSlides()"
+        >
+            ▶ Apresentar
+        </button>
+
+
+        <button
+            class="btn secondary"
+            onclick="salvarProjeto()"
+        >
+            Salvar projeto
+        </button>
+
+
+        <button
+            class="btn secondary"
+            onclick="baixarProjeto()"
+        >
+            Baixar projeto
+        </button>
+
+
+        <button
+            class="btn secondary"
+            onclick="document.getElementById('arquivoProjeto').click()"
+        >
+            Abrir projeto
+        </button>
+
+
+        <input
+            type="file"
+            id="arquivoProjeto"
+            accept=".json"
+            class="hidden"
+            onchange="abrirProjeto(event)"
+        >
+
+
+        <button
+            class="btn secondary"
+            onclick="exportarSlidesPDF()"
+        >
+            Exportar PDF
+        </button>
+
+
+        <button
+            class="btn danger"
+            onclick="limparSlides()"
+        >
+            Limpar
+        </button>
 
     </div>
 
-    <br>
 
-    <button
-      class="btn"
-      onclick="gerarSlides()"
-    >
-      Gerar slides
-    </button>
+    <div
+        id="slidesStatus"
+    ></div>
 
-    <button
-      class="btn secondary"
-      onclick="adicionarSlide()"
-    >
-      + Adicionar slide
-    </button>
 
-    <button
-      class="btn secondary"
-      onclick="apresentarSlides()"
-    >
-      ▶ Apresentar
-    </button>
-
-    <button
-      class="btn secondary"
-      onclick="salvarProjeto()"
-    >
-      Salvar projeto
-    </button>
-
-    <button
-      class="btn secondary"
-      onclick="baixarProjeto()"
-    >
-      Baixar projeto
-    </button>
-
-    <button
-      class="btn secondary"
-      onclick="document.getElementById('arquivoProjeto').click()"
-    >
-      Abrir projeto
-    </button>
-
-    <input
-      type="file"
-      id="arquivoProjeto"
-      accept=".json"
-      class="hidden"
-      onchange="abrirProjeto(event)"
-    >
-
-    <button
-      class="btn secondary"
-      onclick="exportarSlidesPDF()"
-    >
-      Exportar PDF
-    </button>
-
-    <button
-      class="btn danger"
-      onclick="limparSlides()"
-    >
-      Limpar
-    </button>
-
-  </div>
-
-  <div id="slidesStatus"></div>
-
-  <div
-    id="slidesArea"
-    class="slides-area"
-  ></div>
+    <div
+        id="slidesArea"
+        class="slides-area"
+    ></div>
 
 </section>
 
 
 </main><style>
-
-/* ================= SLIDES ================= */
 
 .slides-area{
     display:flex;
@@ -1122,18 +1469,7 @@ A inteligência artificial está transformando o mundo."
         display:none;
     }
 
-    .slide-content h2{
-        margin-bottom:10px;
-    }
-
-    .slide-content p{
-        font-size:13px;
-    }
-
 }
-
-
-/* ================= APRESENTAÇÃO ================= */
 
 .presentation{
     position:fixed;
@@ -1176,10 +1512,11 @@ A inteligência artificial está transformando o mundo."
 
 <script>
 
-/* =====================================================
-   KFTools
-   PARTE 3 — FUNÇÕES PRINCIPAIS
-===================================================== */
+let estiloSlide='classic';
+
+let slides=[];
+
+let indiceApresentacao=0;
 
 
 /* ================= NAVEGAÇÃO ================= */
@@ -1188,9 +1525,12 @@ function abrirFerramenta(id,botao){
 
     document
         .querySelectorAll('.tool')
-        .forEach(el => el.classList.remove('active'));
+        .forEach(el =>
+            el.classList.remove('active')
+        );
 
-    const ferramenta = document.getElementById(id);
+    const ferramenta =
+        document.getElementById(id);
 
     if(ferramenta){
         ferramenta.classList.add('active');
@@ -1198,7 +1538,9 @@ function abrirFerramenta(id,botao){
 
     document
         .querySelectorAll('nav button')
-        .forEach(btn => btn.classList.remove('active'));
+        .forEach(btn =>
+            btn.classList.remove('active')
+        );
 
     if(botao){
         botao.classList.add('active');
@@ -1207,13 +1549,19 @@ function abrirFerramenta(id,botao){
 }
 
 
-/* ================= EDITOR PDF ================= */
+/* ================= PDF ================= */
 
 function formatar(comando){
 
-    document.execCommand(comando,false,null);
+    document.execCommand(
+        comando,
+        false,
+        null
+    );
 
-    document.getElementById('editor').focus();
+    document
+        .getElementById('editor')
+        .focus();
 
 }
 
@@ -1226,7 +1574,9 @@ function alterarTamanho(valor){
         valor > 0 ? '5' : '2'
     );
 
-    document.getElementById('editor').focus();
+    document
+        .getElementById('editor')
+        .focus();
 
 }
 
@@ -1249,39 +1599,24 @@ function previewPDF(){
 
 function limparPDF(){
 
-    document.getElementById('editor').innerHTML =
+    document
+        .getElementById('editor')
+        .innerHTML =
         'Digite ou cole seu texto aqui...';
 
     document
         .getElementById('pdfPreview')
         .classList.add('hidden');
 
-    document.getElementById('fotoPDF').value='';
+    document
+        .getElementById('fotoPDF')
+        .value='';
 
-    document.getElementById('previewFotoPDF').style.display='none';
+    document
+        .getElementById('previewFotoPDF')
+        .style.display='none';
 
 }
-
-
-/* ================= IMAGEM PDF ================= */
-
-document
-    .getElementById('fotoPDF')
-    ?.addEventListener('change',function(){
-
-        const arquivo = this.files[0];
-
-        if(!arquivo) return;
-
-        const imagem =
-            document.getElementById('previewFotoPDF');
-
-        imagem.src =
-            URL.createObjectURL(arquivo);
-
-        imagem.style.display='block';
-
-    });
 
 
 /* ================= CURRÍCULO ================= */
@@ -1291,7 +1626,9 @@ function valor(id){
     const el =
         document.getElementById(id);
 
-    return el ? el.value.trim() : '';
+    return el
+        ? el.value.trim()
+        : '';
 
 }
 
@@ -1312,7 +1649,8 @@ function escapar(texto){
 function gerarCV(){
 
     const nome =
-        valor('cvNome') || 'Seu Nome';
+        valor('cvNome') ||
+        'Seu Nome';
 
     const objetivo =
         valor('cvObjetivo') ||
@@ -1347,337 +1685,1030 @@ function gerarCV(){
         'Seus cursos e habilidades aparecerão aqui.';
 
 
-    document.getElementById('cvPreview').innerHTML = `
+    document.getElementById(
+        'cvPreview'
+    ).innerHTML = `
 
-        <h1>${escapar(nome)}</<script>
+        <h1>
+            ${escapar(nome)}
+        </h1>
 
-/* ================= APRESENTAÇÃO ================= */
+        <p>
+            <strong>
+                ${escapar(objetivo)}
+            </strong>
+        </p>
 
-let indiceApresentacao = 0;
-let janelaApresentacao = null;
+        <h2>
+            Contato
+        </h2>
 
+        <p>
+            ${escapar(email)}
+            ${
+                email && telefone
+                ? ' • '
+                : ''
+            }
+            ${escapar(telefone)}
+        </p>
 
-function apresentarSlides(){
+        <p>
+            ${escapar(cidade)}
+        </p>
 
-    if(!slides.length){
+        ${
+            linkedin
+            ? `<p>${escapar(linkedin)}</p>`
+            : ''
+        }
 
-        alert(
-            'Crie pelo menos um slide primeiro.'
-        );
+        <h2>
+            Resumo profissional
+        </h2>
 
-        return;
-    }
+        <p>
+            ${escapar(resumo)}
+        </p>
 
+        <h2>
+            Formação
+        </h2>
 
-    indiceApresentacao = 0;
+        <p>
+            ${escapar(formacao)}
+        </p>
 
+        <h2>
+            Experiência profissional
+        </h2>
 
-    const tela =
-        document.createElement('div');
+        <p>
+            ${escapar(experiencia)}
+        </p>
 
-    tela.className = 'presentation';
+        <h2>
+            Cursos e habilidades
+        </h2>
 
-    tela.id = 'presentation';
-
-
-    tela.innerHTML = `
-
-        <div class="presentation-inner">
-
-            <div id="presentationSlide"></div>
-
-            <div class="presentation-controls">
-
-                <button
-                    onclick="slideAnterior()"
-                >
-                    ← Anterior
-                </button>
-
-                <button
-                    onclick="slideProximo()"
-                >
-                    Próximo →
-                </button>
-
-                <button
-                    onclick="fecharApresentacao()"
-                >
-                    ✕ Fechar
-                </button>
-
-            </div>
-
-        </div>
+        <p>
+            ${escapar(cursos)}
+        </p>
 
     `;
 
-
-    document.body.appendChild(tela);
-
-
-    mostrarSlideApresentacao();
+}
 
 
-    document.addEventListener(
-        'keydown',
-        tecladoApresentacao
+/* ================= ESTILO ================= */
+
+function selecionarEstilo(elemento,estilo){
+
+    estiloSlide=estilo;
+
+    document
+        .querySelectorAll('.style-option')
+        .forEach(el =>
+            el.classList.remove('selected')
+        );
+
+    elemento.classList.add('selected');
+
+}
+
+
+/* ================= TEXTO DOS SLIDES ================= */
+
+function criarDadosSlides(texto){
+
+    const blocos =
+        texto
+        .split(/\n\s*\n/)
+        .map(x => x.trim())
+        .filter(Boolean);
+
+
+    return blocos.map(bloco => {
+
+        const linhas =
+            bloco
+            .split('\n')
+            .map(x => x.trim())
+            .filter(Boolean);
+
+
+        const titulo =
+            linhas.shift() ||
+            'Novo slide';
+
+
+        return {
+
+            titulo:titulo,
+
+            conteudo:
+                linhas.join('\n'),
+
+            imagem:'',
+
+            fonte:'',
+
+            pagina:'',
+
+            autor:'',
+
+            licenca:'',
+
+            estilo:estiloSlide
+
+        };
+
+    });
+
+}
+
+
+/* ================= WIKIMEDIA ================= */
+
+async function buscarImagem(titulo,indice=0){
+
+    const consulta =
+        encodeURIComponent(titulo);
+
+
+    const url =
+        'https://commons.wikimedia.org/w/api.php' +
+        '?action=query' +
+        '&generator=search' +
+        '&gsrsearch=' + consulta +
+        '&gsrnamespace=6' +
+        '&gsrlimit=12' +
+        '&prop=imageinfo' +
+        '&iiprop=url|extmetadata|size|mime' +
+        '&iiurlwidth=1600' +
+        '&format=json' +
+        '&origin=*';
+
+
+    try{
+
+        const resposta =
+            await fetch(url);
+
+
+        if(!resposta.ok)
+            return null;
+
+
+        const dados =
+            await resposta.json();
+
+
+        const paginas =
+            dados.query?.pages
+            ? Object.values(
+                dados.query.pages
+              )
+            : [];
+
+
+        const imagens =
+            paginas.filter(p => {
+
+                const info =
+                    p.imageinfo?.[0];
+
+                if(!info)
+                    return false;
+
+
+                const mime =
+                    info.mime || '';
+
+
+                if(
+                    !mime.startsWith(
+                        'image/'
+                    )
+                ){
+                    return false;
+                }
+
+
+                const nome =
+                    (
+                        p.title || ''
+                    ).toLowerCase();
+
+
+                const bloqueados = [
+
+                    'logo',
+                    'icon',
+                    'flag',
+                    'diagram',
+                    'symbol'
+
+                ];
+
+
+                if(
+                    bloqueados.some(
+                        palavra =>
+                            nome.includes(
+                                palavra
+                            )
+                    )
+                ){
+                    return false;
+                }
+
+
+                const meta =
+                    info.extmetadata || {};
+
+
+                const licenca =
+                    meta
+                        .LicenseShortName
+                        ?.value ||
+                    meta
+                        .License
+                        ?.value ||
+                    '';
+
+
+                if(!licenca)
+                    return false;
+
+
+                return true;
+
+            });
+
+
+        if(!imagens.length)
+            return null;
+
+
+        imagens.sort((a,b) => {
+
+            const ia =
+                a.imageinfo[0];
+
+            const ib =
+                b.imageinfo[0];
+
+
+            const areaA =
+                (ia.width || 0) *
+                (ia.height || 0);
+
+
+            const areaB =
+                (ib.width || 0) *
+                (ib.height || 0);
+
+
+            return areaB-areaA;
+
+        });
+
+
+        const escolhido =
+            imagens[
+                indice %
+                imagens.length
+            ];
+
+
+        const info =
+            escolhido.imageinfo[0];
+
+
+        const meta =
+            info.extmetadata || {};
+
+
+        return {
+
+            url:
+                info.thumburl ||
+                info.url,
+
+            original:
+                info.url,
+
+            fonte:
+                'Wikimedia Commons',
+
+            pagina:
+                'https://commons.wikimedia.org/wiki/' +
+                encodeURIComponent(
+                    escolhido.title
+                        .replace(/ /g,'_')
+                ),
+
+            autor:
+                meta.Artist?.value ||
+                'Autor não informado',
+
+            licenca:
+                meta
+                    .LicenseShortName
+                    ?.value ||
+                meta
+                    .License
+                    ?.value ||
+                'Licença não informada'
+
+        };
+
+
+    }catch(erro){
+
+        console.error(erro);
+
+        return null;
+
+    }
+
+}
+
+
+/* ================= IMAGEM VÁLIDA ================= */
+
+function imagemValida(url){
+
+    return new Promise(resolve => {
+
+        if(!url){
+
+            resolve(false);
+
+            return;
+
+        }
+
+
+        const img =
+            new Image();
+
+
+        img.onload =
+            () => resolve(true);
+
+
+        img.onerror =
+            () => resolve(false);
+
+
+        img.src=url;
+
+    });
+
+}
+
+
+/* ================= GERAR SLIDES ================= */
+
+async function gerarSlides(){
+
+    const texto =
+        document
+            .getElementById(
+                'slideTexto'
+            )
+            .value
+            .trim();
+
+
+    if(!texto){
+
+        alert(
+            'Digite o conteúdo da apresentação primeiro.'
+        );
+
+        return;
+
+    }
+
+
+    slides =
+        criarDadosSlides(
+            texto
+        );
+
+
+    const status =
+        document.getElementById(
+            'slidesStatus'
+        );
+
+
+    status.innerHTML =
+        `<div class="loading">
+            Criando apresentação...
+        </div>`;
+
+
+    renderizarSlides();
+
+
+    for(
+        let i=0;
+        i<slides.length;
+        i++
+    ){
+
+        if(
+            estiloSlide !== 'text'
+        ){
+
+            status.innerHTML =
+                `<div class="loading">
+                    Procurando imagem
+                    ${i+1}/${slides.length}...
+                </div>`;
+
+
+            const imagem =
+                await buscarImagem(
+                    slides[i].titulo,
+                    i
+                );
+
+
+            if(imagem){
+
+                slides[i].imagem =
+                    imagem.url;
+
+                slides[i].fonte =
+                    imagem.fonte;
+
+                slides[i].pagina =
+                    imagem.pagina;
+
+                slides[i].autor =
+                    imagem.autor;
+
+                slides[i].licenca =
+                    imagem.licenca;
+
+            }
+
+        }
+
+        renderizarSlides();
+
+    }
+
+
+    status.innerHTML =
+        `<div class="status-ok">
+            ${slides.length}
+            slide(s) criado(s) com sucesso.
+        </div>`;
+
+}
+
+
+/* ================= RENDERIZAR SLIDES ================= */
+
+function renderizarSlides(){
+
+    const area =
+        document.getElementById(
+            'slidesArea'
+        );
+
+
+    if(!area)
+        return;
+
+
+    area.innerHTML='';
+
+
+    slides.forEach(
+        (slide,index) => {
+
+            const card =
+                document.createElement(
+                    'div'
+                );
+
+
+            card.className =
+                'slide-card';
+
+
+            const estilo =
+                slide.estilo ||
+                estiloSlide;
+
+
+            let conteudo='';
+
+
+            if(
+                estilo === 'full' &&
+                slide.imagem
+            ){
+
+                conteudo = `
+
+                    <div class="slide-full">
+
+                        <img
+                            src="${slide.imagem}"
+                            alt=""
+                        >
+
+                        <div class="overlay">
+
+                            <h2
+                                contenteditable="true"
+                                oninput="atualizarSlide(${index},'titulo',this.innerText)"
+                            >
+                                ${escapar(slide.titulo)}
+                            </h2>
+
+                            <p
+                                contenteditable="true"
+                                oninput="atualizarSlide(${index},'conteudo',this.innerText)"
+                            >
+                                ${escapar(slide.conteudo)}
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }else if(
+                estilo === 'right' &&
+                slide.imagem
+            ){
+
+                conteudo = `
+
+                    <div class="slide-right">
+
+                        <div class="slide-content">
+
+                            <h2
+                                contenteditable="true"
+                                oninput="atualizarSlide(${index},'titulo',this.innerText)"
+                            >
+                                ${escapar(slide.titulo)}
+                            </h2>
+
+                            <p
+                                contenteditable="true"
+                                oninput="atualizarSlide(${index},'conteudo',this.innerText)"
+                            >
+                                ${escapar(slide.conteudo)}
+                            </p>
+
+                        </div>
+
+                        <img
+                            src="${slide.imagem}"
+                            alt=""
+                        >
+
+                    </div>
+
+                `;
+
+            }else if(
+                estilo === 'text'
+            ){
+
+                conteudo = `
+
+                    <div class="slide-text-only">
+
+                        <div class="slide-content">
+
+                            <h2
+                                contenteditable="true"
+                                oninput="atualizarSlide(${index},'titulo',this.innerText)"
+                            >
+                                ${escapar(slide.titulo)}
+                            </h2>
+
+                            <p
+                                contenteditable="true"
+                                oninput="atualizarSlide(${index},'conteudo',this.innerText)"
+                            >
+                                ${escapar(slide.conteudo)}
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }else{
+
+                conteudo = `
+
+                    <div class="slide-content">
+
+                        <h2
+                            contenteditable="true"
+                            oninput="atualizarSlide(${index},'titulo',this.innerText)"
+                        >
+                            ${escapar(slide.titulo)}
+                        </h2>
+
+                        <p
+                            contenteditable="true"
+                            oninput="atualizarSlide(${index},'conteudo',this.innerText)"
+                        >
+                            ${escapar(slide.conteudo)}
+                        </p>
+
+                        ${
+                            slide.imagem
+                            ? `
+                                <img
+                                    src="${slide.imagem}"
+                                    class="slide-image"
+                                    alt=""
+                                >
+                              `
+                            : ''
+                        }
+
+                    </div>
+
+                `;
+
+            }
+
+
+            card.innerHTML = `
+
+                <div class="slide-header">
+
+                    <span class="slide-number">
+                        Slide ${index+1}
+                    </span>
+
+                    <div class="slide-actions">
+
+                        <button
+                            onclick="moverSlide(${index},-1)"
+                        >
+                            ↑
+                        </button>
+
+                        <button
+                            onclick="moverSlide(${index},1)"
+                        >
+                            ↓
+                        </button>
+
+                        <button
+                            onclick="duplicarSlide(${index})"
+                        >
+                            Duplicar
+                        </button>
+
+                        <button
+                            onclick="trocarImagem(${index})"
+                        >
+                            Trocar imagem
+                        </button>
+
+                        <button
+                            onclick="removerSlide(${index})"
+                        >
+                            Excluir
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="slide-canvas">
+
+                    ${conteudo}
+
+                </div>
+
+
+                ${
+                    slide.imagem
+                    ? `
+                        <div class="image-source">
+
+                            Fonte:
+                            <a
+                                href="${slide.pagina || slide.imagem}"
+                                target="_blank"
+                            >
+                                ${escapar(slide.fonte)}
+                            </a>
+
+                            ${
+                                slide.autor
+                                ? ' • Autor: ' +
+                                  escapar(
+                                      slide.autor
+                                  )
+                                : ''
+                            }
+
+                            ${
+                                slide.licenca
+                                ? ' • Licença: ' +
+                                  escapar(
+                                      slide.licenca
+                                  )
+                                : ''
+                            }
+
+                        </div>
+                      `
+                    : ''
+                }
+
+            `;
+
+
+            area.appendChild(card);
+
+        }
     );
 
 }
 
 
-function mostrarSlideApresentacao(){
+/* ================= EDITAR SLIDE ================= */
 
-    const area =
-        document.getElementById(
-            'presentationSlide'
+function atualizarSlide(
+    indice,
+    campo,
+    novoValor
+){
+
+    if(!slides[indice])
+        return;
+
+
+    slides[indice][campo] =
+        novoValor;
+
+}
+
+
+/* ================= ADICIONAR ================= */
+
+function adicionarSlide(){
+
+    slides.push({
+
+        titulo:
+            'Novo slide',
+
+        conteudo:
+            'Digite o conteúdo deste slide.',
+
+        imagem:'',
+
+        fonte:'',
+
+        pagina:'',
+
+        autor:'',
+
+        licenca:'',
+
+        estilo:
+            estiloSlide
+
+    });
+
+
+    renderizarSlides();
+
+}
+
+
+/* ================= DUPLICAR ================= */
+
+function duplicarSlide(indice){
+
+    if(!slides[indice])
+        return;
+
+
+    const copia =
+        JSON.parse(
+            JSON.stringify(
+                slides[indice]
+            )
         );
 
 
-    if(!area || !slides[indiceApresentacao])
+    copia.titulo +=
+        ' — cópia';
+
+
+    slides.splice(
+        indice+1,
+        0,
+        copia
+    );
+
+
+    renderizarSlides();
+
+}
+
+
+/* ================= REMOVER ================= */
+
+function removerSlide(indice){
+
+    if(!slides[indice])
+        return;
+
+
+    if(
+        !confirm(
+            'Excluir este slide?'
+        )
+    ){
+
+        return;
+
+    }
+
+
+    slides.splice(
+        indice,
+        1
+    );
+
+
+    renderizarSlides();
+
+}
+
+
+/* ================= MOVER ================= */
+
+function moverSlide(
+    indice,
+    direcao
+){
+
+    const novoIndice =
+        indice + direcao;
+
+
+    if(
+        novoIndice < 0 ||
+        novoIndice >= slides.length
+    ){
+
+        return;
+
+    }
+
+
+    const temp =
+        slides[indice];
+
+
+    slides[indice] =
+        slides[novoIndice];
+
+
+    slides[novoIndice] =
+        temp;
+
+
+    renderizarSlides();
+
+}
+
+
+/* ================= TROCAR IMAGEM ================= */
+
+async function trocarImagem(indice){
+
+    if(!slides[indice])
         return;
 
 
     const slide =
-        slides[indiceApresentacao];
+        slides[indice];
 
 
-    const estilo =
-        slide.estilo ||
-        estiloSlide;
+    const status =
+        document.getElementById(
+            'slidesStatus'
+        );
 
 
-    let conteudo='';
+    status.innerHTML =
+        `<div class="loading">
+            Procurando outra imagem...
+        </div>`;
+
+
+    const nova =
+        await buscarImagem(
+            slide.titulo,
+            Math.floor(
+                Math.random()*100
+            )
+        );
+
+
+    if(!nova){
+
+        status.innerHTML =
+            `<div class="status-error">
+                Não foi encontrada outra imagem.
+            </div>`;
+
+        return;
+
+    }
 
 
     if(
-        estilo === 'full' &&
+        nova.url ===
         slide.imagem
     ){
 
-        conteudo = `
+        status.innerHTML =
+            `<div class="status-error">
+                A pesquisa encontrou a mesma imagem.
+                Tente novamente.
+            </div>`;
 
-            <div class="slide-full">
-
-                <img
-                    src="${slide.imagem}"
-                    alt=""
-                >
-
-                <div class="overlay">
-
-                    <h2>
-                        ${escapar(slide.titulo)}
-                    </h2>
-
-                    <p>
-                        ${escapar(slide.conteudo)}
-                    </p>
-
-                </div>
-
-            </div>
-
-        `;
-
-    }else if(
-        estilo === 'right' &&
-        slide.imagem){
-
-    conteudo = `
-
-        <div class="slide-right">
-
-            <div class="slide-content">
-
-                <h2>
-                    ${escapar(slide.titulo)}
-                </h2>
-
-                <p>
-                    ${escapar(slide.conteudo)}
-                </p>
-
-            </div>
-
-            <img
-                src="${slide.imagem}"
-                alt=""
-            >
-
-        </div>
-
-    `;
-
-}else if(estilo === 'text'){
-
-    conteudo = `
-
-        <div class="slide-text-only">
-
-            <div class="slide-content">
-
-                <h2>
-                    ${escapar(slide.titulo)}
-                </h2>
-
-                <p>
-                    ${escapar(slide.conteudo)}
-                </p>
-
-            </div>
-
-        </div>
-
-    `;
-
-}else{
-
-    conteudo = `
-
-        <div class="slide-content">
-
-            <h2>
-                ${escapar(slide.titulo)}
-            </h2>
-
-            <p>
-                ${escapar(slide.conteudo)}
-            </p>
-
-            ${
-                slide.imagem
-                ? `
-                    <img
-                        src="${slide.imagem}"
-                        class="slide-image"
-                        alt=""
-                    >
-                  `
-                : ''
-            }
-
-        </div>
-
-    `;
-
-}
-
-
-area.innerHTML = `
-
-    <div class="slide-canvas">
-
-        ${conteudo}
-
-    </div>
-
-    <div
-        style="
-            text-align:center;
-            color:#aaa;
-            margin-top:10px;
-            font-size:13px;
-        "
-    >
-        Slide ${indiceApresentacao + 1}
-        de ${slides.length}
-    </div>
-
-`;
-
-}
-
-
-/* ================= SLIDE ANTERIOR ================= */
-
-function slideAnterior(){
-
-    if(indiceApresentacao > 0){
-
-        indiceApresentacao--;
-
-        mostrarSlideApresentacao();
-
-    }
-
-}
-
-
-/* ================= PRÓXIMO SLIDE ================= */
-
-function slideProximo(){
-
-    if(
-        indiceApresentacao <
-        slides.length - 1
-    ){
-
-        indiceApresentacao++;
-
-        mostrarSlideApresentacao();
-
-    }
-
-}
-
-
-/* ================= TECLADO ================= */
-
-function tecladoApresentacao(event){
-
-    const tela =
-        document.getElementById(
-            'presentation'
-        );
-
-    if(!tela)
         return;
 
-    if(event.key === 'ArrowRight'){
-
-        slideProximo();
-
     }
 
-    if(event.key === 'ArrowLeft'){
 
-        slideAnterior();
-
-    }
-
-    if(event.key === 'Escape'){
-
-        fecharApresentacao();
-
-    }
-
-}
-
-
-/* ================= FECHAR APRESENTAÇÃO ================= */
-
-function fecharApresentacao(){
-
-    const tela =
-        document.getElementById(
-            'presentation'
+    const valida =
+        await imagemValida(
+            nova.url
         );
 
-    if(tela){
 
-        tela.remove();
+    if(!valida){
+
+        status.innerHTML =
+            `<div class="status-error">
+                A imagem não pôde ser carregada.
+            </div>`;
+
+        return;
 
     }
 
-    document.removeEventListener(
-        'keydown',
-        tecladoApresentacao
-    );
+
+    slide.imagem =
+        nova.url;
+
+    slide.fonte =
+        nova.fonte;
+
+    slide.pagina =
+        nova.pagina;
+
+    slide.autor =
+        nova.autor;
+
+    slide.licenca =
+        nova.licenca;
+
+
+    renderizarSlides();
+
+
+    status.innerHTML =
+        `<div class="status-ok">
+            Imagem trocada com sucesso.
+        </div>`;
 
 }
 
+</script><script>
 
 /* ================= SALVAR PROJETO ================= */
 
@@ -1686,7 +2717,7 @@ function salvarProjeto(){
     if(!slides.length){
 
         alert(
-            'Não há slides para salvar.'
+            'Crie pelo menos um slide antes de salvar.'
         );
 
         return;
@@ -1699,33 +2730,27 @@ function salvarProjeto(){
 
         versao:'1.0',
 
-        estilo:estiloSlide,
+        data:
+            new Date().toISOString(),
 
-        slides:slides
+        estilo:
+            estiloSlide,
+
+        slides:
+            slides
 
     };
 
-    try{
 
-        localStorage.setItem(
-            'KFToolsProjeto',
-            JSON.stringify(projeto)
-        );
+    localStorage.setItem(
+        'kftools_projeto',
+        JSON.stringify(projeto)
+    );
 
-        document.getElementById(
-            'slidesStatus'
-        ).innerHTML =
-            `<div class="status-ok">
-                Projeto salvo neste dispositivo.
-            </div>`;
 
-    }catch(erro){
-
-        alert(
-            'Não foi possível salvar o projeto.'
-        );
-
-    }
+    alert(
+        'Projeto salvo neste dispositivo.'
+    );
 
 }
 
@@ -1744,51 +2769,60 @@ function baixarProjeto(){
 
     }
 
+
     const projeto = {
 
         nome:'KFTools',
 
         versao:'1.0',
 
-        estilo:estiloSlide,
+        data:
+            new Date().toISOString(),
 
-        slides:slides
+        estilo:
+            estiloSlide,
+
+        slides:
+            slides
 
     };
 
-    const dados =
-        JSON.stringify(
-            projeto,
-            null,
-            2
-        );
 
-    const arquivo =
+    const blob =
         new Blob(
-            [dados],
+            [
+                JSON.stringify(
+                    projeto,
+                    null,
+                    2
+                )
+            ],
             {
-                type:'application/json'
+                type:
+                    'application/json'
             }
         );
 
+
     const url =
         URL.createObjectURL(
-            arquivo
+            blob
         );
 
-    const link =
-        document.createElement('a');
 
-    link.href = url;
+    const link =
+        document.createElement(
+            'a'
+        );
+
+
+    link.href=url;
 
     link.download =
-        'KFTools-projeto.json';
-
-    document.body.appendChild(link);
+        'kftools-projeto.json';
 
     link.click();
 
-    link.remove();
 
     URL.revokeObjectURL(url);
 
@@ -1802,440 +2836,527 @@ function abrirProjeto(event){
     const arquivo =
         event.target.files?.[0];
 
+
     if(!arquivo)
         return;
+
 
     const leitor =
         new FileReader();
 
-    leitor.onload = function(){
 
-        try{
+    leitor.onload =
+        function(){
 
-            const projeto =
-                JSON.parse(
-                    leitor.result
+            try{
+
+                const projeto =
+                    JSON.parse(
+                        leitor.result
+                    );
+
+
+                if(
+                    !projeto.slides ||
+                    !Array.isArray(
+                        projeto.slides
+                    )
+                ){
+
+                    throw new Error(
+                        'Projeto inválido'
+                    );
+
+                }
+
+
+                slides =
+                    projeto.slides;
+
+
+                estiloSlide =
+                    projeto.estilo ||
+                    'classic';
+
+
+                document
+                    .querySelectorAll(
+                        '.style-option'
+                    )
+                    .forEach(el => {
+
+                        el.classList.toggle(
+                            'selected',
+                            el.dataset.style ===
+                            estiloSlide
+                        );
+
+                    });
+
+
+                renderizarSlides();
+
+
+                document.getElementById(
+                    'slidesStatus'
+                ).innerHTML =
+                    `<div class="status-ok">
+                        Projeto aberto com sucesso.
+                    </div>`;
+
+
+            }catch(erro){
+
+                console.error(
+                    erro
                 );
 
-            if(
-                !projeto ||
-                !Array.isArray(
-                    projeto.slides
-                )
-            ){
 
-                throw new Error(
-                    'Formato inválido'
-                );
+                document.getElementById(
+                    'slidesStatus'
+                ).innerHTML =
+                    `<div class="status-error">
+                        Não foi possível abrir este projeto.
+                    </div>`;
 
             }
 
-            slides =
-                projeto.slides.map(slide => ({
+        };
 
-                    titulo:
-                        slide.titulo ||
-                        'Novo slide',
-
-                    conteudo:
-                        slide.conteudo ||
-                        '',
-
-                    imagem:
-                        slide.imagem ||
-                        '',
-
-                    fonte:
-                        slide.fonte ||
-                        '',
-
-                    pagina:
-                        slide.pagina ||
-                        '',
-
-                    autor:
-                        slide.autor ||
-                        '',
-
-                    licenca:
-                        slide.licenca ||
-                        '',
-
-                    estilo:
-                        slide.estilo ||
-                        projeto.estilo ||
-                        'classic'
-
-                }));
-
-            estiloSlide =
-                projeto.estilo ||
-                'classic';
-
-            document
-                .querySelectorAll(
-                    '.style-option'
-                )
-                .forEach(el => {
-
-                    el.classList.toggle(
-                        'selected',
-                        el.dataset.style ===
-                        estiloSlide
-                    );
-
-                });
-
-            renderizarSlides();
-
-            document.getElementById(
-                'slidesStatus'
-            ).innerHTML =
-                `<div class="status-ok">
-                    Projeto aberto com sucesso.
-                </div>`;
-
-        }catch(erro){
-
-            alert(
-                'Esse arquivo não é um projeto KFTools válido.'
-            );
-
-        }
-
-    };
 
     leitor.readAsText(
         arquivo
     );
+
 
     event.target.value='';
 
 }
 
 
-/* ================= LIMPAR SLIDES ================= */
+/* ================= EXPORTAR PDF ================= */
 
-function limparSlides(){
+function salvarArquivo(
+    conteudo,
+    nome,
+    tipo
+){
 
-    if(!slides.length)
-        return;
-
-    if(
-        !confirm(
-            'Tem certeza que deseja apagar todos os slides?'
-        )
-    ){
-
-        return;
-
-    }
-
-    slides=[];
-
-    document.getElementById(
-        'slidesArea'
-    ).innerHTML='';
-
-    document.getElementById(
-        'slidesStatus'
-    ).innerHTML='';
-
-    document.getElementById(
-        'slideTexto'
-    ).value='';
-
-}
-
-
-/* ================= BIBLIOTECA PDF ================= */
-
-function carregarBibliotecaPDF(){
-
-    return new Promise(
-        (resolve,reject) => {
-
-            if(
-                window.jspdf &&
-                window.jspdf.jsPDF
-            ){
-
-                resolve(
-                    window.jspdf.jsPDF
-                );
-
-                return;
-
+    const blob =
+        new Blob(
+            [conteudo],
+            {
+                type:tipo
             }
+        );
 
-            const script =
-                document.createElement(
-                    'script'
-                );
 
-            script.src =
-                'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+    const url =
+        URL.createObjectURL(
+            blob
+        );
 
-            script.onload = () => {
 
-                if(
-                    window.jspdf &&
-                    window.jspdf.jsPDF
-                ){
+    const link =
+        document.createElement(
+            'a'
+        );
 
-                    resolve(
-                        window.jspdf.jsPDF
-                    );
 
-                }else{
+    link.href=url;
 
-                    reject(
-                        new Error(
-                            'Biblioteca PDF não carregada.'
-                        )
-                    );
+    link.download=nome;
 
-                }
+    link.click();
 
-            };
 
-            script.onerror = () => {
-
-                reject(
-                    new Error(
-                        'Falha ao carregar biblioteca PDF.'
-                    )
-                );
-
-            };
-
-            document.head.appendChild(
-                script
-            );
-
-        }
+    URL.revokeObjectURL(
+        url
     );
 
 }
 
 
-/* ================= SALVAR PDF ================= */
+function prepararImpressao(
+    conteudo,
+    titulo
+){
 
-async function salvarPDF(){
-
-    try{
-
-        const jsPDF =
-            await carregarBibliotecaPDF();
-
-        const pdf =
-            new jsPDF();
-
-        const texto =
-            document
-                .getElementById('editor')
-                .innerText
-                .trim();
-
-        if(!texto){
-
-            alert(
-                'Digite algum texto antes de salvar o PDF.'
-            );
-
-            return;
-
-        }
-
-        const linhas =
-            pdf.splitTextToSize(
-                texto,
-                180
-            );
-
-        let y=20;
-
-        linhas.forEach(linha => {
-
-            if(y > 280){
-
-                pdf.addPage();
-
-                y=20;
-
-            }
-
-            pdf.text(
-                linha,
-                15,
-                y
-            );
-
-            y += 8;
-
-        });
-
-        pdf.save(
-            'KFTools-texto.pdf'
+    const janela =
+        window.open(
+            '',
+            '_blank'
         );
 
-    }catch(erro){
+
+    if(!janela){
 
         alert(
-            'Não foi possível gerar o PDF.'
+            'Permita a abertura de novas janelas para exportar o PDF.'
         );
 
-        console.error(
-            erro
-        );
+        return;
 
     }
+
+
+    janela.document.write(`
+
+        <!DOCTYPE html>
+
+        <html lang="pt-BR">
+
+        <head>
+
+            <meta charset="UTF-8">
+
+            <title>
+                ${escapar(titulo)}
+            </title>
+
+            <style>
+
+                *{
+                    box-sizing:border-box;
+                }
+
+                body{
+                    margin:0;
+                    background:#ddd;
+                    font-family:Arial,Helvetica,sans-serif;
+                }
+
+                .pagina{
+                    width:100%;
+                    max-width:1100px;
+                    margin:20px auto;
+                    background:#fff;
+                    padding:30px;
+                }
+
+                @media print{
+
+                    body{
+                        background:#fff;
+                    }
+
+                    .pagina{
+                        margin:0;
+                        max-width:none;
+                        padding:0;
+                    }
+
+                    @page{
+                        size:A4;
+                        margin:12mm;
+                    }
+
+                }
+
+            </style>
+
+        </head>
+
+        <body>
+
+            <div class="pagina">
+
+                ${conteudo}
+
+            </div>
+
+            <script>
+
+                window.onload=function(){
+
+                    setTimeout(
+                        function(){
+
+                            window.print();
+
+                        },
+                        500
+                    );
+
+                };
+
+            <\/script>
+
+        </body>
+
+        </html>
+
+    `);
+
+
+    janela.document.close();
 
 }
 
 
-/* ================= SALVAR CURRÍCULO ================= */
+function salvarPDF(){
 
-async function salvarCV(){
+    const conteudo =
+        document
+            .getElementById(
+                'pdfPreview'
+            )
+            .innerHTML;
+
+
+    if(!conteudo){
+
+        previewPDF();
+
+    }
+
+
+    const finalConteudo =
+        document
+            .getElementById(
+                'pdfPreview'
+            )
+            .innerHTML;
+
+
+    prepararImpressao(
+        finalConteudo,
+        'KFTools - Texto'
+    );
+
+}
+
+
+function salvarCV(){
 
     gerarCV();
 
-    try{
 
-        const jsPDF =
-            await carregarBibliotecaPDF();
-
-        const elemento =
-            document.getElementById(
+    const conteudo =
+        document
+            .getElementById(
                 'cvPreview'
-            );
+            )
+            .outerHTML;
 
-        const pdf =
-            new jsPDF({
-                orientation:'portrait',
-                unit:'mm',
-                format:'a4'
-            });
 
-        const texto =
-            elemento.innerText
-                .trim();
+    prepararImpressao(
+        conteudo,
+        'KFTools - Currículo'
+    );
 
-        const linhas =
-            pdf.splitTextToSize(
-                texto,
-                180
-            );
+}
 
-        let y=20;
 
-        linhas.forEach(linha => {
+function exportarSlidesPDF(){
 
-            if(y > 280){
-
-                pdf.addPage();
-
-                y=20;
-
-            }
-
-            pdf.text(
-                linha,
-                15,
-                y
-            );
-
-            y += 7;
-
-        });
-
-        pdf.save(
-            'KFTools-curriculo.pdf'
-        );
-
-    }catch(erro){
+    if(!slides.length){
 
         alert(
-            'Não foi possível gerar o currículo em PDF.'
+            'Crie pelo menos um slide antes de exportar.'
         );
 
-        console.error(
-            erro
-        );
+        return;
 
     }
 
-}
+
+    let conteudo='';
 
 
-/* ================= LIMPAR CURRÍCULO ================= */
+    slides.forEach(
+        (slide,index) => {
 
-function limparCV(){
+            const estilo =
+                slide.estilo ||
+                estiloSlide;
 
-    const campos = [
 
-        'cvNome',
-        'cvObjetivo',
-        'cvEmail',
-        'cvTelefone',
-        'cvCidade',
-        'cvLinkedin',
-        'cvResumo',
-        'cvFormacao',
-        'cvExperiencia',
-        'cvCursos'
+            let slideHTML='';
 
-    ];
 
-    campos.forEach(id => {
+            if(
+                estilo === 'full' &&
+                slide.imagem
+            ){
 
-        const campo =
-            document.getElementById(id);
+                slideHTML = `
 
-        if(campo){
+                    <div style="
+                        width:100%;
+                        aspect-ratio:16/9;
+                        position:relative;
+                        overflow:hidden;
+                        page-break-after:always;
+                    ">
 
-            campo.value='';
+                        <img
+                            src="${slide.imagem}"
+                            style="
+                                width:100%;
+                                height:100%;
+                                object-fit:cover;
+                            "
+                        >
+
+                        <div style="
+                            position:absolute;
+                            inset:0;
+                            background:rgba(0,0,0,.48);
+                            color:white;
+                            padding:8%;
+                            display:flex;
+                            flex-direction:column;
+                            justify-content:center;
+                        ">
+
+                            <h1 style="
+                                font-size:42px;
+                                margin:0 0 20px;
+                            ">
+                                ${escapar(slide.titulo)}
+                            </h1>
+
+                            <p style="
+                                font-size:22px;
+                                line-height:1.5;
+                                white-space:pre-wrap;
+                            ">
+                                ${escapar(slide.conteudo)}
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }else if(
+                estilo === 'right' &&
+                slide.imagem
+            ){
+
+                slideHTML = `
+
+                    <div style="
+                        width:100%;
+                        aspect-ratio:16/9;
+                        display:grid;
+                        grid-template-columns:1fr 1fr;
+                        page-break-after:always;
+                        background:#fff;
+                    ">
+
+                        <div style="
+                            padding:8%;
+                            display:flex;
+                            flex-direction:column;
+                            justify-content:center;
+                        ">
+
+                            <h1 style="
+                                font-size:40px;
+                            ">
+                                ${escapar(slide.titulo)}
+                            </h1>
+
+                            <p style="
+                                font-size:21px;
+                                line-height:1.5;
+                                white-space:pre-wrap;
+                            ">
+                                ${escapar(slide.conteudo)}
+                            </p>
+
+                        </div>
+
+                        <img
+                            src="${slide.imagem}"
+                            style="
+                                width:100%;
+                                height:100%;
+                                object-fit:cover;
+                            "
+                        >
+
+                    </div>
+
+                `;
+
+            }else{
+
+                slideHTML = `
+
+                    <div style="
+                        width:100%;
+                        aspect-ratio:16/9;
+                        padding:8%;
+                        background:#fff;
+                        color:#111;
+                        display:flex;
+                        flex-direction:column;
+                        justify-content:center;
+                        page-break-after:always;
+                    ">
+
+                        <h1 style="
+                            font-size:42px;
+                            margin-bottom:20px;
+                        ">
+                            ${escapar(slide.titulo)}
+                        </h1>
+
+                        <p style="
+                            font-size:22px;
+                            line-height:1.5;
+                            white-space:pre-wrap;
+                        ">
+                            ${escapar(slide.conteudo)}
+                        </p>
+
+                        ${
+                            estilo !== 'text' &&
+                            slide.imagem
+                            ? `
+                                <img
+                                    src="${slide.imagem}"
+                                    style="
+                                        width:70%;
+                                        max-height:45%;
+                                        object-fit:cover;
+                                        margin-top:20px;
+                                        border-radius:8px;
+                                    "
+                                >
+                              `
+                            : ''
+                        }
+
+                    </div>
+
+                `;
+
+            }
+
+
+            conteudo +=
+                slideHTML;
 
         }
+    );
 
-    });
 
-    document.getElementById(
-        'cvPreview'
-    ).innerHTML = `
-
-        <h1>
-            Seu Nome
-        </h1>
-
-        <p>
-            Seu objetivo profissional
-        </p>
-
-        <h2>
-            Contato
-        </h2>
-
-        <p>
-            Preencha seus dados acima.
-        </p>
-
-        <h2>
-            Resumo profissional
-        </h2>
-
-        <p>
-            Seu resumo aparecerá aqui.
-        </p>
-
-    `;
+    prepararImpressao(
+        conteudo,
+        'KFTools - Apresentação'
+    );
 
 }
 
 
-/* ================= EXPORTAR SLIDES PDF ================= */
+/* ================= APRESENTAÇÃO ================= */
 
-async function exportarSlidesPDF(){
+function apresentarSlides(){
 
     if(!slides.length){
 
@@ -2247,157 +3368,432 @@ async function exportarSlidesPDF(){
 
     }
 
-    try{
 
-        const jsPDF =
-            await carregarBibliotecaPDF();
+    indiceApresentacao=0;
 
-        const pdf =
-            new jsPDF({
 
-                orientation:'landscape',
+    const tela =
+        document.createElement(
+            'div'
+        );
 
-                unit:'mm',
 
-                format:'a4'
+    tela.className =
+        'presentation';
 
-            });
 
-        slides.forEach(
-            (slide,index) => {
+    tela.id =
+        'modoApresentacao';
 
-                if(index > 0){
 
-                    pdf.addPage();
+    tela.innerHTML = `
 
-                }
+        <div class="presentation-inner">
 
-                const titulo =
-                    slide.titulo ||
-                    'Novo slide';
+            <div
+                id="slideApresentacao"
+            ></div>
 
-                const conteudo =
-                    slide.conteudo ||
-                    '';
+            <div class="presentation-controls">
 
-                pdf.setFontSize(
-                    26
-                );
+                <button
+                    onclick="slideAnterior()"
+                >
+                    ← Anterior
+                </button>
 
-                pdf.text(
-                    titulo,
-                    15,
-                    25
-                );
+                <button
+                    onclick="proximoSlide()"
+                >
+                    Próximo →
+                </button>
 
-                pdf.setFontSize(
-                    15
-                );
+                <button
+                    onclick="fecharApresentacao()"
+                >
+                    ✕ Fechar
+                </button>
 
-                const linhas =
-                    pdf.splitTextToSize(
-                        conteudo,
-                        260
-                    );
+            </div>
 
-                let y=42;
+        </div>
 
-                linhas.forEach(
-                    linha => {
+    `;
 
-                        if(y > 185){
 
-                            return;
+    document.body.appendChild(
+        tela
+    );
 
-                        }
 
-                        pdf.text(
-                            linha,
-                            15,
-                            y
-                        );
+    mostrarSlideApresentacao();
 
-                        y += 9;
+}
 
+
+function mostrarSlideApresentacao(){
+
+    const area =
+        document.getElementById(
+            'slideApresentacao'
+        );
+
+
+    if(!area)
+        return;
+
+
+    const slide =
+        slides[indiceApresentacao];
+
+
+    if(!slide)
+        return;
+
+
+    const estilo =
+        slide.estilo ||
+        estiloSlide;
+
+
+    let html='';
+
+
+    if(
+        estilo === 'full' &&
+        slide.imagem
+    ){
+
+        html = `
+
+            <div class="slide-canvas">
+
+                <div class="slide-full">
+
+                    <img
+                        src="${slide.imagem}"
+                        alt=""
+                    >
+
+                    <div class="overlay">
+
+                        <h2>
+                            ${escapar(slide.titulo)}
+                        </h2>
+
+                        <p>
+                            ${escapar(slide.conteudo)}
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
+
+    }else if(
+        estilo === 'right' &&
+        slide.imagem
+    ){
+
+        html = `
+
+            <div class="slide-canvas">
+
+                <div class="slide-right">
+
+                    <div class="slide-content">
+
+                        <h2>
+                            ${escapar(slide.titulo)}
+                        </h2>
+
+                        <p>
+                            ${escapar(slide.conteudo)}
+                        </p>
+
+                    </div>
+
+                    <img
+                        src="${slide.imagem}"
+                        alt=""
+                    >
+
+                </div>
+
+            </div>
+
+        `;
+
+    }else{
+
+        html = `
+
+            <div class="slide-canvas">
+
+                <div class="slide-content">
+
+                    <h2>
+                        ${escapar(slide.titulo)}
+                    </h2>
+
+                    <p>
+                        ${escapar(slide.conteudo)}
+                    </p>
+
+                    ${
+                        slide.imagem &&
+                        estilo !== 'text'
+                        ? `
+                            <img
+                                src="${slide.imagem}"
+                                class="slide-image"
+                                alt=""
+                            >
+                          `
+                        : ''
                     }
-                );
 
-                pdf.setFontSize(
-                    9
-                );
+                </div>
 
-                pdf.text(
-                    `KFTools • Slide ${index+1}`,
-                    15,
-                    195
-                );
+            </div>
 
-            }
-        );
+        `;
 
-        pdf.save(
-            'KFTools-apresentacao.pdf'
-        );
+    }
 
-    }catch(erro){
 
-        alert(
-            'Não foi possível exportar os slides.'
-        );
+    area.innerHTML =
+        html;
 
-        console.error(
-            erro
-        );
+}
+
+
+function proximoSlide(){
+
+    if(
+        indiceApresentacao <
+        slides.length-1
+    ){
+
+        indiceApresentacao++;
+
+        mostrarSlideApresentacao();
 
     }
 
 }
 
 
-/* ================= INICIALIZAÇÃO ================= */
+function slideAnterior(){
+
+    if(
+        indiceApresentacao > 0
+    ){
+
+        indiceApresentacao--;
+
+        mostrarSlideApresentacao();
+
+    }
+
+}
+
+
+function fecharApresentacao(){
+
+    const tela =
+        document.getElementById(
+            'modoApresentacao'
+        );
+
+
+    if(tela){
+
+        tela.remove();
+
+    }
+
+}
+
 
 document.addEventListener(
-    'DOMContentLoaded',
-    () => {
+    'keydown',
+    function(event){
+
+        const tela =
+            document.getElementById(
+                'modoApresentacao'
+            );
+
+
+        if(!tela)
+            return;
+
+
+        if(
+            event.key ===
+            'ArrowRight'
+        ){
+
+            proximoSlide();
+
+        }
+
+
+        if(
+            event.key ===
+            'ArrowLeft'
+        ){
+
+            slideAnterior();
+
+        }
+
+
+        if(
+            event.key ===
+            'Escape'
+        ){
+
+            fecharApresentacao();
+
+        }
+
+    }
+);
+
+
+/* ================= FOTO DO PDF ================= */
+
+document
+    .getElementById('fotoPDF')
+    ?.addEventListener(
+        'change',
+        function(){
+
+            const arquivo =
+                this.files?.[0];
+
+
+            const img =
+                document.getElementById(
+                    'previewFotoPDF'
+                );
+
+
+            if(!arquivo){
+
+                img.style.display =
+                    'none';
+
+                return;
+
+            }
+
+
+            const leitor =
+                new FileReader();
+
+
+            leitor.onload =
+                function(event){
+
+                    img.src =
+                        event.target.result;
+
+                    img.style.display =
+                        'block';
+
+                };
+
+
+            leitor.readAsDataURL(
+                arquivo
+            );
+
+        }
+    );
+
+
+/* ================= CARREGAR PROJETO LOCAL ================= */
+
+window.addEventListener(
+    'load',
+    function(){
+
+        const salvo =
+            localStorage.getItem(
+                'kftools_projeto'
+            );
+
+
+        if(!salvo)
+            return;
+
 
         try{
 
-            const salvo =
-                localStorage.getItem(
-                    'KFToolsProjeto'
+            const projeto =
+                JSON.parse(
+                    salvo
                 );
 
-            if(salvo){
 
-                const projeto =
-                    JSON.parse(
-                        salvo
-                    );
+            if(
+                projeto.slides &&
+                Array.isArray(
+                    projeto.slides
+                )
+            ){
 
-                if(
-                    projeto &&
-                    Array.isArray(
-                        projeto.slides
-                    )
-                ){
-
-                    slides =
-                        projeto.slides;
-
-                    estiloSlide =
-                        projeto.estilo ||
-                        'classic';
-
-                    renderizarSlides();
-
-                }
+                slides =
+                    projeto.slides;
 
             }
 
         }catch(erro){
 
-            console.log(
-                'Nenhum projeto salvo carregado.'
+            console.error(
+                erro
+            );
+
+        }
+
+    }
+);
+
+
+/* ================= INICIALIZAÇÃO ================= */
+
+document.addEventListener(
+    'DOMContentLoaded',
+    function(){
+
+        const editor =
+            document.getElementById(
+                'editor'
+            );
+
+
+        if(editor){
+
+            editor.addEventListener(
+                'focus',
+                function(){
+
+                    if(
+                        editor.innerText.trim() ===
+                        'Digite ou cole seu texto aqui...'
+                    ){
+
+                        editor.innerHTML='';
+
+                    }
+
+                }
             );
 
         }
@@ -2406,6 +3802,26 @@ document.addEventListener(
 );
 
 </script>
+
+
+<footer>
+
+    <div>
+        <strong>
+            KF<span style="color:#65c96b">Tools</span>
+        </strong>
+    </div>
+
+    <p style="margin-top:8px">
+        Ferramentas simples, rápidas e úteis.
+    </p>
+
+    <p style="margin-top:8px">
+        © 2026 KFTools
+    </p>
+
+</footer>
+
 
 </body>
 
