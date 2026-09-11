@@ -13,6 +13,7 @@
     --surface2:#151b17;
     --border:#26322b;
     --green:#22c55e;
+    --green2:#35d76e;
     --text:#f4f7f5;
     --muted:#9aa69e;
 }
@@ -261,7 +262,7 @@ textarea{
 }
 
 .btn-primary:hover{
-    background:#35d76e;
+    background:var(--green2);
 }
 
 .btn-secondary{
@@ -274,7 +275,7 @@ textarea{
     border-color:var(--green);
 }
 
-/* EDITOR PDF */
+/* PDF */
 
 .pdf-editor{
     display:grid;
@@ -309,11 +310,6 @@ textarea{
 
 .tool-btn:hover{
     border-color:var(--green);
-}
-
-.tool-btn.active{
-    background:var(--green);
-    color:#041008;
 }
 
 .font-control{
@@ -474,22 +470,23 @@ textarea{
 .slide-settings p{
     color:var(--muted);
     font-size:13px;
-    margin-bottom:12px;
+    margin-bottom:0;
 }
 
-.key-row{
+.slide-info{
     display:flex;
+    flex-wrap:wrap;
     gap:10px;
+    margin-top:12px;
 }
 
-.key-row input{
-    flex:1;
-}
-
-.info{
-    margin-top:8px;
+.info-pill{
+    border:1px solid var(--border);
+    background:#151b17;
+    color:#b9c5bd;
+    padding:7px 10px;
+    border-radius:8px;
     font-size:12px;
-    color:var(--muted);
 }
 
 .slides-preview{
@@ -499,9 +496,12 @@ textarea{
     gap:25px;
 }
 
+/* SLIDE 16:9 */
+
 .slide{
     width:100%;
-    min-height:480px;
+    aspect-ratio:16/9;
+    min-height:0;
     border-radius:18px;
     overflow:hidden;
     position:relative;
@@ -509,11 +509,11 @@ textarea{
     border:1px solid var(--border);
     display:grid;
     grid-template-columns:1fr 1fr;
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
 }
 
 .slide-image{
     position:relative;
-    min-height:480px;
     background:#172019;
     overflow:hidden;
 }
@@ -522,14 +522,16 @@ textarea{
     width:100%;
     height:100%;
     object-fit:cover;
+    display:block;
 }
 
 .slide-content{
-    padding:50px;
+    padding:6%;
     display:flex;
     flex-direction:column;
     justify-content:center;
     background:#101512;
+    overflow:hidden;
 }
 
 .slide-number{
@@ -541,7 +543,7 @@ textarea{
 }
 
 .slide-content h2{
-    font-size:clamp(27px,4vw,43px);
+    font-size:clamp(24px,4vw,43px);
     line-height:1.1;
     margin-bottom:20px;
 }
@@ -549,7 +551,8 @@ textarea{
 .slide-content p{
     color:#b8c3bc;
     white-space:pre-line;
-    font-size:16px;
+    font-size:clamp(13px,1.6vw,17px);
+    overflow-wrap:break-word;
 }
 
 .slide-tools{
@@ -557,15 +560,21 @@ textarea{
     right:15px;
     top:15px;
     z-index:5;
+    display:flex;
+    gap:6px;
 }
 
 .slide-tools button{
-    background:rgba(8,11,9,.88);
+    background:rgba(8,11,9,.9);
     color:white;
     border:1px solid rgba(255,255,255,.15);
     border-radius:8px;
     padding:8px 11px;
     font-size:12px;
+}
+
+.slide-tools button:hover{
+    border-color:var(--green);
 }
 
 .image-status{
@@ -578,6 +587,153 @@ textarea{
     padding:7px 10px;
     border-radius:8px;
     font-size:11px;
+}
+
+.slide-credit{
+    position:absolute;
+    left:10px;
+    right:10px;
+    bottom:8px;
+    z-index:3;
+    font-size:8px;
+    color:rgba(255,255,255,.75);
+    text-shadow:0 1px 3px #000;
+}
+
+/* APRESENTAÇÃO */
+
+.presentation{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    background:#050705;
+    display:none;
+    flex-direction:column;
+}
+
+.presentation.active{
+    display:flex;
+}
+
+.presentation-top{
+    height:58px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 18px;
+    background:#080b09;
+    border-bottom:1px solid #202820;
+    flex-shrink:0;
+}
+
+.presentation-title{
+    font-size:14px;
+    color:#aab5ad;
+}
+
+.presentation-counter{
+    font-size:13px;
+    color:var(--green);
+    font-weight:bold;
+}
+
+.presentation-stage{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:25px;
+    overflow:hidden;
+}
+
+.presentation-slide{
+    width:min(92vw,1400px);
+    aspect-ratio:16/9;
+    background:#101512;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    overflow:hidden;
+    border-radius:12px;
+    box-shadow:0 20px 80px rgba(0,0,0,.65);
+}
+
+.presentation-image{
+    background:#172019;
+    position:relative;
+    overflow:hidden;
+}
+
+.presentation-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.presentation-content{
+    padding:8%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    overflow:hidden;
+}
+
+.presentation-content .number{
+    color:var(--green);
+    font-size:clamp(10px,1.2vw,15px);
+    font-weight:bold;
+    letter-spacing:3px;
+    margin-bottom:20px;
+}
+
+.presentation-content h1{
+    font-size:clamp(26px,4vw,64px);
+    line-height:1.05;
+    margin-bottom:25px;
+}
+
+.presentation-content p{
+    font-size:clamp(13px,1.7vw,23px);
+    line-height:1.55;
+    color:#bdc8c0;
+    white-space:pre-line;
+}
+
+.presentation-controls{
+    height:70px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    background:#080b09;
+    border-top:1px solid #202820;
+    flex-shrink:0;
+}
+
+.presentation-controls button{
+    background:#18201b;
+    color:white;
+    border:1px solid #2b382f;
+    border-radius:9px;
+    padding:10px 18px;
+    font-weight:bold;
+}
+
+.presentation-controls button:hover{
+    border-color:var(--green);
+}
+
+.presentation-close{
+    background:#202a24!important;
+}
+
+/* EMPTY */
+
+.empty-slides{
+    text-align:center;
+    border:1px dashed var(--border);
+    border-radius:15px;
+    padding:50px 20px;
+    color:var(--muted);
 }
 
 /* FOOTER */
@@ -614,19 +770,37 @@ footer strong{
     }
 
     .slide{
+        aspect-ratio:auto;
+        min-height:520px;
         grid-template-columns:1fr;
     }
 
     .slide-image{
-        min-height:280px;
+        min-height:260px;
     }
 
     .slide-content{
+        min-height:260px;
         padding:30px;
     }
 
     .nav-links{
         display:none;
+    }
+
+    .presentation-slide{
+        aspect-ratio:auto;
+        max-height:calc(100vh - 150px);
+        grid-template-columns:1fr;
+    }
+
+    .presentation-image{
+        min-height:35vh;
+    }
+
+    .presentation-content{
+        min-height:30vh;
+        padding:30px;
     }
 }
 
@@ -660,8 +834,40 @@ footer strong{
         width:100%;
         justify-content:space-between;
     }
+
+    .actions .btn{
+        width:100%;
+    }
+
+    .presentation-stage{
+        padding:10px;
+    }
+
+    .presentation-controls{
+        height:62px;
+    }
+
+    .presentation-controls button{
+        padding:9px 12px;
+    }
 }
 
+/* IMPRESSÃO */
+
+@media print{
+    body{
+        background:white;
+    }
+
+    .nav,
+    .hero,
+    .tools,
+    .section,
+    footer,
+    .presentation{
+        display:none!important;
+    }
+}
 </style>
 </head>
 
@@ -740,9 +946,7 @@ footer strong{
 </section>
 
 
-<!-- =====================================================
-     TEXTO → PDF
-===================================================== -->
+<!-- TEXTO PDF -->
 
 <section class="section" id="pdf">
 
@@ -756,82 +960,52 @@ footer strong{
 
     </div>
 
-
     <div class="panel">
 
         <div class="pdf-editor">
-
-            <!-- EDITOR -->
 
             <div class="editor-box">
 
                 <div class="toolbar">
 
-                    <button
-                        class="tool-btn"
-                        onclick="formatar('bold')"
-                        title="Negrito"
-                    >
+                    <button class="tool-btn"
+                        onclick="formatar('bold')">
                         <b>B</b>
                     </button>
 
-                    <button
-                        class="tool-btn"
-                        onclick="formatar('italic')"
-                        title="Itálico"
-                    >
+                    <button class="tool-btn"
+                        onclick="formatar('italic')">
                         <i>I</i>
                     </button>
 
-                    <button
-                        class="tool-btn"
-                        onclick="formatar('underline')"
-                        title="Sublinhado"
-                    >
+                    <button class="tool-btn"
+                        onclick="formatar('underline')">
                         <u>U</u>
                     </button>
 
+                    <button class="tool-btn"
+                        onclick="alinhar('left')">
+                        ⇤
+                    </button>
 
-                    <button
-                        class="tool-btn"
-                        onclick="alinhar('left')"
-                        title="Esquerda"
-                    >
+                    <button class="tool-btn"
+                        onclick="alinhar('center')">
                         ≡
                     </button>
 
-                    <button
-                        class="tool-btn"
-                        onclick="alinhar('center')"
-                        title="Centralizar"
-                    >
-                        ≡
+                    <button class="tool-btn"
+                        onclick="alinhar('right')">
+                        ⇥
                     </button>
 
-                    <button
-                        class="tool-btn"
-                        onclick="alinhar('right')"
-                        title="Direita"
-                    >
-                        ≡
-                    </button>
-
-                    <button
-                        class="tool-btn"
-                        onclick="alinhar('justify')"
-                        title="Justificado"
-                    >
+                    <button class="tool-btn"
+                        onclick="alinhar('justify')">
                         ☰
                     </button>
 
-
-                    <!-- TAMANHO DA FONTE -->
-
                     <div class="font-control">
 
-                        <label>
-                            Fonte
-                        </label>
+                        <label>Fonte</label>
 
                         <input
                             id="fontRange"
@@ -856,14 +1030,9 @@ footer strong{
 
                     </div>
 
-
-                    <!-- COR -->
-
                     <div class="color-control">
 
-                        <label>
-                            Cor
-                        </label>
+                        <label>Cor</label>
 
                         <input
                             type="color"
@@ -876,15 +1045,9 @@ footer strong{
 
                 </div>
 
+                <div class="field" style="margin-bottom:15px">
 
-                <div
-                    class="field"
-                    style="margin-bottom:15px"
-                >
-
-                    <label>
-                        Nome do documento
-                    </label>
+                    <label>Nome do documento</label>
 
                     <input
                         id="pdfNome"
@@ -893,14 +1056,9 @@ footer strong{
 
                 </div>
 
-
-                <!-- FOTO -->
-
                 <div class="photo-box">
 
-                    <label>
-                        📷 Adicionar foto
-                    </label>
+                    <label>📷 Adicionar foto</label>
 
                     <input
                         type="file"
@@ -917,17 +1075,13 @@ footer strong{
 
                 </div>
 
-
-                <!-- EDITOR RICO -->
-
                 <div
                     id="pdfEditor"
                     class="editor"
                     contenteditable="true"
-                    style="font-size:18px;text-align:left;"
+                    style="font-size:18px;text-align:left"
                     oninput="atualizarPDF()"
                 ></div>
-
 
                 <div class="actions">
 
@@ -949,9 +1103,6 @@ footer strong{
 
             </div>
 
-
-            <!-- PRÉVIA -->
-
             <div class="pdf-preview">
 
                 <div class="pdf-page" id="pdfPreview">
@@ -959,15 +1110,11 @@ footer strong{
                     <div id="previewFoto"></div>
 
                     <div id="previewTexto">
-                        <p
-                            style="
-                            font-size:18px;
-                            text-align:left;
-                            color:#999;
-                            "
-                        >
+
+                        <p style="font-size:18px;text-align:left;color:#999">
                             A prévia do seu documento aparecerá aqui.
                         </p>
+
                     </div>
 
                 </div>
@@ -981,9 +1128,7 @@ footer strong{
 </section>
 
 
-<!-- =====================================================
-     CURRÍCULO
-===================================================== -->
+<!-- CURRÍCULO -->
 
 <section class="section" id="curriculo">
 
@@ -996,7 +1141,6 @@ footer strong{
         </p>
 
     </div>
-
 
     <div class="cv-layout">
 
@@ -1031,37 +1175,27 @@ footer strong{
 
                 <div class="field full">
                     <label>Objetivo profissional</label>
-                    <textarea
-                        id="cvObjetivo"
-                    ></textarea>
+                    <textarea id="cvObjetivo"></textarea>
                 </div>
 
                 <div class="field full">
                     <label>Formação</label>
-                    <textarea
-                        id="cvFormacao"
-                    ></textarea>
+                    <textarea id="cvFormacao"></textarea>
                 </div>
 
                 <div class="field full">
                     <label>Experiência profissional</label>
-                    <textarea
-                        id="cvExperiencia"
-                    ></textarea>
+                    <textarea id="cvExperiencia"></textarea>
                 </div>
 
                 <div class="field full">
                     <label>Cursos e certificados</label>
-                    <textarea
-                        id="cvCursos"
-                    ></textarea>
+                    <textarea id="cvCursos"></textarea>
                 </div>
 
                 <div class="field full">
                     <label>Habilidades</label>
-                    <textarea
-                        id="cvHabilidades"
-                    ></textarea>
+                    <textarea id="cvHabilidades"></textarea>
                 </div>
 
             </div>
@@ -1086,71 +1220,50 @@ footer strong{
 
         </div>
 
-
         <div
             class="cv-preview"
             id="cvPrint"
         >
 
-            <h1 id="outNome">
-                Seu Nome
-            </h1>
+            <h1 id="outNome">Seu Nome</h1>
 
-            <div
-                class="cv-contact"
-                id="outContato"
-            >
+            <div class="cv-contact" id="outContato">
                 E-mail • Telefone • Cidade
             </div>
 
             <div class="cv-block">
-
                 <h3>OBJETIVO</h3>
-
                 <p id="outObjetivo">
                     Seu objetivo profissional aparecerá aqui.
                 </p>
-
             </div>
 
             <div class="cv-block">
-
                 <h3>FORMAÇÃO</h3>
-
                 <p id="outFormacao">
                     Sua formação aparecerá aqui.
                 </p>
-
             </div>
 
             <div class="cv-block">
-
                 <h3>EXPERIÊNCIA</h3>
-
                 <p id="outExperiencia">
                     Sua experiência aparecerá aqui.
                 </p>
-
             </div>
 
             <div class="cv-block">
-
                 <h3>CURSOS E CERTIFICADOS</h3>
-
                 <p id="outCursos">
                     Seus cursos aparecerão aqui.
                 </p>
-
             </div>
 
             <div class="cv-block">
-
                 <h3>HABILIDADES</h3>
-
                 <p id="outHabilidades">
                     Suas habilidades aparecerão aqui.
                 </p>
-
             </div>
 
         </div>
@@ -1160,9 +1273,7 @@ footer strong{
 </section>
 
 
-<!-- =====================================================
-     SLIDES
-===================================================== -->
+<!-- SLIDES -->
 
 <section class="section" id="slides">
 
@@ -1171,12 +1282,10 @@ footer strong{
         <h2>🎞️ Criador de Slides</h2>
 
         <p>
-            Crie apresentações automaticamente com imagens
-            relacionadas aos títulos.
+            Crie apresentações com imagens relacionadas aos títulos.
         </p>
 
     </div>
-
 
     <div class="panel">
 
@@ -1185,33 +1294,27 @@ footer strong{
             <h3>🖼️ Imagens automáticas</h3>
 
             <p>
-                O KFTools pode buscar automaticamente imagens
-                relacionadas ao título de cada slide.
+                O KFTools busca imagens públicas relacionadas ao
+                título de cada slide. Você não precisa criar nenhuma chave.
             </p>
 
-            <div class="key-row">
+            <div class="slide-info">
 
-                <input
-                    id="unsplashKey"
-                    type="password"
-                    placeholder="Cole sua chave do Unsplash"
-                >
+                <div class="info-pill">
+                    ✓ Sem chave de API
+                </div>
 
-                <button
-                    class="btn btn-secondary"
-                    onclick="salvarChaveUnsplash()"
-                >
-                    💾 Salvar chave
-                </button>
+                <div class="info-pill">
+                    ✓ Imagem automática
+                </div>
 
-            </div>
+                <div class="info-pill">
+                    ✓ Formato 16:9
+                </div>
 
-            <div class="info">
-                A chave é armazenada apenas neste navegador.
             </div>
 
         </div>
-
 
         <div class="field">
 
@@ -1236,7 +1339,6 @@ Programar é criar soluções utilizando código."
 
         </div>
 
-
         <div class="actions">
 
             <button
@@ -1248,29 +1350,127 @@ Programar é criar soluções utilizando código."
 
             <button
                 class="btn btn-secondary"
+                onclick="apresentarSlides()"
+            >
+                ▶ Apresentar
+            </button>
+
+            <button
+                class="btn btn-secondary"
+                onclick="salvarProjeto()"
+            >
+                💾 Salvar projeto
+            </button>
+
+            <button
+                class="btn btn-secondary"
+                onclick="baixarProjeto()"
+            >
+                ⬇️ Baixar projeto
+            </button>
+
+            <button
+                class="btn btn-secondary"
+                onclick="abrirProjeto()"
+            >
+                📂 Abrir projeto
+            </button>
+
+            <button
+                class="btn btn-secondary"
+                onclick="exportarSlidesPDF()"
+            >
+                📄 Exportar PDF
+            </button>
+
+            <button
+                class="btn btn-secondary"
                 onclick="limparSlides()"
             >
                 🗑️ Limpar
             </button>
 
-            <button
-                class="btn btn-secondary"
-                onclick="salvarSlides()"
-            >
-                📥 Salvar apresentação
-            </button>
-
         </div>
 
+        <input
+            type="file"
+            id="arquivoProjeto"
+            accept=".json,application/json"
+            style="display:none"
+            onchange="carregarProjeto(event)"
+        >
 
         <div
             class="slides-preview"
             id="slidesPreview"
-        ></div>
+        >
+
+            <div class="empty-slides">
+                🎞️<br><br>
+                Seus slides aparecerão aqui.
+            </div>
+
+        </div>
 
     </div>
 
 </section>
+
+
+<!-- MODO APRESENTAÇÃO -->
+
+<div
+    id="presentation"
+    class="presentation"
+>
+
+    <div class="presentation-top">
+
+        <div
+            class="presentation-title"
+            id="presentationTitle"
+        >
+            KFTools
+        </div>
+
+        <div
+            class="presentation-counter"
+            id="presentationCounter"
+        >
+            1 / 1
+        </div>
+
+        <button
+            class="presentation-close"
+            onclick="fecharApresentacao()"
+        >
+            ✕ Sair
+        </button>
+
+    </div>
+
+    <div class="presentation-stage">
+
+        <div
+            class="presentation-slide"
+            id="presentationSlide"
+        ></div>
+
+    </div>
+
+    <div class="presentation-controls">
+
+        <button onclick="slideAnterior()">
+            ⬅️ Anterior
+        </button>
+
+        <button onclick="slideProximo()">
+            Próximo ➡️
+        </button>
+
+    </div>
+
+</div>
 
 
 <footer>
@@ -1292,9 +1492,16 @@ let fotoPDF = "";
 
 function formatar(comando){
 
-    document.getElementById("pdfEditor").focus();
+    const editor =
+        document.getElementById("pdfEditor");
 
-    document.execCommand(comando,false,null);
+    editor.focus();
+
+    document.execCommand(
+        comando,
+        false,
+        null
+    );
 
     atualizarPDF();
 
@@ -1303,18 +1510,20 @@ function formatar(comando){
 
 function alinhar(tipo){
 
-    document.getElementById("pdfEditor").focus();
+    const editor =
+        document.getElementById("pdfEditor");
+
+    editor.focus();
+
+    const comandos = {
+        left:"justifyLeft",
+        center:"justifyCenter",
+        right:"justifyRight",
+        justify:"justifyFull"
+    };
 
     document.execCommand(
-        "justify" + (
-            tipo === "left"
-            ? "Left"
-            : tipo === "center"
-                ? "Center"
-                : tipo === "right"
-                    ? "Right"
-                    : "Full"
-        ),
+        comandos[tipo],
         false,
         null
     );
@@ -1337,64 +1546,54 @@ function alterarFonte(valor){
         Math.min(60,valor)
     );
 
-
     document.getElementById(
         "fontRange"
     ).value = valor;
 
-
     document.getElementById(
         "fontNumber"
     ).value = valor;
-
-
-    /*
-       Se houver seleção, aplica somente
-       ao texto selecionado.
-    */
 
     const editor =
         document.getElementById("pdfEditor");
 
     editor.focus();
 
+    const selecao =
+        window.getSelection();
 
-    document.execCommand(
-        "fontSize",
-        false,
-        "7"
-    );
+    if(
+        selecao &&
+        selecao.rangeCount &&
+        !selecao.isCollapsed
+    ){
 
-
-    const fontes =
-        editor.querySelectorAll(
-            'font[size="7"]'
+        document.execCommand(
+            "fontSize",
+            false,
+            "7"
         );
 
+        const fontes =
+            editor.querySelectorAll(
+                'font[size="7"]'
+            );
 
-    fontes.forEach(function(el){
+        fontes.forEach(function(el){
 
-        el.removeAttribute("size");
+            el.removeAttribute("size");
 
-        el.style.fontSize =
-            valor + "px";
+            el.style.fontSize =
+                valor + "px";
 
-    });
+        });
 
-
-    /*
-       Se não houver seleção, muda a fonte
-       padrão do editor.
-    */
-
-    if(window.getSelection &&
-       window.getSelection().rangeCount === 0){
+    }else{
 
         editor.style.fontSize =
             valor + "px";
 
     }
-
 
     atualizarPDF();
 
@@ -1427,16 +1626,13 @@ function adicionarFoto(event){
         return;
     }
 
-
     const leitor =
         new FileReader();
-
 
     leitor.onload=function(e){
 
         fotoPDF =
             e.target.result;
-
 
         const img =
             document.getElementById(
@@ -1449,11 +1645,9 @@ function adicionarFoto(event){
         img.style.display =
             "block";
 
-
         atualizarPDF();
 
     };
-
 
     leitor.readAsDataURL(arquivo);
 
@@ -1463,31 +1657,22 @@ function adicionarFoto(event){
 function atualizarPDF(){
 
     const editor =
-        document.getElementById(
-            "pdfEditor"
-        );
-
+        document.getElementById("pdfEditor");
 
     const texto =
         editor.innerHTML;
 
-
     const preview =
-        document.getElementById(
-            "previewTexto"
-        );
-
+        document.getElementById("previewTexto");
 
     if(!texto.trim()){
 
         preview.innerHTML = `
-            <p
-                style="
+            <p style="
                 font-size:18px;
                 text-align:left;
                 color:#999;
-                "
-            >
+            ">
                 A prévia do seu documento aparecerá aqui.
             </p>
         `;
@@ -1499,7 +1684,6 @@ function atualizarPDF(){
 
     }
 
-
     if(fotoPDF){
 
         document.getElementById(
@@ -1507,13 +1691,13 @@ function atualizarPDF(){
         ).innerHTML = `
 
             <img
-                src="${fotoPDF}"
+                src="${escaparAtributo(fotoPDF)}"
                 style="
-                display:block;
-                max-width:100%;
-                max-height:300px;
-                object-fit:contain;
-                margin:0 auto 20px;
+                    display:block;
+                    max-width:100%;
+                    max-height:300px;
+                    object-fit:contain;
+                    margin:0 auto 20px;
                 "
             >
 
@@ -1533,14 +1717,10 @@ function atualizarPDF(){
 function salvarTextoPDF(){
 
     const editor =
-        document.getElementById(
-            "pdfEditor"
-        );
-
+        document.getElementById("pdfEditor");
 
     const conteudo =
         editor.innerHTML.trim();
-
 
     if(!conteudo){
 
@@ -1552,30 +1732,27 @@ function salvarTextoPDF(){
 
     }
 
-
     const nome =
         document.getElementById(
             "pdfNome"
         ).value.trim()
         || "documento";
 
-
     const fotoHTML =
         fotoPDF
         ? `
             <img
-                src="${fotoPDF}"
+                src="${escaparAtributo(fotoPDF)}"
                 style="
-                display:block;
-                max-width:100%;
-                max-height:300px;
-                object-fit:contain;
-                margin:0 auto 20px;
+                    display:block;
+                    max-width:100%;
+                    max-height:300px;
+                    object-fit:contain;
+                    margin:0 auto 20px;
                 "
             >
         `
         : "";
-
 
     const janela =
         window.open(
@@ -1583,6 +1760,15 @@ function salvarTextoPDF(){
             "_blank"
         );
 
+    if(!janela){
+
+        alert(
+            "O navegador bloqueou a nova janela. Permita pop-ups para salvar o PDF."
+        );
+
+        return;
+
+    }
 
     janela.document.write(`
 
@@ -1635,7 +1821,6 @@ function salvarTextoPDF(){
 
         </div>
 
-
         <script>
 
         window.onload=function(){
@@ -1656,7 +1841,6 @@ function salvarTextoPDF(){
 
     `);
 
-
     janela.document.close();
 
 }
@@ -1668,41 +1852,33 @@ function limparPDF(){
         "pdfNome"
     ).value = "";
 
-
     document.getElementById(
         "pdfEditor"
     ).innerHTML = "";
 
-
     document.getElementById(
         "previewTexto"
     ).innerHTML = `
-        <p
-            style="
+        <p style="
             font-size:18px;
             text-align:left;
             color:#999;
-            "
-        >
+        ">
             A prévia do seu documento aparecerá aqui.
         </p>
     `;
-
 
     document.getElementById(
         "previewFoto"
     ).innerHTML = "";
 
-
     document.getElementById(
         "photoPreview"
     ).style.display = "none";
 
-
     document.getElementById(
         "pdfFoto"
     ).value = "";
-
 
     fotoPDF = "";
 
@@ -1725,7 +1901,6 @@ function gerarCurriculo(){
     document.getElementById("outNome").textContent =
         valor("cvNome") || "Seu Nome";
 
-
     const contato = [
 
         valor("cvEmail"),
@@ -1735,30 +1910,24 @@ function gerarCurriculo(){
 
     ].filter(Boolean).join(" • ");
 
-
     document.getElementById("outContato").textContent =
         contato || "E-mail • Telefone • Cidade";
-
 
     document.getElementById("outObjetivo").textContent =
         valor("cvObjetivo") ||
         "Seu objetivo profissional aparecerá aqui.";
 
-
     document.getElementById("outFormacao").textContent =
         valor("cvFormacao") ||
         "Sua formação aparecerá aqui.";
-
 
     document.getElementById("outExperiencia").textContent =
         valor("cvExperiencia") ||
         "Sua experiência aparecerá aqui.";
 
-
     document.getElementById("outCursos").textContent =
         valor("cvCursos") ||
         "Seus cursos aparecerão aqui.";
-
 
     document.getElementById("outHabilidades").textContent =
         valor("cvHabilidades") ||
@@ -1771,13 +1940,21 @@ function salvarCurriculo(){
 
     gerarCurriculo();
 
-
     const janela =
         window.open(
             "",
             "_blank"
         );
 
+    if(!janela){
+
+        alert(
+            "O navegador bloqueou a nova janela."
+        );
+
+        return;
+
+    }
 
     janela.document.write(`
 
@@ -1846,39 +2023,53 @@ function salvarCurriculo(){
 
             <h1>
                 ${escapar(
-                    document.getElementById("outNome").textContent
+                    document.getElementById(
+                        "outNome"
+                    ).textContent
                 )}
             </h1>
 
             <div class="contact">
                 ${escapar(
-                    document.getElementById("outContato").textContent
+                    document.getElementById(
+                        "outContato"
+                    ).textContent
                 )}
             </div>
 
             ${blocoCV(
                 "OBJETIVO",
-                document.getElementById("outObjetivo").textContent
+                document.getElementById(
+                    "outObjetivo"
+                ).textContent
             )}
 
             ${blocoCV(
                 "FORMAÇÃO",
-                document.getElementById("outFormacao").textContent
+                document.getElementById(
+                    "outFormacao"
+                ).textContent
             )}
 
             ${blocoCV(
                 "EXPERIÊNCIA",
-                document.getElementById("outExperiencia").textContent
+                document.getElementById(
+                    "outExperiencia"
+                ).textContent
             )}
 
             ${blocoCV(
                 "CURSOS E CERTIFICADOS",
-                document.getElementById("outCursos").textContent
+                document.getElementById(
+                    "outCursos"
+                ).textContent
             )}
 
             ${blocoCV(
                 "HABILIDADES",
-                document.getElementById("outHabilidades").textContent
+                document.getElementById(
+                    "outHabilidades"
+                ).textContent
             )}
 
         </div>
@@ -1886,9 +2077,7 @@ function salvarCurriculo(){
         <script>
 
         window.onload=function(){
-
             window.print();
-
         };
 
         <\/script>
@@ -1910,9 +2099,13 @@ function blocoCV(titulo,texto){
 
         <div class="block">
 
-            <h3>${escapar(titulo)}</h3>
+            <h3>
+                ${escapar(titulo)}
+            </h3>
 
-            <p>${escapar(texto)}</p>
+            <p>
+                ${escapar(texto)}
+            </p>
 
         </div>
 
@@ -1922,49 +2115,144 @@ function blocoCV(titulo,texto){
 
 
 /* =====================================================
-   SLIDES
+   SISTEMA DE SLIDES
 ===================================================== */
 
 let slidesData = [];
 
+let slideAtual = 0;
 
-function obterChaveUnsplash(){
 
-    return localStorage.getItem(
-        "kftools_unsplash_key"
-    ) || "";
+/*
+   Wikimedia Commons não exige chave de API
+   para esse tipo de consulta.
+*/
+
+async function buscarImagemWikimedia(
+    titulo
+){
+
+    const url =
+        "https://commons.wikimedia.org/w/api.php" +
+        "?action=query" +
+        "&generator=search" +
+        "&gsrsearch=" +
+        encodeURIComponent(titulo) +
+        "&gsrnamespace=6" +
+        "&gsrlimit=12" +
+        "&prop=imageinfo" +
+        "&iiprop=url|extmetadata" +
+        "&iiurlwidth=1600" +
+        "&format=json" +
+        "&origin=*";
+
+    const resposta =
+        await fetch(url);
+
+    if(!resposta.ok){
+
+        throw new Error(
+            "Erro na busca de imagem"
+        );
+
+    }
+
+    const dados =
+        await resposta.json();
+
+    if(
+        !dados.query ||
+        !dados.query.pages
+    ){
+
+        return null;
+
+    }
+
+    const paginas =
+        Object.values(
+            dados.query.pages
+        );
+
+    const imagens =
+        paginas.filter(
+            pagina =>
+                pagina.imageinfo &&
+                pagina.imageinfo[0] &&
+                (
+                    pagina.imageinfo[0].thumburl ||
+                    pagina.imageinfo[0].url
+                )
+        );
+
+    if(!imagens.length){
+
+        return null;
+
+    }
+
+    /*
+       Escolhe aleatoriamente uma imagem
+       entre os resultados encontrados.
+    */
+
+    const pagina =
+        imagens[
+            Math.floor(
+                Math.random() *
+                imagens.length
+            )
+        ];
+
+    const info =
+        pagina.imageinfo[0];
+
+    const metadados =
+        info.extmetadata || {};
+
+    return {
+
+        url:
+            info.thumburl ||
+            info.url ||
+            "",
+
+        original:
+            info.url ||
+            "",
+
+        titulo:
+            pagina.title ||
+            "",
+
+        autor:
+            limparHTMLMetadata(
+                metadados.Artist?.value ||
+                ""
+            ),
+
+        licenca:
+            limparHTMLMetadata(
+                metadados.LicenseShortName?.value ||
+                ""
+            ),
+
+        pagina:
+            metadados.Credit?.value ||
+            ""
+
+    };
 
 }
 
 
-function salvarChaveUnsplash(){
+function limparHTMLMetadata(texto){
 
-    const chave =
-        document.getElementById(
-            "unsplashKey"
-        ).value.trim();
-
-
-    if(!chave){
-
-        alert(
-            "Cole uma chave do Unsplash primeiro."
-        );
-
-        return;
-
-    }
-
-
-    localStorage.setItem(
-        "kftools_unsplash_key",
-        chave
-    );
-
-
-    alert(
-        "Chave salva neste navegador!"
-    );
+    return String(texto || "")
+        .replace(/<[^>]*>/g,"")
+        .replace(/&nbsp;/g," ")
+        .replace(/&amp;/g,"&")
+        .trim();
 
 }
 
@@ -1973,7 +2261,6 @@ function gerarSlides(){
 
     const texto =
         valor("slideTexto");
-
 
     if(!texto){
 
@@ -1985,52 +2272,176 @@ function gerarSlides(){
 
     }
 
-
     const blocos =
         texto
         .split(/\n\s*\n/)
         .map(x=>x.trim())
         .filter(Boolean);
 
-
     slidesData =
-        blocos.map((bloco,index)=>{
+        blocos.map(
+            (bloco,index)=>{
 
-            const linhas =
-                bloco
-                .split("\n")
-                .map(x=>x.trim())
-                .filter(Boolean);
+                const linhas =
+                    bloco
+                    .split("\n")
+                    .map(x=>x.trim())
+                    .filter(Boolean);
 
+                return {
 
-            return {
+                    id:
+                        Date.now() +
+                        "-" +
+                        index,
 
-                id:index,
+                    titulo:
+                        linhas[0] ||
+                        `Slide ${index+1}`,
 
-                titulo:
-                    linhas[0] ||
-                    `Slide ${index+1}`,
+                    conteudo:
+                        linhas.slice(1).join("\n"),
 
-                conteudo:
-                    linhas.slice(1).join("\n"),
+                    imagem:"",
+                    imagemOriginal:"",
+                    autor:"",
+                    licenca:"",
+                    carregando:true
 
-                imagem:"",
+                };
 
-                carregando:false
+            }
+        );
 
-            };
-
-        });
-
+    slideAtual = 0;
 
     renderSlides();
 
+    salvarProjetoLocal();
 
     slidesData.forEach(
         (slide,index)=>{
             buscarImagemSlide(index);
         }
     );
+
+}
+
+
+async function buscarImagemSlide(index){
+
+    const slide =
+        slidesData[index];
+
+    if(!slide){
+        return;
+    }
+
+    slide.carregando =
+        true;
+
+    renderSlides();
+
+    try{
+
+        const foto =
+            await buscarImagemWikimedia(
+                slide.titulo
+            );
+
+        if(foto){
+
+            slide.imagem =
+                foto.url;
+
+            slide.imagemOriginal =
+                foto.original;
+
+            slide.autor =
+                foto.autor;
+
+            slide.licenca =
+                foto.licenca;
+
+        }
+
+    }catch(erro){
+
+        console.error(
+            "Imagem:",
+            erro
+        );
+
+    }
+
+    slide.carregando =
+        false;
+
+    renderSlides();
+
+    salvarProjetoLocal();
+
+}
+
+
+async function trocarImagem(index){
+
+    const slide =
+        slidesData[index];
+
+    if(!slide){
+        return;
+    }
+
+    slide.imagem = "";
+    slide.imagemOriginal = "";
+    slide.autor = "";
+    slide.licenca = "";
+    slide.carregando = true;
+
+    renderSlides();
+
+    try{
+
+        const foto =
+            await buscarImagemWikimedia(
+                slide.titulo +
+                " " +
+                Date.now()
+            );
+
+        if(foto){
+
+            slide.imagem =
+                foto.url;
+
+            slide.imagemOriginal =
+                foto.original;
+
+            slide.autor =
+                foto.autor;
+
+            slide.licenca =
+                foto.licenca;
+
+        }
+
+    }catch(erro){
+
+        console.error(erro);
+
+        alert(
+            "Não foi possível trocar a imagem."
+        );
+
+    }
+
+    slide.carregando =
+        false;
+
+    renderSlides();
+
+    salvarProjetoLocal();
 
 }
 
@@ -2042,9 +2453,20 @@ function renderSlides(){
             "slidesPreview"
         );
 
-
     container.innerHTML = "";
 
+    if(!slidesData.length){
+
+        container.innerHTML = `
+            <div class="empty-slides">
+                🎞️<br><br>
+                Seus slides aparecerão aqui.
+            </div>
+        `;
+
+        return;
+
+    }
 
     slidesData.forEach(
         (slide,index)=>{
@@ -2054,40 +2476,42 @@ function renderSlides(){
                     "div"
                 );
 
-
             div.className =
                 "slide";
 
+            let imagem = "";
 
-            const imagem =
-                slide.imagem
-                ? `
+            if(slide.imagem){
+
+                imagem = `
+
                     <img
                         src="${escaparAtributo(slide.imagem)}"
                         alt="${escaparAtributo(slide.titulo)}"
                     >
-                `
-                : `
-                    <div
-                        style="
+
+                `;
+
+            }else{
+
+                imagem = `
+
+                    <div style="
                         height:100%;
-                        min-height:480px;
+                        min-height:260px;
                         display:flex;
                         align-items:center;
                         justify-content:center;
                         color:#7f8b83;
                         text-align:center;
-                        "
-                    >
+                    ">
 
                         <div>
 
-                            <div
-                                style="
+                            <div style="
                                 font-size:45px;
                                 margin-bottom:10px;
-                                "
-                            >
+                            ">
                                 🖼️
                             </div>
 
@@ -2100,8 +2524,22 @@ function renderSlides(){
                         </div>
 
                     </div>
+
                 `;
 
+            }
+
+            const credito =
+                slide.autor
+                ? `
+                    Foto:
+                    ${escapar(slide.autor)}
+                    ${slide.licenca
+                        ? " • " + escapar(slide.licenca)
+                        : ""
+                    }
+                `
+                : "";
 
             div.innerHTML = `
 
@@ -2115,14 +2553,23 @@ function renderSlides(){
                             slide.carregando
                             ? "🔎 Buscando imagem..."
                             : slide.imagem
-                                ? "✓ Imagem relacionada ao título"
+                                ? "✓ Imagem encontrada"
                                 : "Sem imagem"
                         }
 
                     </div>
 
-                </div>
+                    ${
+                        credito
+                        ? `
+                            <div class="slide-credit">
+                                ${credito}
+                            </div>
+                        `
+                        : ""
+                    }
 
+                </div>
 
                 <div class="slide-content">
 
@@ -2140,19 +2587,17 @@ function renderSlides(){
 
                 </div>
 
-
                 <div class="slide-tools">
 
                     <button
                         onclick="trocarImagem(${index})"
                     >
-                        🔄 Trocar imagem
+                        🔄 Trocar
                     </button>
 
                 </div>
 
             `;
-
 
             container.appendChild(div);
 
@@ -2162,242 +2607,11 @@ function renderSlides(){
 }
 
 
-async function buscarImagemSlide(index){
-
-    const slide =
-        slidesData[index];
-
-
-    if(!slide){
-        return;
-    }
-
-
-    const chave =
-        obterChaveUnsplash();
-
-
-    if(!chave){
-
-        slide.carregando =
-            false;
-
-        renderSlides();
-
-        return;
-
-    }
-
-
-    slide.carregando =
-        true;
-
-    renderSlides();
-
-
-    try{
-
-        const url =
-            "https://api.unsplash.com/search/photos" +
-            "?query=" +
-            encodeURIComponent(
-                slide.titulo
-            ) +
-            "&per_page=10" +
-            "&orientation=landscape";
-
-
-        const resposta =
-            await fetch(
-                url,
-                {
-                    headers:{
-                        Authorization:
-                            "Client-ID " +
-                            chave
-                    }
-                }
-            );
-
-
-        if(!resposta.ok){
-
-            throw new Error(
-                "Erro " +
-                resposta.status
-            );
-
-        }
-
-
-        const dados =
-            await resposta.json();
-
-
-        if(
-            dados.results &&
-            dados.results.length
-        ){
-
-            const foto =
-                dados.results[
-                    Math.floor(
-                        Math.random() *
-                        dados.results.length
-                    )
-                ];
-
-
-            slide.imagem =
-                foto.urls.regular;
-
-        }
-
-    }catch(erro){
-
-        console.error(erro);
-
-        slide.imagem = "";
-
-    }
-
-
-    slide.carregando =
-        false;
-
-    renderSlides();
-
-}
-
-
-async function trocarImagem(index){
-
-    const slide =
-        slidesData[index];
-
-
-    if(!slide){
-        return;
-    }
-
-
-    const chave =
-        obterChaveUnsplash();
-
-
-    if(!chave){
-
-        alert(
-            "Adicione sua chave do Unsplash primeiro."
-        );
-
-        return;
-
-    }
-
-
-    slide.imagem = "";
-
-    slide.carregando = true;
-
-    renderSlides();
-
-
-    try{
-
-        const url =
-            "https://api.unsplash.com/search/photos" +
-            "?query=" +
-            encodeURIComponent(
-                slide.titulo
-            ) +
-            "&per_page=30" +
-            "&orientation=landscape";
-
-
-        const resposta =
-            await fetch(
-                url,
-                {
-                    headers:{
-                        Authorization:
-                            "Client-ID " +
-                            chave
-                    }
-                }
-            );
-
-
-        if(!resposta.ok){
-
-            throw new Error(
-                "Erro " +
-                resposta.status
-            );
-
-        }
-
-
-        const dados =
-            await resposta.json();
-
-
-        if(
-            dados.results &&
-            dados.results.length
-        ){
-
-            const foto =
-                dados.results[
-                    Math.floor(
-                        Math.random() *
-                        dados.results.length
-                    )
-                ];
-
-
-            slide.imagem =
-                foto.urls.regular;
-
-        }
-
-    }catch(erro){
-
-        console.error(erro);
-
-        alert(
-            "Não foi possível trocar a imagem."
-        );
-
-    }
-
-
-    slide.carregando =
-        false;
-
-    renderSlides();
-
-}
-
-
-function limparSlides(){
-
-    document.getElementById(
-        "slideTexto"
-    ).value = "";
-
-
-    document.getElementById(
-        "slidesPreview"
-    ).innerHTML = "";
-
-
-    slidesData = [];
-
-}
-
-
-function salvarSlides(){
+/* =====================================================
+   APRESENTAÇÃO
+===================================================== */
+
+function apresentarSlides(){
 
     if(!slidesData.length){
 
@@ -2409,30 +2623,528 @@ function salvarSlides(){
 
     }
 
+    slideAtual = 0;
 
-    const html =
+    const presentation =
+        document.getElementById(
+            "presentation"
+        );
+
+    presentation.classList.add(
+        "active"
+    );
+
+    renderPresentation();
+
+    document.body.style.overflow =
+        "hidden";
+
+    /*
+       Tenta entrar em tela cheia.
+    */
+
+    const elemento =
+        document.documentElement;
+
+    if(
+        elemento.requestFullscreen
+    ){
+
+        elemento.requestFullscreen()
+            .catch(()=>{});
+
+    }
+
+}
+
+
+function renderPresentation(){
+
+    if(!slidesData.length){
+        return;
+    }
+
+    const slide =
+        slidesData[slideAtual];
+
+    document.getElementById(
+        "presentationCounter"
+    ).textContent =
+        `${slideAtual+1} / ${slidesData.length}`;
+
+    document.getElementById(
+        "presentationTitle"
+    ).textContent =
+        slide.titulo;
+
+    const imagem =
+        slide.imagem
+        ? `
+            <img
+                src="${escaparAtributo(slide.imagem)}"
+                alt="${escaparAtributo(slide.titulo)}"
+            >
+        `
+        : `
+            <div style="
+                height:100%;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                font-size:70px;
+                color:#78837c;
+            ">
+                🖼️
+            </div>
+        `;
+
+    document.getElementById(
+        "presentationSlide"
+    ).innerHTML = `
+
+        <div class="presentation-image">
+
+            ${imagem}
+
+        </div>
+
+        <div class="presentation-content">
+
+            <div class="number">
+                SLIDE ${slideAtual+1}
+            </div>
+
+            <h1>
+                ${escapar(slide.titulo)}
+            </h1>
+
+            <p>
+                ${escapar(slide.conteudo)}
+            </p>
+
+        </div>
+
+    `;
+
+}
+
+
+function slideProximo(){
+
+    if(
+        slideAtual <
+        slidesData.length - 1
+    ){
+
+        slideAtual++;
+
+        renderPresentation();
+
+    }
+
+}
+
+
+function slideAnterior(){
+
+    if(slideAtual > 0){
+
+        slideAtual--;
+
+        renderPresentation();
+
+    }
+
+}
+
+
+function fecharApresentacao(){
+
+    document.getElementById(
+        "presentation"
+    ).classList.remove(
+        "active"
+    );
+
+    document.body.style.overflow =
+        "";
+
+    if(
+        document.fullscreenElement &&
+        document.exitFullscreen
+    ){
+
+        document.exitFullscreen()
+            .catch(()=>{});
+
+    }
+
+}
+
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        const presentation =
+            document.getElementById(
+                "presentation"
+            );
+
+        if(
+            !presentation.classList.contains(
+                "active"
+            )
+        ){
+
+            return;
+
+        }
+
+        if(
+            event.key === "ArrowRight" ||
+            event.key === " "
+        ){
+
+            event.preventDefault();
+
+            slideProximo();
+
+        }
+
+        if(
+            event.key === "ArrowLeft"
+        ){
+
+            event.preventDefault();
+
+            slideAnterior();
+
+        }
+
+        if(
+            event.key === "Escape"
+        ){
+
+            fecharApresentacao();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   SALVAR PROJETO
+===================================================== */
+
+function dadosProjeto(){
+
+    return {
+
+        versao:"1.0",
+
+        criadoEm:
+            new Date().toISOString(),
+
+        slides:
+            slidesData.map(
+                slide=>({
+
+                    id:slide.id,
+                    titulo:slide.titulo,
+                    conteudo:slide.conteudo,
+                    imagem:slide.imagem,
+                    imagemOriginal:
+                        slide.imagemOriginal,
+                    autor:slide.autor,
+                    licenca:slide.licenca
+
+                })
+            )
+
+    };
+
+}
+
+
+function salvarProjetoLocal(){
+
+    if(!slidesData.length){
+        return;
+    }
+
+    try{
+
+        localStorage.setItem(
+            "kftools_projeto_slides",
+            JSON.stringify(
+                dadosProjeto()
+            )
+        );
+
+    }catch(erro){
+
+        console.warn(
+            "Não foi possível salvar localmente.",
+            erro
+        );
+
+    }
+
+}
+
+
+function salvarProjeto(){
+
+    if(!slidesData.length){
+
+        alert(
+            "Gere os slides primeiro."
+        );
+
+        return;
+
+    }
+
+    salvarProjetoLocal();
+
+    alert(
+        "✅ Projeto salvo neste navegador!"
+    );
+
+}
+
+
+function baixarProjeto(){
+
+    if(!slidesData.length){
+
+        alert(
+            "Gere os slides primeiro."
+        );
+
+        return;
+
+    }
+
+    const dados =
+        JSON.stringify(
+            dadosProjeto(),
+            null,
+            2
+        );
+
+    const blob =
+        new Blob(
+            [dados],
+            {
+                type:"application/json"
+            }
+        );
+
+    const url =
+        URL.createObjectURL(
+            blob
+        );
+
+    const link =
+        document.createElement(
+            "a"
+        );
+
+    link.href =
+        url;
+
+    link.download =
+        "kftools-apresentacao.json";
+
+    document.body.appendChild(
+        link
+    );
+
+    link.click();
+
+    link.remove();
+
+    URL.revokeObjectURL(
+        url
+    );
+
+}
+
+
+function abrirProjeto(){
+
+    document.getElementById(
+        "arquivoProjeto"
+    ).click();
+
+}
+
+
+function carregarProjeto(event){
+
+    const arquivo =
+        event.target.files[0];
+
+    if(!arquivo){
+        return;
+    }
+
+    const leitor =
+        new FileReader();
+
+    leitor.onload=function(){
+
+        try{
+
+            const projeto =
+                JSON.parse(
+                    leitor.result
+                );
+
+            if(
+                !projeto.slides ||
+                !Array.isArray(
+                    projeto.slides
+                )
+            ){
+
+                throw new Error(
+                    "Projeto inválido"
+                );
+
+            }
+
+            slidesData =
+                projeto.slides.map(
+                    (slide,index)=>({
+
+                        id:
+                            slide.id ||
+                            Date.now()+"-"+index,
+
+                        titulo:
+                            slide.titulo ||
+                            "Slide "+(index+1),
+
+                        conteudo:
+                            slide.conteudo ||
+                            "",
+
+                        imagem:
+                            slide.imagem ||
+                            "",
+
+                        imagemOriginal:
+                            slide.imagemOriginal ||
+                            "",
+
+                        autor:
+                            slide.autor ||
+                            "",
+
+                        licenca:
+                            slide.licenca ||
+                            "",
+
+                        carregando:false
+
+                    })
+                );
+
+            slideAtual = 0;
+
+            document.getElementById(
+                "slideTexto"
+            ).value =
+                slidesData
+                .map(
+                    slide =>
+                        slide.titulo +
+                        (
+                            slide.conteudo
+                            ? "\n" +
+                              slide.conteudo
+                            : ""
+                        )
+                )
+                .join("\n\n");
+
+            renderSlides();
+
+            salvarProjetoLocal();
+
+            alert(
+                "✅ Apresentação carregada!"
+            );
+
+        }catch(erro){
+
+            console.error(erro);
+
+            alert(
+                "❌ Esse arquivo não é um projeto válido do KFTools."
+            );
+
+        }
+
+    };
+
+    leitor.readAsText(
+        arquivo
+    );
+
+    event.target.value = "";
+
+}
+
+
+/* =====================================================
+   EXPORTAR SLIDES PARA PDF
+===================================================== */
+
+function exportarSlidesPDF(){
+
+    if(!slidesData.length){
+
+        alert(
+            "Gere os slides primeiro."
+        );
+
+        return;
+
+    }
+
+    const paginas =
         slidesData.map(
             (slide,index)=>{
 
+                const imagem =
+                    slide.imagem
+                    ? `
+                        <img
+                            src="${escaparAtributo(slide.imagem)}"
+                        >
+                    `
+                    : `
+                        <div class="sem-imagem">
+                            🖼️
+                        </div>
+                    `;
+
                 return `
 
-                    <section class="page">
+                    <section class="pdf-slide">
 
-                        <div class="image">
+                        <div class="pdf-image">
 
-                            ${
-                                slide.imagem
-                                ? `
-                                    <img
-                                        src="${escaparAtributo(slide.imagem)}"
-                                    >
-                                `
-                                : "🖼️"
-                            }
+                            ${imagem}
 
                         </div>
 
-                        <div class="content">
+                        <div class="pdf-content">
 
                             <div class="number">
                                 SLIDE ${index+1}
@@ -2455,13 +3167,21 @@ function salvarSlides(){
             }
         ).join("");
 
-
     const janela =
         window.open(
             "",
             "_blank"
         );
 
+    if(!janela){
+
+        alert(
+            "O navegador bloqueou a janela de exportação."
+        );
+
+        return;
+
+    }
 
     janela.document.write(`
 
@@ -2473,7 +3193,7 @@ function salvarSlides(){
 
         <meta charset="UTF-8">
 
-        <title>KFTools Slides</title>
+        <title>KFTools — Apresentação</title>
 
         <style>
 
@@ -2482,63 +3202,130 @@ function salvarSlides(){
             margin:0;
         }
 
+        *{
+            box-sizing:border-box;
+        }
+
+        html,
         body{
             margin:0;
+            padding:0;
             background:#101512;
-            color:white;
-            font-family:Arial,sans-serif;
+            font-family:Arial,Helvetica,sans-serif;
         }
 
-        .page{
-            width:100vw;
-            height:100vh;
+        .pdf-slide{
+
+            width:297mm;
+            height:210mm;
+
             display:grid;
+
             grid-template-columns:50% 50%;
-            page-break-after:always;
+
             overflow:hidden;
+
+            page-break-after:always;
+            break-after:page;
+
+            background:#101512;
+
         }
 
-        .image{
+        .pdf-slide:last-child{
+
+            page-break-after:auto;
+            break-after:auto;
+
+        }
+
+        .pdf-image{
+
+            position:relative;
+
+            width:100%;
+            height:100%;
+
+            overflow:hidden;
+
             background:#172019;
+
             display:flex;
             align-items:center;
             justify-content:center;
-            overflow:hidden;
-            font-size:50px;
+
         }
 
-        .image img{
+        .pdf-image img{
+
             width:100%;
             height:100%;
+
             object-fit:cover;
+
+            display:block;
+
         }
 
-        .content{
-            padding:8%;
+        .sem-imagem{
+
+            font-size:60px;
+            color:#78837c;
+
+        }
+
+        .pdf-content{
+
+            padding:15% 10%;
+
             display:flex;
+
             flex-direction:column;
+
             justify-content:center;
+
+            overflow:hidden;
+
+            color:white;
+
         }
 
         .number{
+
             color:#22c55e;
+
             font-size:13px;
+
             font-weight:bold;
-            letter-spacing:2px;
+
+            letter-spacing:3px;
+
             margin-bottom:20px;
+
         }
 
         h1{
-            font-size:55px;
+
+            font-size:42pt;
+
             line-height:1.05;
-            margin:0 0 25px;
+
+            margin:0 0 22px;
+
         }
 
         p{
-            font-size:20px;
+
+            font-size:16pt;
+
+            line-height:1.5;
+
             color:#bdc8c0;
+
             white-space:pre-line;
-            line-height:1.6;
+
+            margin:0;
+
         }
 
         </style>
@@ -2547,18 +3334,44 @@ function salvarSlides(){
 
         <body>
 
-        ${html}
+        ${paginas}
 
         <script>
 
         window.onload=function(){
 
-            setTimeout(
-                function(){
-                    window.print();
-                },
-                800
-            );
+            /*
+               Aguarda imagens carregarem antes
+               de abrir a impressão.
+            */
+
+            const imagens =
+                Array.from(
+                    document.images
+                );
+
+            Promise.all(
+                imagens.map(
+                    img =>
+                        img.complete
+                        ? Promise.resolve()
+                        : new Promise(
+                            resolve=>{
+                                img.onload=resolve;
+                                img.onerror=resolve;
+                            }
+                        )
+                )
+            ).then(function(){
+
+                setTimeout(
+                    function(){
+                        window.print();
+                    },
+                    500
+                );
+
+            });
 
         };
 
@@ -2570,8 +3383,52 @@ function salvarSlides(){
 
     `);
 
-
     janela.document.close();
+
+}
+
+
+/* =====================================================
+   LIMPAR SLIDES
+===================================================== */
+
+function limparSlides(){
+
+    if(slidesData.length){
+
+        const confirmar =
+            confirm(
+                "Tem certeza que deseja apagar esta apresentação?"
+            );
+
+        if(!confirmar){
+            return;
+        }
+
+    }
+
+    document.getElementById(
+        "slideTexto"
+    ).value = "";
+
+    document.getElementById(
+        "slidesPreview"
+    ).innerHTML = `
+
+        <div class="empty-slides">
+            🎞️<br><br>
+            Seus slides aparecerão aqui.
+        </div>
+
+    `;
+
+    slidesData = [];
+
+    slideAtual = 0;
+
+    localStorage.removeItem(
+        "kftools_projeto_slides"
+    );
 
 }
 
@@ -2600,6 +3457,107 @@ function escaparAtributo(texto){
 
 
 /* =====================================================
+   RECUPERAR PROJETO SALVO
+===================================================== */
+
+function recuperarProjetoLocal(){
+
+    try{
+
+        const salvo =
+            localStorage.getItem(
+                "kftools_projeto_slides"
+            );
+
+        if(!salvo){
+            return;
+        }
+
+        const projeto =
+            JSON.parse(
+                salvo
+            );
+
+        if(
+            !projeto.slides ||
+            !Array.isArray(
+                projeto.slides
+            ) ||
+            !projeto.slides.length
+        ){
+
+            return;
+
+        }
+
+        slidesData =
+            projeto.slides.map(
+                (slide,index)=>({
+
+                    id:
+                        slide.id ||
+                        Date.now()+"-"+index,
+
+                    titulo:
+                        slide.titulo ||
+                        "Slide "+(index+1),
+
+                    conteudo:
+                        slide.conteudo ||
+                        "",
+
+                    imagem:
+                        slide.imagem ||
+                        "",
+
+                    imagemOriginal:
+                        slide.imagemOriginal ||
+                        "",
+
+                    autor:
+                        slide.autor ||
+                        "",
+
+                    licenca:
+                        slide.licenca ||
+                        "",
+
+                    carregando:false
+
+                })
+            );
+
+        document.getElementById(
+            "slideTexto"
+        ).value =
+            slidesData
+            .map(
+                slide =>
+                    slide.titulo +
+                    (
+                        slide.conteudo
+                        ? "\n" +
+                          slide.conteudo
+                        : ""
+                    )
+            )
+            .join("\n\n");
+
+        renderSlides();
+
+    }catch(erro){
+
+        console.warn(
+            "Projeto local inválido.",
+            erro
+        );
+
+    }
+
+}
+
+
+/* =====================================================
    INICIALIZAÇÃO
 ===================================================== */
 
@@ -2607,22 +3565,9 @@ document.addEventListener(
     "DOMContentLoaded",
     function(){
 
-        const chave =
-            localStorage.getItem(
-                "kftools_unsplash_key"
-            ) || "";
-
-
-        document.getElementById(
-            "unsplashKey"
-        ).value = chave;
-
-
-        /*
-           Inicializa a prévia do PDF.
-        */
-
         atualizarPDF();
+
+        recuperarProjetoLocal();
 
     }
 );
@@ -2630,4 +3575,4 @@ document.addEventListener(
 </script>
 
 </body>
-</html>
+    </html>
