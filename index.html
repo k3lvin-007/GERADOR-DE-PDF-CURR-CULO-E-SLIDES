@@ -7,16 +7,6 @@
 <title>KFTools — Ferramentas Online</title>
 
 <style>
-:root{
-    --bg:#080b09;
-    --surface:#101512;
-    --surface2:#151b17;
-    --border:#26322b;
-    --green:#22c55e;
-    --green2:#35d76e;
-    --text:#f4f7f5;
-    --muted:#9aa69e;
-}
 
 *{
     box-sizing:border-box;
@@ -24,208 +14,121 @@
     padding:0;
 }
 
-html{
-    scroll-behavior:smooth;
+:root{
+    --bg:#080b09;
+    --surface:#101512;
+    --surface2:#151b17;
+    --border:#263129;
+    --green:#65c96b;
+    --green2:#8be38f;
+    --text:#f3f5f3;
+    --muted:#9ba59d;
+    --danger:#d85c5c;
 }
 
 body{
     font-family:Arial,Helvetica,sans-serif;
     background:var(--bg);
     color:var(--text);
-    line-height:1.6;
+    min-height:100vh;
 }
 
-button,input,textarea,select{
-    font-family:inherit;
-}
-
-button{
-    cursor:pointer;
-}
-
-/* NAV */
-
-.nav{
+header{
+    background:#0b0e0c;
+    border-bottom:1px solid #1d251f;
+    padding:20px 6%;
     position:sticky;
     top:0;
     z-index:100;
-    border-bottom:1px solid var(--border);
-    background:rgba(8,11,9,.95);
-    backdrop-filter:blur(10px);
-}
-
-.nav-inner{
-    max-width:1200px;
-    margin:auto;
-    padding:16px 20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
 }
 
 .logo{
-    font-size:25px;
+    font-size:29px;
     font-weight:800;
+    letter-spacing:-1px;
 }
 
 .logo span{
     color:var(--green);
 }
 
-.nav-links{
+nav{
     display:flex;
-    gap:20px;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-top:16px;
 }
 
-.nav-links a{
-    color:var(--muted);
-    text-decoration:none;
-    font-size:14px;
+nav button{
+    background:#111612;
+    color:#bfc7c1;
+    border:1px solid var(--border);
+    border-radius:9px;
+    padding:10px 15px;
+    cursor:pointer;
+    transition:.2s;
 }
 
-.nav-links a:hover{
-    color:var(--green);
+nav button:hover,
+nav button.active{
+    background:#17331d;
+    border-color:#3e7544;
+    color:var(--green2);
 }
 
-/* HERO */
+.container{
+    width:92%;
+    max-width:1200px;
+    margin:35px auto;
+}
+
+.tool{
+    display:none;
+}
+
+.tool.active{
+    display:block;
+}
 
 .hero{
-    max-width:1100px;
-    margin:auto;
-    padding:80px 20px 55px;
-    text-align:center;
-}
-
-.badge{
-    display:inline-block;
-    border:1px solid var(--border);
-    color:var(--green);
-    background:rgba(34,197,94,.07);
-    border-radius:50px;
-    padding:7px 14px;
-    font-size:13px;
-    margin-bottom:20px;
+    margin-bottom:24px;
 }
 
 .hero h1{
-    font-size:clamp(38px,7vw,72px);
-    line-height:1.05;
-    letter-spacing:-3px;
-    margin-bottom:20px;
-}
-
-.hero h1 span{
-    color:var(--green);
+    font-size:34px;
+    margin-bottom:10px;
 }
 
 .hero p{
-    max-width:650px;
-    margin:auto;
     color:var(--muted);
-    font-size:17px;
+    line-height:1.6;
 }
 
-/* TOOLS */
-
-.tools{
-    max-width:1200px;
-    margin:auto;
+.card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:16px;
     padding:20px;
-}
-
-.tool-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-}
-
-.tool-card{
-    background:var(--surface);
-    border:1px solid var(--border);
-    border-radius:18px;
-    padding:25px;
-    transition:.25s;
-}
-
-.tool-card:hover{
-    transform:translateY(-4px);
-    border-color:#34503e;
-}
-
-.tool-icon{
-    font-size:30px;
-    margin-bottom:12px;
-}
-
-.tool-card h3{
-    margin-bottom:8px;
-}
-
-.tool-card p{
-    color:var(--muted);
-    font-size:14px;
-}
-
-/* SECTIONS */
-
-.section{
-    max-width:1100px;
-    margin:70px auto;
-    padding:0 20px;
-}
-
-.section-title{
-    margin-bottom:25px;
-}
-
-.section-title h2{
-    font-size:32px;
-    margin-bottom:7px;
-}
-
-.section-title p{
-    color:var(--muted);
-}
-
-/* PANEL */
-
-.panel{
-    background:var(--surface);
-    border:1px solid var(--border);
-    border-radius:20px;
-    padding:25px;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:18px;
-}
-
-.field{
-    display:flex;
-    flex-direction:column;
-    gap:7px;
-}
-
-.full{
-    grid-column:1/-1;
+    margin-bottom:20px;
 }
 
 label{
-    font-size:13px;
+    display:block;
+    color:#e0e7e1;
     font-weight:bold;
+    margin-bottom:8px;
 }
 
 input,
 textarea,
 select{
     width:100%;
-    background:var(--surface2);
-    color:var(--text);
-    border:1px solid var(--border);
+    background:#090c0a;
+    color:#fff;
+    border:1px solid #303b33;
     border-radius:10px;
-    padding:12px 13px;
+    padding:12px;
+    font-size:15px;
     outline:none;
 }
 
@@ -236,2346 +139,1333 @@ select:focus{
 }
 
 textarea{
-    min-height:150px;
+    min-height:180px;
     resize:vertical;
+    line-height:1.5;
 }
 
-/* BOTÕES */
-
-.actions{
+.row{
     display:flex;
+    gap:12px;
     flex-wrap:wrap;
-    gap:10px;
-    margin-top:18px;
+}
+
+.row > *{
+    flex:1;
+    min-width:180px;
 }
 
 .btn{
+    background:var(--green);
+    color:#071008;
     border:none;
     border-radius:10px;
-    padding:12px 18px;
+    padding:12px 17px;
     font-weight:bold;
+    cursor:pointer;
+    margin:5px 4px 5px 0;
 }
 
-.btn-primary{
-    background:var(--green);
-    color:#041008;
+.btn:hover{
+    background:#82e387;
 }
 
-.btn-primary:hover{
-    background:var(--green2);
+.btn.secondary{
+    background:#172019;
+    color:#d2dad4;
+    border:1px solid #344238;
 }
 
-.btn-secondary{
-    background:#202a24;
-    color:#dce5df;
-    border:1px solid var(--border);
+.btn.secondary:hover{
+    background:#223027;
 }
 
-.btn-secondary:hover{
-    border-color:var(--green);
-}
-
-/* PDF */
-
-.pdf-editor{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-}
-
-.editor-box{
-    background:#0c110e;
-    border:1px solid var(--border);
-    border-radius:15px;
-    padding:15px;
+.btn.danger{
+    background:#35191b;
+    color:#ffaaaa;
+    border:1px solid #683033;
 }
 
 .toolbar{
     display:flex;
+    gap:7px;
     flex-wrap:wrap;
-    gap:7px;
-    margin-bottom:12px;
-    padding-bottom:12px;
-    border-bottom:1px solid var(--border);
+    padding:10px;
+    background:#0b0e0c;
+    border:1px solid #263029;
+    border-radius:10px 10px 0 0;
 }
 
-.tool-btn{
-    background:#202a24;
-    color:white;
-    border:1px solid var(--border);
-    border-radius:8px;
-    min-width:42px;
-    padding:9px 12px;
+.toolbar button{
+    background:#171d19;
+    color:#ddd;
+    border:1px solid #303a33;
+    padding:8px 10px;
+    border-radius:7px;
+    cursor:pointer;
 }
 
-.tool-btn:hover{
-    border-color:var(--green);
-}
-
-.font-control{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    background:#202a24;
-    border:1px solid var(--border);
-    border-radius:8px;
-    padding:5px 10px;
-}
-
-.font-control label{
-    font-size:12px;
-    color:#cbd5cf;
-}
-
-.font-control input{
-    width:75px;
-    padding:7px;
-    border:none;
-    background:transparent;
-}
-
-.font-size-number{
-    width:55px!important;
-    text-align:center;
-}
-
-.color-control{
-    display:flex;
-    align-items:center;
-    gap:7px;
-    background:#202a24;
-    border:1px solid var(--border);
-    border-radius:8px;
-    padding:5px 8px;
-}
-
-.color-control input{
-    width:35px;
-    height:30px;
-    padding:0;
-    border:none;
-    background:transparent;
+.toolbar button:hover{
+    background:#26352a;
 }
 
 .editor{
-    min-height:350px;
-    background:white;
+    min-height:250px;
+    padding:18px;
+    background:#fff;
     color:#111;
-    border-radius:10px;
-    padding:25px;
+    border-radius:0 0 10px 10px;
     outline:none;
+    line-height:1.6;
+}
+
+.preview{
+    background:#fff;
+    color:#111;
+    border-radius:12px;
+    padding:25px;
+    min-height:300px;
     overflow:auto;
 }
 
-.editor:empty:before{
-    content:"Digite ou cole seu texto aqui...";
-    color:#999;
-}
-
-.pdf-preview{
-    background:#222;
-    border-radius:15px;
-    padding:20px;
-}
-
-.pdf-page{
-    background:white;
-    color:#111;
-    min-height:600px;
-    padding:40px;
-    border-radius:5px;
-    overflow:hidden;
-}
-
-.pdf-page img{
-    display:block;
-    max-width:100%;
-    max-height:300px;
-    object-fit:contain;
-    margin:0 auto 20px;
-}
-
-.photo-box{
-    margin-bottom:15px;
-}
-
-.photo-preview{
-    display:none;
-    max-width:180px;
-    max-height:180px;
-    object-fit:contain;
-    border-radius:8px;
-    margin-top:10px;
-    border:1px solid var(--border);
-}
-
-/* CV */
-
-.cv-layout{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-}
-
 .cv-preview{
-    background:white;
-    color:#151515;
-    min-height:650px;
-    border-radius:12px;
-    padding:35px;
+    max-width:850px;
+    margin:auto;
+    background:#fff;
+    color:#111;
+    padding:45px;
+    min-height:900px;
 }
 
 .cv-preview h1{
-    font-size:30px;
-    margin-bottom:4px;
+    font-size:32px;
+    margin-bottom:5px;
 }
 
-.cv-contact{
-    color:#555;
-    font-size:13px;
-    margin-bottom:25px;
-}
-
-.cv-block{
-    margin-bottom:20px;
-}
-
-.cv-block h3{
-    color:#15803d;
-    border-bottom:1px solid #ddd;
-    padding-bottom:5px;
-    margin-bottom:8px;
-    font-size:15px;
-}
-
-.cv-block p{
-    white-space:pre-line;
-    font-size:13px;
-}
-
-/* SLIDES */
-
-.slide-settings{
-    margin-bottom:20px;
-    padding:18px;
-    background:#0c110e;
-    border:1px solid var(--border);
-    border-radius:14px;
-}
-
-.slide-settings h3{
-    margin-bottom:6px;
-}
-
-.slide-settings p{
-    color:var(--muted);
-    font-size:13px;
-    margin-bottom:0;
-}
-
-.slide-info{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:12px;
-}
-
-.info-pill{
-    border:1px solid var(--border);
-    background:#151b17;
-    color:#b9c5bd;
-    padding:7px 10px;
-    border-radius:8px;
-    font-size:12px;
-}
-
-.slides-preview{
+.cv-preview h2{
+    font-size:19px;
     margin-top:25px;
-    display:flex;
-    flex-direction:column;
-    gap:25px;
+    border-bottom:2px solid #222;
+    padding-bottom:5px;
 }
 
-/* SLIDE 16:9 */
-
-.slide{
-    width:100%;
-    aspect-ratio:16/9;
-    min-height:0;
-    border-radius:18px;
-    overflow:hidden;
-    position:relative;
-    background:#111814;
-    border:1px solid var(--border);
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    box-shadow:0 15px 40px rgba(0,0,0,.25);
+.cv-preview p{
+    margin:7px 0;
+    line-height:1.5;
 }
 
-.slide-image{
-    position:relative;
-    background:#172019;
-    overflow:hidden;
-}
-
-.slide-image img{
-    width:100%;
-    height:100%;
+.photo-preview{
+    width:130px;
+    height:130px;
     object-fit:cover;
-    display:block;
+    border-radius:12px;
+    display:none;
+    margin-top:10px;
 }
 
-.slide-content{
-    padding:6%;
+.hidden{
+    display:none!important;
+}
+
+.badge{
+    display:inline-block;
+    background:#142319;
+    border:1px solid #304f35;
+    color:#86d98b;
+    padding:6px 9px;
+    border-radius:30px;
+    font-size:12px;
+    margin:3px;
+}
+
+.style-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:10px;
+    margin-top:10px;
+}
+
+.style-option{
+    background:#0b0f0c;
+    border:1px solid #2b372e;
+    border-radius:10px;
+    padding:13px;
+    color:#bbb;
+    cursor:pointer;
+    text-align:center;
+    transition:.2s;
+}
+
+.style-option:hover{
+    border-color:#4c7651;
+}
+
+.style-option.selected{
+    border-color:var(--green);
+    background:#142319;
+    color:var(--green2);
+}
+
+.loading{
+    padding:15px;
+    text-align:center;
+    color:var(--green2);
+}
+
+footer{
+    text-align:center;
+    color:#69716b;
+    padding:35px;
+    margin-top:50px;
+}
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">
+    KF<span>Tools</span>
+  </div>
+
+  <nav>
+
+    <button
+      class="active"
+      onclick="abrirFerramenta('pdf',this)"
+    >
+      Texto → PDF
+    </button>
+
+    <button
+      onclick="abrirFerramenta('cv',this)"
+    >
+      Currículo
+    </button>
+
+    <button
+      onclick="abrirFerramenta('slides',this)"
+    >
+      Slides
+    </button>
+
+  </nav>
+
+</header>
+
+
+<main class="container">
+
+
+<!-- ================= TEXTO PARA PDF ================= -->
+
+<section id="pdf" class="tool active">
+
+  <div class="hero">
+
+    <h1>Texto para PDF</h1>
+
+    <p>
+      Escreva, formate e transforme seu texto em um PDF.
+    </p>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="toolbar">
+
+      <button onclick="formatar('bold')">
+        <b>B</b>
+      </button>
+
+      <button onclick="formatar('italic')">
+        <i>I</i>
+      </button>
+
+      <button onclick="formatar('underline')">
+        <u>U</u>
+      </button>
+
+      <button onclick="formatar('justifyLeft')">
+        Esquerda
+      </button>
+
+      <button onclick="formatar('justifyCenter')">
+        Centro
+      </button>
+
+      <button onclick="formatar('justifyRight')">
+        Direita
+      </button>
+
+      <button onclick="formatar('justifyFull')">
+        Justificar
+      </button>
+
+      <button onclick="alterarTamanho(-2)">
+        A−
+      </button>
+
+      <button onclick="alterarTamanho(2)">
+        A+
+      </button>
+
+      <input
+        type="color"
+        id="corTexto"
+        value="#111111"
+        onchange="document.execCommand('foreColor',false,this.value)"
+        style="width:45px;padding:3px"
+      >
+
+    </div>
+
+
+    <div
+      id="editor"
+      class="editor"
+      contenteditable="true"
+      spellcheck="true"
+    >
+      Digite ou cole seu texto aqui...
+    </div>
+
+
+    <br>
+
+
+    <label>
+      Adicionar imagem
+    </label>
+
+    <input
+      type="file"
+      id="fotoPDF"
+      accept="image/*"
+    >
+
+    <img
+      id="previewFotoPDF"
+      class="photo-preview"
+    >
+
+
+    <br>
+
+
+    <button
+      class="btn"
+      onclick="previewPDF()"
+    >
+      Visualizar PDF
+    </button>
+
+    <button
+      class="btn secondary"
+      onclick="salvarPDF()"
+    >
+      Salvar PDF
+    </button>
+
+    <button
+      class="btn danger"
+      onclick="limparPDF()"
+    >
+      Limpar
+    </button>
+
+  </div>
+
+
+  <div
+    id="pdfPreview"
+    class="preview hidden"
+  ></div>
+
+</section>
+
+
+
+<!-- ================= CURRÍCULO ================= -->
+
+<section id="cv" class="tool">
+
+  <div class="hero">
+
+    <h1>Criador de Currículo</h1>
+
+    <p>
+      Monte um currículo profissional e pronto para enviar.
+    </p>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="row">
+
+      <div>
+
+        <label>
+          Nome completo
+        </label>
+
+        <input
+          id="cvNome"
+          placeholder="Seu nome"
+        >
+
+      </div>
+
+
+      <div>
+
+        <label>
+          Objetivo profissional
+        </label>
+
+        <input
+          id="cvObjetivo"
+          placeholder="Ex.: Estudante de Ciência da Computação"
+        >
+
+      </div>
+
+    </div>
+
+
+    <br>
+
+
+    <div class="row">
+
+      <div>
+
+        <label>
+          E-mail
+        </label>
+
+        <input
+          id="cvEmail"
+          placeholder="seu@email.com"
+        >
+
+      </div>
+
+
+      <div>
+
+        <label>
+          Telefone
+        </label>
+
+        <input
+          id="cvTelefone"
+          placeholder="(00) 00000-0000"
+        >
+
+      </div>
+
+    </div>
+
+
+    <br>
+
+
+    <div class="row">
+
+      <div>
+
+        <label>
+          Cidade
+        </label>
+
+        <input
+          id="cvCidade"
+          placeholder="Cidade - Estado"
+        >
+
+      </div>
+
+
+      <div>
+
+        <label>
+          LinkedIn
+        </label>
+
+        <input
+          id="cvLinkedin"
+          placeholder="linkedin.com/in/seuperfil"
+        >
+
+      </div>
+
+    </div>
+
+
+    <br>
+
+
+    <label>
+      Resumo profissional
+    </label>
+
+    <textarea
+      id="cvResumo"
+      placeholder="Escreva um breve resumo sobre você..."
+    ></textarea>
+
+
+    <br>
+
+
+    <label>
+      Formação
+    </label>
+
+    <textarea
+      id="cvFormacao"
+      placeholder="Curso, instituição e período..."
+    ></textarea>
+
+
+    <br>
+
+
+    <label>
+      Experiência profissional
+    </label>
+
+    <textarea
+      id="cvExperiencia"
+      placeholder="Empresa, cargo e atividades..."
+    ></textarea>
+
+
+    <br>
+
+
+    <label>
+      Cursos e habilidades
+    </label>
+
+    <textarea
+      id="cvCursos"
+      placeholder="Ex.: Excel Avançado, Informática, Python..."
+    ></textarea>
+
+
+    <br>
+
+
+    <button
+      class="btn"
+      onclick="gerarCV()"
+    >
+      Gerar currículo
+    </button>
+
+    <button
+      class="btn secondary"
+      onclick="salvarCV()>
+      Salvar PDF
+    </button>
+
+    <button
+      class="btn danger"
+      onclick="limparCV()"
+    >
+      Limpar
+    </button>
+
+  </div>
+
+
+  <div class="card">
+
+    <h2 style="margin-bottom:15px">
+      Pré-visualização
+    </h2>
+
+    <div
+      id="cvPreview"
+      class="cv-preview"
+    >
+
+      <h1>
+        Seu Nome
+      </h1>
+
+      <p>
+        Seu objetivo profissional
+      </p>
+
+      <h2>
+        Contato
+      </h2>
+
+      <p>
+        Preencha seus dados acima.
+      </p>
+
+      <h2>
+        Resumo profissional
+      </h2>
+
+      <p>
+        Seu resumo aparecerá aqui.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= SLIDES ================= -->
+
+<section id="slides" class="tool">
+
+  <div class="hero">
+
+    <h1>
+      Criador de Slides
+    </h1>
+
+    <p>
+      Crie apresentações automaticamente usando
+      títulos e conteúdos. As imagens serão pesquisadas
+      em fontes abertas.
+    </p>
+
+    <div style="margin-top:12px">
+
+      <span class="badge">
+        Sem API Key
+      </span>
+
+      <span class="badge">
+        Imagens automáticas
+      </span>
+
+      <span class="badge">
+        16:9
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <label>
+      Conteúdo da apresentação
+    </label>
+
+    <p
+      style="
+        color:#858d88;
+        font-size:13px;
+        margin-bottom:10px;
+      "
+    >
+      Separe cada slide com uma linha em branco.
+      A primeira linha de cada bloco será o título.
+    </p>
+
+    <textarea
+      id="slideTexto"
+      placeholder="Introdução à Inteligência Artificial
+O que é IA e como ela funciona.
+
+Aplicações da IA
+Saúde, educação, empresas e tecnologia.
+
+Conclusão
+A inteligência artificial está transformando o mundo."
+    ></textarea>
+
+    <br>
+
+    <label>
+      Estilo da apresentação
+    </label>
+
+    <div class="style-grid">
+
+      <div
+        class="style-option selected"
+        data-style="classic"
+        onclick="selecionarEstilo(this,'classic')"
+      >
+        Clássico
+      </div>
+
+      <div
+        class="style-option"
+        data-style="right"
+        onclick="selecionarEstilo(this,'right')"
+      >
+        Imagem direita
+      </div>
+
+      <div
+        class="style-option"
+        data-style="full"
+        onclick="selecionarEstilo(this,'full')"
+      >
+        Imagem inteira
+      </div>
+
+      <div
+        class="style-option"
+        data-style="text"
+        onclick="selecionarEstilo(this,'text')"
+      >
+        Somente texto
+      </div>
+
+    </div>
+
+    <br>
+
+    <button
+      class="btn"
+      onclick="gerarSlides()"
+    >
+      Gerar slides
+    </button>
+
+    <button
+      class="btn secondary"
+      onclick="adicionarSlide()"
+    >
+      + Adicionar slide
+    </button>
+
+    <button
+      class="btn secondary"
+      onclick="apresentarSlides()"
+    >
+      ▶ Apresentar
+    </button>
+
+    <button
+      class="btn secondary"
+      onclick="salvarProjeto()"
+    >
+      Salvar projeto
+    </button>
+
+    <button
+      class="btn secondary"
+      onclick="baixarProjeto()"
+    >
+      Baixar projeto
+    </button>
+
+    <button
+      class="btn secondary"
+      onclick="document.getElementById('arquivoProjeto').click()"
+    >
+      Abrir projeto
+    </button>
+
+    <input
+      type="file"
+      id="arquivoProjeto"
+      accept=".json"
+      class="hidden"
+      onchange="abrirProjeto(event)"
+    >
+
+    <button
+      class="btn secondary"
+      onclick="exportarSlidesPDF()"
+    >
+      Exportar PDF
+    </button>
+
+    <button
+      class="btn danger"
+      onclick="limparSlides()"
+    >
+      Limpar
+    </button>
+
+  </div>
+
+  <div id="slidesStatus"></div>
+
+  <div
+    id="slidesArea"
+    class="slides-area"
+  ></div>
+
+</section>
+
+
+</main><style>
+
+/* ================= SLIDES ================= */
+
+.slides-area{
     display:flex;
     flex-direction:column;
-    justify-content:center;
+    gap:20px;
+}
+
+.slide-card{
     background:#101512;
+    border:1px solid #263129;
+    border-radius:16px;
+    padding:16px;
     overflow:hidden;
+}
+
+.slide-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    margin-bottom:12px;
+    flex-wrap:wrap;
 }
 
 .slide-number{
-    color:var(--green);
-    font-size:12px;
+    color:#8be38f;
     font-weight:bold;
-    letter-spacing:2px;
-    margin-bottom:15px;
+}
+
+.slide-actions{
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+}
+
+.slide-actions button{
+    background:#172019;
+    color:#ddd;
+    border:1px solid #344238;
+    border-radius:7px;
+    padding:7px 9px;
+    cursor:pointer;
+}
+
+.slide-actions button:hover{
+    background:#26352a;
+}
+
+.slide-canvas{
+    width:100%;
+    aspect-ratio:16/9;
+    background:#f4f5f4;
+    color:#111;
+    border-radius:12px;
+    overflow:hidden;
+    position:relative;
+}
+
+.slide-content{
+    width:100%;
+    height:100%;
+    padding:7%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
 }
 
 .slide-content h2{
-    font-size:clamp(24px,4vw,43px);
-    line-height:1.1;
+    font-size:clamp(22px,4vw,46px);
     margin-bottom:20px;
+    outline:none;
 }
 
 .slide-content p{
-    color:#b8c3bc;
-    white-space:pre-line;
-    font-size:clamp(13px,1.6vw,17px);
-    overflow-wrap:break-word;
+    font-size:clamp(14px,2vw,23px);
+    line-height:1.5;
+    outline:none;
+    white-space:pre-wrap;
 }
 
-.slide-tools{
+.slide-image{
+    width:100%;
+    max-height:350px;
+    object-fit:cover;
+    border-radius:10px;
+    margin-top:20px;
+}
+
+.slide-right{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    height:100%;
+}
+
+.slide-right .slide-content{
+    padding:8%;
+}
+
+.slide-right img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.slide-full{
+    height:100%;
+    position:relative;
+}
+
+.slide-full img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.slide-full .overlay{
     position:absolute;
-    right:15px;
-    top:15px;
-    z-index:5;
-    display:flex;
-    gap:6px;
-}
-
-.slide-tools button{
-    background:rgba(8,11,9,.9);
+    inset:0;
+    background:rgba(0,0,0,.48);
     color:white;
-    border:1px solid rgba(255,255,255,.15);
-    border-radius:8px;
-    padding:8px 11px;
-    font-size:12px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:8%;
 }
 
-.slide-tools button:hover{
-    border-color:var(--green);
+.slide-full h2{
+    font-size:clamp(24px,5vw,52px);
+    margin-bottom:20px;
+    outline:none;
 }
 
-.image-status{
-    position:absolute;
-    left:15px;
-    bottom:15px;
-    z-index:4;
-    background:rgba(8,11,9,.85);
-    color:#dce5df;
-    padding:7px 10px;
-    border-radius:8px;
+.slide-full p{
+    font-size:clamp(15px,2.3vw,25px);
+    line-height:1.5;
+    outline:none;
+    white-space:pre-wrap;
+}
+
+.slide-text-only{
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:10%;
+}
+
+.slide-text-only .slide-content{
+    padding:0;
+    max-width:900px;
+}
+
+.image-source{
+    color:#777;
     font-size:11px;
+    margin-top:8px;
+    line-height:1.4;
 }
 
-.slide-credit{
-    position:absolute;
-    left:10px;
-    right:10px;
-    bottom:8px;
-    z-index:3;
-    font-size:8px;
-    color:rgba(255,255,255,.75);
-    text-shadow:0 1px 3px #000;
+.image-source a{
+    color:#4c8d53;
 }
 
-/* APRESENTAÇÃO */
+.status-ok{
+    background:#142319;
+    border:1px solid #304f35;
+    color:#8be38f;
+    padding:12px;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+
+.status-error{
+    background:#35191b;
+    border:1px solid #683033;
+    color:#ffaaaa;
+    padding:12px;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+
+@media(max-width:700px){
+
+    .container{
+        width:94%;
+        margin:25px auto;
+    }
+
+    .hero h1{
+        font-size:27px;
+    }
+
+    .card{
+        padding:15px;
+    }
+
+    .cv-preview{
+        padding:25px;
+    }
+
+    .slide-right{
+        grid-template-columns:1fr;
+    }
+
+    .slide-right img{
+        display:none;
+    }
+
+    .slide-content h2{
+        margin-bottom:10px;
+    }
+
+    .slide-content p{
+        font-size:13px;
+    }
+
+}
+
+
+/* ================= APRESENTAÇÃO ================= */
 
 .presentation{
     position:fixed;
     inset:0;
     z-index:9999;
     background:#050705;
-    display:none;
-    flex-direction:column;
-}
-
-.presentation.active{
-    display:flex;
-}
-
-.presentation-top{
-    height:58px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 18px;
-    background:#080b09;
-    border-bottom:1px solid #202820;
-    flex-shrink:0;
-}
-
-.presentation-title{
-    font-size:14px;
-    color:#aab5ad;
-}
-
-.presentation-counter{
-    font-size:13px;
-    color:var(--green);
-    font-weight:bold;
-}
-
-.presentation-stage{
-    flex:1;
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:25px;
-    overflow:hidden;
 }
 
-.presentation-slide{
-    width:min(92vw,1400px);
-    aspect-ratio:16/9;
-    background:#101512;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    overflow:hidden;
-    border-radius:12px;
-    box-shadow:0 20px 80px rgba(0,0,0,.65);
+.presentation-inner{
+    width:94%;
+    max-width:1200px;
 }
 
-.presentation-image{
-    background:#172019;
-    position:relative;
-    overflow:hidden;
-}
-
-.presentation-image img{
+.presentation .slide-canvas{
     width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.presentation-content{
-    padding:8%;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    overflow:hidden;
-}
-
-.presentation-content .number{
-    color:var(--green);
-    font-size:clamp(10px,1.2vw,15px);
-    font-weight:bold;
-    letter-spacing:3px;
-    margin-bottom:20px;
-}
-
-.presentation-content h1{
-    font-size:clamp(26px,4vw,64px);
-    line-height:1.05;
-    margin-bottom:25px;
-}
-
-.presentation-content p{
-    font-size:clamp(13px,1.7vw,23px);
-    line-height:1.55;
-    color:#bdc8c0;
-    white-space:pre-line;
+    box-shadow:0 20px 80px rgba(0,0,0,.7);
 }
 
 .presentation-controls{
-    height:70px;
     display:flex;
     justify-content:center;
-    align-items:center;
     gap:10px;
-    background:#080b09;
-    border-top:1px solid #202820;
-    flex-shrink:0;
+    margin-top:15px;
+    flex-wrap:wrap;
 }
 
 .presentation-controls button{
-    background:#18201b;
-    color:white;
-    border:1px solid #2b382f;
-    border-radius:9px;
-    padding:10px 18px;
-    font-weight:bold;
+    background:#172019;
+    color:#fff;
+    border:1px solid #344238;
+    border-radius:8px;
+    padding:10px 15px;
 }
 
-.presentation-controls button:hover{
-    border-color:var(--green);
-}
-
-.presentation-close{
-    background:#202a24!important;
-}
-
-/* EMPTY */
-
-.empty-slides{
-    text-align:center;
-    border:1px dashed var(--border);
-    border-radius:15px;
-    padding:50px 20px;
-    color:var(--muted);
-}
-
-/* FOOTER */
-
-footer{
-    border-top:1px solid var(--border);
-    margin-top:80px;
-    padding:35px 20px;
-    text-align:center;
-    color:var(--muted);
-    font-size:13px;
-}
-
-footer strong{
-    color:var(--green);
-}
-
-/* RESPONSIVO */
-
-@media(max-width:850px){
-
-    .tool-grid,
-    .pdf-editor,
-    .cv-layout{
-        grid-template-columns:1fr;
-    }
-
-    .grid{
-        grid-template-columns:1fr;
-    }
-
-    .full{
-        grid-column:auto;
-    }
-
-    .slide{
-        aspect-ratio:auto;
-        min-height:520px;
-        grid-template-columns:1fr;
-    }
-
-    .slide-image{
-        min-height:260px;
-    }
-
-    .slide-content{
-        min-height:260px;
-        padding:30px;
-    }
-
-    .nav-links{
-        display:none;
-    }
-
-    .presentation-slide{
-        aspect-ratio:auto;
-        max-height:calc(100vh - 150px);
-        grid-template-columns:1fr;
-    }
-
-    .presentation-image{
-        min-height:35vh;
-    }
-
-    .presentation-content{
-        min-height:30vh;
-        padding:30px;
-    }
-}
-
-@media(max-width:550px){
-
-    .hero{
-        padding-top:55px;
-    }
-
-    .hero h1{
-        letter-spacing:-2px;
-    }
-
-    .panel{
-        padding:16px;
-    }
-
-    .pdf-page{
-        padding:25px;
-    }
-
-    .toolbar{
-        gap:5px;
-    }
-
-    .tool-btn{
-        padding:8px 9px;
-    }
-
-    .font-control{
-        width:100%;
-        justify-content:space-between;
-    }
-
-    .actions .btn{
-        width:100%;
-    }
-
-    .presentation-stage{
-        padding:10px;
-    }
-
-    .presentation-controls{
-        height:62px;
-    }
-
-    .presentation-controls button{
-        padding:9px 12px;
-    }
-}
-
-/* IMPRESSÃO */
-
-@media print{
-    body{
-        background:white;
-    }
-
-    .nav,
-    .hero,
-    .tools,
-    .section,
-    footer,
-    .presentation{
-        display:none!important;
-    }
-}
 </style>
-</head>
-
-<body>
-
-<nav class="nav">
-
-    <div class="nav-inner">
-
-        <div class="logo">
-            KF<span>Tools</span>
-        </div>
-
-        <div class="nav-links">
-            <a href="#pdf">Texto → PDF</a>
-            <a href="#curriculo">Currículo</a>
-            <a href="#slides">Slides</a>
-        </div>
-
-    </div>
-
-</nav>
-
-
-<header class="hero">
-
-    <div class="badge">
-        ⚡ Ferramentas online
-    </div>
-
-    <h1>
-        Crie. Converta.<br>
-        <span>Resolva.</span>
-    </h1>
-
-    <p>
-        Ferramentas simples e rápidas para transformar textos,
-        criar currículos profissionais e montar apresentações.
-    </p>
-
-</header>
-
-
-<section class="tools">
-
-    <div class="tool-grid">
-
-        <div class="tool-card">
-            <div class="tool-icon">📄</div>
-            <h3>Texto → PDF</h3>
-            <p>
-                Formate textos, escolha o tamanho da fonte,
-                adicione imagens e gere seu PDF.
-            </p>
-        </div>
-
-        <div class="tool-card">
-            <div class="tool-icon">💼</div>
-            <h3>Criador de Currículo</h3>
-            <p>
-                Monte um currículo profissional rapidamente.
-            </p>
-        </div>
-
-        <div class="tool-card">
-            <div class="tool-icon">🎞️</div>
-            <h3>Criador de Slides</h3>
-            <p>
-                Crie apresentações com imagens relacionadas
-                ao título de cada slide.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- TEXTO PDF -->
-
-<section class="section" id="pdf">
-
-    <div class="section-title">
-
-        <h2>📄 Texto → PDF</h2>
-
-        <p>
-            Digite ou cole seu texto, formate e salve como PDF.
-        </p>
-
-    </div>
-
-    <div class="panel">
-
-        <div class="pdf-editor">
-
-            <div class="editor-box">
-
-                <div class="toolbar">
-
-                    <button class="tool-btn"
-                        onclick="formatar('bold')">
-                        <b>B</b>
-                    </button>
-
-                    <button class="tool-btn"
-                        onclick="formatar('italic')">
-                        <i>I</i>
-                    </button>
-
-                    <button class="tool-btn"
-                        onclick="formatar('underline')">
-                        <u>U</u>
-                    </button>
-
-                    <button class="tool-btn"
-                        onclick="alinhar('left')">
-                        ⇤
-                    </button>
-
-                    <button class="tool-btn"
-                        onclick="alinhar('center')">
-                        ≡
-                    </button>
-
-                    <button class="tool-btn"
-                        onclick="alinhar('right')">
-                        ⇥
-                    </button>
-
-                    <button class="tool-btn"
-                        onclick="alinhar('justify')">
-                        ☰
-                    </button>
-
-                    <div class="font-control">
-
-                        <label>Fonte</label>
-
-                        <input
-                            id="fontRange"
-                            type="range"
-                            min="8"
-                            max="60"
-                            value="18"
-                            oninput="alterarFonte(this.value)"
-                        >
-
-                        <input
-                            id="fontNumber"
-                            class="font-size-number"
-                            type="number"
-                            min="8"
-                            max="60"
-                            value="18"
-                            onchange="alterarFonte(this.value)"
-                        >
-
-                        <span>px</span>
-
-                    </div>
-
-                    <div class="color-control">
-
-                        <label>Cor</label>
-
-                        <input
-                            type="color"
-                            id="fontColor"
-                            value="#111111"
-                            onchange="alterarCor(this.value)"
-                        >
-
-                    </div>
-
-                </div>
-
-                <div class="field" style="margin-bottom:15px">
-
-                    <label>Nome do documento</label>
-
-                    <input
-                        id="pdfNome"
-                        placeholder="Ex: Trabalho de faculdade"
-                    >
-
-                </div>
-
-                <div class="photo-box">
-
-                    <label>📷 Adicionar foto</label>
-
-                    <input
-                        type="file"
-                        id="pdfFoto"
-                        accept="image/*"
-                        onchange="adicionarFoto(event)"
-                    >
-
-                    <img
-                        id="photoPreview"
-                        class="photo-preview"
-                        alt="Prévia da foto"
-                    >
-
-                </div>
-
-                <div
-                    id="pdfEditor"
-                    class="editor"
-                    contenteditable="true"
-                    style="font-size:18px;text-align:left"
-                    oninput="atualizarPDF()"
-                ></div>
-
-                <div class="actions">
-
-                    <button
-                        class="btn btn-primary"
-                        onclick="salvarTextoPDF()"
-                    >
-                        📥 Salvar PDF
-                    </button>
-
-                    <button
-                        class="btn btn-secondary"
-                        onclick="limparPDF()"
-                    >
-                        🗑️ Limpar
-                    </button>
-
-                </div>
-
-            </div>
-
-            <div class="pdf-preview">
-
-                <div class="pdf-page" id="pdfPreview">
-
-                    <div id="previewFoto"></div>
-
-                    <div id="previewTexto">
-
-                        <p style="font-size:18px;text-align:left;color:#999">
-                            A prévia do seu documento aparecerá aqui.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- CURRÍCULO -->
-
-<section class="section" id="curriculo">
-
-    <div class="section-title">
-
-        <h2>💼 Criador de Currículo</h2>
-
-        <p>
-            Preencha seus dados e gere um currículo profissional.
-        </p>
-
-    </div>
-
-    <div class="cv-layout">
-
-        <div class="panel">
-
-            <div class="grid">
-
-                <div class="field">
-                    <label>Nome completo</label>
-                    <input id="cvNome">
-                </div>
-
-                <div class="field">
-                    <label>E-mail</label>
-                    <input id="cvEmail">
-                </div>
-
-                <div class="field">
-                    <label>Telefone</label>
-                    <input id="cvTelefone">
-                </div>
-
-                <div class="field">
-                    <label>Cidade</label>
-                    <input id="cvCidade">
-                </div>
-
-                <div class="field full">
-                    <label>LinkedIn</label>
-                    <input id="cvLinkedin">
-                </div>
-
-                <div class="field full">
-                    <label>Objetivo profissional</label>
-                    <textarea id="cvObjetivo"></textarea>
-                </div>
-
-                <div class="field full">
-                    <label>Formação</label>
-                    <textarea id="cvFormacao"></textarea>
-                </div>
-
-                <div class="field full">
-                    <label>Experiência profissional</label>
-                    <textarea id="cvExperiencia"></textarea>
-                </div>
-
-                <div class="field full">
-                    <label>Cursos e certificados</label>
-                    <textarea id="cvCursos"></textarea>
-                </div>
-
-                <div class="field full">
-                    <label>Habilidades</label>
-                    <textarea id="cvHabilidades"></textarea>
-                </div>
-
-            </div>
-
-            <div class="actions">
-
-                <button
-                    class="btn btn-primary"
-                    onclick="gerarCurriculo()"
-                >
-                    👁️ Atualizar currículo
-                </button>
-
-                <button
-                    class="btn btn-secondary"
-                    onclick="salvarCurriculo()"
-                >
-                    📥 Salvar PDF
-                </button>
-
-            </div>
-
-        </div>
-
-        <div
-            class="cv-preview"
-            id="cvPrint"
-        >
-
-            <h1 id="outNome">Seu Nome</h1>
-
-            <div class="cv-contact" id="outContato">
-                E-mail • Telefone • Cidade
-            </div>
-
-            <div class="cv-block">
-                <h3>OBJETIVO</h3>
-                <p id="outObjetivo">
-                    Seu objetivo profissional aparecerá aqui.
-                </p>
-            </div>
-
-            <div class="cv-block">
-                <h3>FORMAÇÃO</h3>
-                <p id="outFormacao">
-                    Sua formação aparecerá aqui.
-                </p>
-            </div>
-
-            <div class="cv-block">
-                <h3>EXPERIÊNCIA</h3>
-                <p id="outExperiencia">
-                    Sua experiência aparecerá aqui.
-                </p>
-            </div>
-
-            <div class="cv-block">
-                <h3>CURSOS E CERTIFICADOS</h3>
-                <p id="outCursos">
-                    Seus cursos aparecerão aqui.
-                </p>
-            </div>
-
-            <div class="cv-block">
-                <h3>HABILIDADES</h3>
-                <p id="outHabilidades">
-                    Suas habilidades aparecerão aqui.
-                </p>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- SLIDES -->
-
-<section class="section" id="slides">
-
-    <div class="section-title">
-
-        <h2>🎞️ Criador de Slides</h2>
-
-        <p>
-            Crie apresentações com imagens relacionadas aos títulos.
-        </p>
-
-    </div>
-
-    <div class="panel">
-
-        <div class="slide-settings">
-
-            <h3>🖼️ Imagens automáticas</h3>
-
-            <p>
-                O KFTools busca imagens públicas relacionadas ao
-                título de cada slide. Você não precisa criar nenhuma chave.
-            </p>
-
-            <div class="slide-info">
-
-                <div class="info-pill">
-                    ✓ Sem chave de API
-                </div>
-
-                <div class="info-pill">
-                    ✓ Imagem automática
-                </div>
-
-                <div class="info-pill">
-                    ✓ Formato 16:9
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="field">
-
-            <label>
-                Título e conteúdo dos slides
-            </label>
-
-            <textarea
-                id="slideTexto"
-                style="min-height:250px"
-                placeholder="Exemplo:
-
-Inteligência Artificial
-A inteligência artificial está transformando diversas áreas.
-
-Tecnologia
-A tecnologia está presente no nosso dia a dia.
-
-Programação
-Programar é criar soluções utilizando código."
-            ></textarea>
-
-        </div>
-
-        <div class="actions">
-
-            <button
-                class="btn btn-primary"
-                onclick="gerarSlides()"
-            >
-                ✨ Gerar slides
-            </button>
-
-            <button
-                class="btn btn-secondary"
-                onclick="apresentarSlides()"
-            >
-                ▶ Apresentar
-            </button>
-
-            <button
-                class="btn btn-secondary"
-                onclick="salvarProjeto()"
-            >
-                💾 Salvar projeto
-            </button>
-
-            <button
-                class="btn btn-secondary"
-                onclick="baixarProjeto()"
-            >
-                ⬇️ Baixar projeto
-            </button>
-
-            <button
-                class="btn btn-secondary"
-                onclick="abrirProjeto()"
-            >
-                📂 Abrir projeto
-            </button>
-
-            <button
-                class="btn btn-secondary"
-                onclick="exportarSlidesPDF()"
-            >
-                📄 Exportar PDF
-            </button>
-
-            <button
-                class="btn btn-secondary"
-                onclick="limparSlides()"
-            >
-                🗑️ Limpar
-            </button>
-
-        </div>
-
-        <input
-            type="file"
-            id="arquivoProjeto"
-            accept=".json,application/json"
-            style="display:none"
-            onchange="carregarProjeto(event)"
-        >
-
-        <div
-            class="slides-preview"
-            id="slidesPreview"
-        >
-
-            <div class="empty-slides">
-                🎞️<br><br>
-                Seus slides aparecerão aqui.
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- MODO APRESENTAÇÃO -->
-
-<div
-    id="presentation"
-    class="presentation"
->
-
-    <div class="presentation-top">
-
-        <div
-            class="presentation-title"
-            id="presentationTitle"
-        >
-            KFTools
-        </div>
-
-        <div
-            class="presentation-counter"
-            id="presentationCounter"
-        >
-            1 / 1
-        </div>
-
-        <button
-            class="presentation-close"
-            onclick="fecharApresentacao()"
-        >
-            ✕ Sair
-        </button>
-
-    </div>
-
-    <div class="presentation-stage">
-
-        <div
-            class="presentation-slide"
-            id="presentationSlide"
-        ></div>
-
-    </div>
-
-    <div class="presentation-controls">
-
-        <button onclick="slideAnterior()">
-            ⬅️ Anterior
-        </button>
-
-        <button onclick="slideProximo()">
-            Próximo ➡️
-        </button>
-
-    </div>
-
-</div>
-
-
-<footer>
-
-    <strong>KFTools</strong> —
-    Ferramentas simples para facilitar seu dia.
-
-</footer>
 
 
 <script>
 
 /* =====================================================
-   TEXTO → PDF
+   KFTools
+   PARTE 3 — FUNÇÕES PRINCIPAIS
 ===================================================== */
 
-let fotoPDF = "";
 
+/* ================= NAVEGAÇÃO ================= */
+
+function abrirFerramenta(id,botao){
+
+    document
+        .querySelectorAll('.tool')
+        .forEach(el => el.classList.remove('active'));
+
+    const ferramenta = document.getElementById(id);
+
+    if(ferramenta){
+        ferramenta.classList.add('active');
+    }
+
+    document
+        .querySelectorAll('nav button')
+        .forEach(btn => btn.classList.remove('active'));
+
+    if(botao){
+        botao.classList.add('active');
+    }
+
+}
+
+
+/* ================= EDITOR PDF ================= */
 
 function formatar(comando){
 
-    const editor =
-        document.getElementById("pdfEditor");
+    document.execCommand(comando,false,null);
 
-    editor.focus();
+    document.getElementById('editor').focus();
+
+}
+
+
+function alterarTamanho(valor){
 
     document.execCommand(
-        comando,
+        'fontSize',
         false,
-        null
+        valor > 0 ? '5' : '2'
     );
 
-    atualizarPDF();
+    document.getElementById('editor').focus();
 
 }
 
 
-function alinhar(tipo){
+function previewPDF(){
 
     const editor =
-        document.getElementById("pdfEditor");
-
-    editor.focus();
-
-    const comandos = {
-        left:"justifyLeft",
-        center:"justifyCenter",
-        right:"justifyRight",
-        justify:"justifyFull"
-    };
-
-    document.execCommand(
-        comandos[tipo],
-        false,
-        null
-    );
-
-    atualizarPDF();
-
-}
-
-
-function alterarFonte(valor){
-
-    valor = parseInt(valor);
-
-    if(isNaN(valor)){
-        valor = 18;
-    }
-
-    valor = Math.max(
-        8,
-        Math.min(60,valor)
-    );
-
-    document.getElementById(
-        "fontRange"
-    ).value = valor;
-
-    document.getElementById(
-        "fontNumber"
-    ).value = valor;
-
-    const editor =
-        document.getElementById("pdfEditor");
-
-    editor.focus();
-
-    const selecao =
-        window.getSelection();
-
-    if(
-        selecao &&
-        selecao.rangeCount &&
-        !selecao.isCollapsed
-    ){
-
-        document.execCommand(
-            "fontSize",
-            false,
-            "7"
-        );
-
-        const fontes =
-            editor.querySelectorAll(
-                'font[size="7"]'
-            );
-
-        fontes.forEach(function(el){
-
-            el.removeAttribute("size");
-
-            el.style.fontSize =
-                valor + "px";
-
-        });
-
-    }else{
-
-        editor.style.fontSize =
-            valor + "px";
-
-    }
-
-    atualizarPDF();
-
-}
-
-
-function alterarCor(cor){
-
-    document.getElementById(
-        "pdfEditor"
-    ).focus();
-
-    document.execCommand(
-        "foreColor",
-        false,
-        cor
-    );
-
-    atualizarPDF();
-
-}
-
-
-function adicionarFoto(event){
-
-    const arquivo =
-        event.target.files[0];
-
-    if(!arquivo){
-        return;
-    }
-
-    const leitor =
-        new FileReader();
-
-    leitor.onload=function(e){
-
-        fotoPDF =
-            e.target.result;
-
-        const img =
-            document.getElementById(
-                "photoPreview"
-            );
-
-        img.src =
-            fotoPDF;
-
-        img.style.display =
-            "block";
-
-        atualizarPDF();
-
-    };
-
-    leitor.readAsDataURL(arquivo);
-
-}
-
-
-function atualizarPDF(){
-
-    const editor =
-        document.getElementById("pdfEditor");
-
-    const texto =
-        editor.innerHTML;
+        document.getElementById('editor');
 
     const preview =
-        document.getElementById("previewTexto");
+        document.getElementById('pdfPreview');
 
-    if(!texto.trim()){
+    preview.innerHTML =
+        editor.innerHTML;
 
-        preview.innerHTML = `
-            <p style="
-                font-size:18px;
-                text-align:left;
-                color:#999;
-            ">
-                A prévia do seu documento aparecerá aqui.
-            </p>
-        `;
-
-    }else{
-
-        preview.innerHTML =
-            texto;
-
-    }
-
-    if(fotoPDF){
-
-        document.getElementById(
-            "previewFoto"
-        ).innerHTML = `
-
-            <img
-                src="${escaparAtributo(fotoPDF)}"
-                style="
-                    display:block;
-                    max-width:100%;
-                    max-height:300px;
-                    object-fit:contain;
-                    margin:0 auto 20px;
-                "
-            >
-
-        `;
-
-    }else{
-
-        document.getElementById(
-            "previewFoto"
-        ).innerHTML = "";
-
-    }
-
-}
-
-
-function salvarTextoPDF(){
-
-    const editor =
-        document.getElementById("pdfEditor");
-
-    const conteudo =
-        editor.innerHTML.trim();
-
-    if(!conteudo){
-
-        alert(
-            "Digite ou cole algum texto primeiro."
-        );
-
-        return;
-
-    }
-
-    const nome =
-        document.getElementById(
-            "pdfNome"
-        ).value.trim()
-        || "documento";
-
-    const fotoHTML =
-        fotoPDF
-        ? `
-            <img
-                src="${escaparAtributo(fotoPDF)}"
-                style="
-                    display:block;
-                    max-width:100%;
-                    max-height:300px;
-                    object-fit:contain;
-                    margin:0 auto 20px;
-                "
-            >
-        `
-        : "";
-
-    const janela =
-        window.open(
-            "",
-            "_blank"
-        );
-
-    if(!janela){
-
-        alert(
-            "O navegador bloqueou a nova janela. Permita pop-ups para salvar o PDF."
-        );
-
-        return;
-
-    }
-
-    janela.document.write(`
-
-        <!DOCTYPE html>
-
-        <html lang="pt-BR">
-
-        <head>
-
-        <meta charset="UTF-8">
-
-        <title>${escapar(nome)}</title>
-
-        <style>
-
-        @page{
-            size:A4;
-            margin:20mm;
-        }
-
-        body{
-            font-family:Arial,Helvetica,sans-serif;
-            color:#111;
-            margin:0;
-            line-height:1.5;
-        }
-
-        .documento{
-            width:100%;
-            overflow-wrap:break-word;
-        }
-
-        .documento img{
-            max-width:100%;
-            max-height:300px;
-            object-fit:contain;
-        }
-
-        </style>
-
-        </head>
-
-        <body>
-
-        <div class="documento">
-
-            ${fotoHTML}
-
-            ${conteudo}
-
-        </div>
-
-        <script>
-
-        window.onload=function(){
-
-            setTimeout(function(){
-
-                window.print();
-
-            },500);
-
-        };
-
-        <\/script>
-
-        </body>
-
-        </html>
-
-    `);
-
-    janela.document.close();
+    preview.classList.remove('hidden');
 
 }
 
 
 function limparPDF(){
 
-    document.getElementById(
-        "pdfNome"
-    ).value = "";
+    document.getElementById('editor').innerHTML =
+        'Digite ou cole seu texto aqui...';
 
-    document.getElementById(
-        "pdfEditor"
-    ).innerHTML = "";
+    document
+        .getElementById('pdfPreview')
+        .classList.add('hidden');
 
-    document.getElementById(
-        "previewTexto"
-    ).innerHTML = `
-        <p style="
-            font-size:18px;
-            text-align:left;
-            color:#999;
-        ">
-            A prévia do seu documento aparecerá aqui.
-        </p>
-    `;
+    document.getElementById('fotoPDF').value='';
 
-    document.getElementById(
-        "previewFoto"
-    ).innerHTML = "";
-
-    document.getElementById(
-        "photoPreview"
-    ).style.display = "none";
-
-    document.getElementById(
-        "pdfFoto"
-    ).value = "";
-
-    fotoPDF = "";
+    document.getElementById('previewFotoPDF').style.display='none';
 
 }
 
 
-/* =====================================================
-   CURRÍCULO
-===================================================== */
+/* ================= IMAGEM PDF ================= */
+
+document
+    .getElementById('fotoPDF')
+    ?.addEventListener('change',function(){
+
+        const arquivo = this.files[0];
+
+        if(!arquivo) return;
+
+        const imagem =
+            document.getElementById('previewFotoPDF');
+
+        imagem.src =
+            URL.createObjectURL(arquivo);
+
+        imagem.style.display='block';
+
+    });
+
+
+/* ================= CURRÍCULO ================= */
 
 function valor(id){
 
-    return document.getElementById(id)?.value.trim() || "";
+    const el =
+        document.getElementById(id);
+
+    return el ? el.value.trim() : '';
 
 }
 
 
-function gerarCurriculo(){
+function escapar(texto){
 
-    document.getElementById("outNome").textContent =
-        valor("cvNome") || "Seu Nome";
-
-    const contato = [
-
-        valor("cvEmail"),
-        valor("cvTelefone"),
-        valor("cvCidade"),
-        valor("cvLinkedin")
-
-    ].filter(Boolean).join(" • ");
-
-    document.getElementById("outContato").textContent =
-        contato || "E-mail • Telefone • Cidade";
-
-    document.getElementById("outObjetivo").textContent =
-        valor("cvObjetivo") ||
-        "Seu objetivo profissional aparecerá aqui.";
-
-    document.getElementById("outFormacao").textContent =
-        valor("cvFormacao") ||
-        "Sua formação aparecerá aqui.";
-
-    document.getElementById("outExperiencia").textContent =
-        valor("cvExperiencia") ||
-        "Sua experiência aparecerá aqui.";
-
-    document.getElementById("outCursos").textContent =
-        valor("cvCursos") ||
-        "Seus cursos aparecerão aqui.";
-
-    document.getElementById("outHabilidades").textContent =
-        valor("cvHabilidades") ||
-        "Suas habilidades aparecerão aqui.";
+    return String(texto || '')
+        .replace(/&/g,'&amp;')
+        .replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;')
+        .replace(/"/g,'&quot;')
+        .replace(/'/g,'&#039;')
+        .replace(/\n/g,'<br>');
 
 }
 
 
-function salvarCurriculo(){
+function gerarCV(){
 
-    gerarCurriculo();
+    const nome =
+        valor('cvNome') || 'Seu Nome';
 
-    const janela =
-        window.open(
-            "",
-            "_blank"
-        );
+    const objetivo =
+        valor('cvObjetivo') ||
+        'Seu objetivo profissional';
 
-    if(!janela){
+    const email =
+        valor('cvEmail');
+
+    const telefone =
+        valor('cvTelefone');
+
+    const cidade =
+        valor('cvCidade');
+
+    const linkedin =
+        valor('cvLinkedin');
+
+    const resumo =
+        valor('cvResumo') ||
+        'Seu resumo profissional aparecerá aqui.';
+
+    const formacao =
+        valor('cvFormacao') ||
+        'Sua formação aparecerá aqui.';
+
+    const experiencia =
+        valor('cvExperiencia') ||
+        'Sua experiência aparecerá aqui.';
+
+    const cursos =
+        valor('cvCursos') ||
+        'Seus cursos e habilidades aparecerão aqui.';
+
+
+    document.getElementById('cvPreview').innerHTML = `
+
+        <h1>${escapar(nome)}</<script>
+
+/* ================= APRESENTAÇÃO ================= */
+
+let indiceApresentacao = 0;
+let janelaApresentacao = null;
+
+
+function apresentarSlides(){
+
+    if(!slides.length){
 
         alert(
-            "O navegador bloqueou a nova janela."
+            'Crie pelo menos um slide primeiro.'
         );
 
         return;
-
     }
 
-    janela.document.write(`
 
-        <!DOCTYPE html>
+    indiceApresentacao = 0;
 
-        <html lang="pt-BR">
 
-        <head>
+    const tela =
+        document.createElement('div');
 
-        <meta charset="UTF-8">
+    tela.className = 'presentation';
 
-        <title>Currículo</title>
+    tela.id = 'presentation';
 
-        <style>
 
-        @page{
-            size:A4;
-            margin:15mm;
-        }
+    tela.innerHTML = `
 
-        body{
-            font-family:Arial,Helvetica,sans-serif;
-            color:#151515;
-        }
+        <div class="presentation-inner">
 
-        .cv{
-            max-width:800px;
-            margin:auto;
-        }
+            <div id="presentationSlide"></div>
 
-        h1{
-            font-size:30px;
-            margin-bottom:4px;
-        }
+            <div class="presentation-controls">
 
-        .contact{
-            color:#555;
-            font-size:13px;
-            margin-bottom:25px;
-        }
+                <button
+                    onclick="slideAnterior()"
+                >
+                    ← Anterior
+                </button>
 
-        .block{
-            margin-bottom:20px;
-        }
+                <button
+                    onclick="slideProximo()"
+                >
+                    Próximo →
+                </button>
 
-        .block h3{
-            color:#15803d;
-            border-bottom:1px solid #ddd;
-            padding-bottom:5px;
-            font-size:15px;
-        }
+                <button
+                    onclick="fecharApresentacao()"
+                >
+                    ✕ Fechar
+                </button>
 
-        .block p{
-            white-space:pre-line;
-            font-size:13px;
-            line-height:1.6;
-        }
-
-        </style>
-
-        </head>
-
-        <body>
-
-        <div class="cv">
-
-            <h1>
-                ${escapar(
-                    document.getElementById(
-                        "outNome"
-                    ).textContent
-                )}
-            </h1>
-
-            <div class="contact">
-                ${escapar(
-                    document.getElementById(
-                        "outContato"
-                    ).textContent
-                )}
             </div>
-
-            ${blocoCV(
-                "OBJETIVO",
-                document.getElementById(
-                    "outObjetivo"
-                ).textContent
-            )}
-
-            ${blocoCV(
-                "FORMAÇÃO",
-                document.getElementById(
-                    "outFormacao"
-                ).textContent
-            )}
-
-            ${blocoCV(
-                "EXPERIÊNCIA",
-                document.getElementById(
-                    "outExperiencia"
-                ).textContent
-            )}
-
-            ${blocoCV(
-                "CURSOS E CERTIFICADOS",
-                document.getElementById(
-                    "outCursos"
-                ).textContent
-            )}
-
-            ${blocoCV(
-                "HABILIDADES",
-                document.getElementById(
-                    "outHabilidades"
-                ).textContent
-            )}
-
-        </div>
-
-        <script>
-
-        window.onload=function(){
-            window.print();
-        };
-
-        <\/script>
-
-        </body>
-
-        </html>
-
-    `);
-
-    janela.document.close();
-
-}
-
-
-function blocoCV(titulo,texto){
-
-    return `
-
-        <div class="block">
-
-            <h3>
-                ${escapar(titulo)}
-            </h3>
-
-            <p>
-                ${escapar(texto)}
-            </p>
 
         </div>
 
     `;
 
-}
+
+    document.body.appendChild(tela);
 
 
-/* =====================================================
-   SISTEMA DE SLIDES
-===================================================== */
-
-let slidesData = [];
-
-let slideAtual = 0;
+    mostrarSlideApresentacao();
 
 
-/*
-   Wikimedia Commons não exige chave de API
-   para esse tipo de consulta.
-*/
-
-async function buscarImagemWikimedia(
-    titulo
-){
-
-    const url =
-        "https://commons.wikimedia.org/w/api.php" +
-        "?action=query" +
-        "&generator=search" +
-        "&gsrsearch=" +
-        encodeURIComponent(titulo) +
-        "&gsrnamespace=6" +
-        "&gsrlimit=12" +
-        "&prop=imageinfo" +
-        "&iiprop=url|extmetadata" +
-        "&iiurlwidth=1600" +
-        "&format=json" +
-        "&origin=*";
-
-    const resposta =
-        await fetch(url);
-
-    if(!resposta.ok){
-
-        throw new Error(
-            "Erro na busca de imagem"
-        );
-
-    }
-
-    const dados =
-        await resposta.json();
-
-    if(
-        !dados.query ||
-        !dados.query.pages
-    ){
-
-        return null;
-
-    }
-
-    const paginas =
-        Object.values(
-            dados.query.pages
-        );
-
-    const imagens =
-        paginas.filter(
-            pagina =>
-                pagina.imageinfo &&
-                pagina.imageinfo[0] &&
-                (
-                    pagina.imageinfo[0].thumburl ||
-                    pagina.imageinfo[0].url
-                )
-        );
-
-    if(!imagens.length){
-
-        return null;
-
-    }
-
-    /*
-       Escolhe aleatoriamente uma imagem
-       entre os resultados encontrados.
-    */
-
-    const pagina =
-        imagens[
-            Math.floor(
-                Math.random() *
-                imagens.length
-            )
-        ];
-
-    const info =
-        pagina.imageinfo[0];
-
-    const metadados =
-        info.extmetadata || {};
-
-    return {
-
-        url:
-            info.thumburl ||
-            info.url ||
-            "",
-
-        original:
-            info.url ||
-            "",
-
-        titulo:
-            pagina.title ||
-            "",
-
-        autor:
-            limparHTMLMetadata(
-                metadados.Artist?.value ||
-                ""
-            ),
-
-        licenca:
-            limparHTMLMetadata(
-                metadados.LicenseShortName?.value ||
-                ""
-            ),
-
-        pagina:
-            metadados.Credit?.value ||
-            ""
-
-    };
-
-}
-
-
-function limparHTMLMetadata(texto){
-
-    return String(texto || "")
-        .replace(/<[^>]*>/g,"")
-        .replace(/&nbsp;/g," ")
-        .replace(/&amp;/g,"&")
-        .trim();
-
-}
-
-
-function gerarSlides(){
-
-    const texto =
-        valor("slideTexto");
-
-    if(!texto){
-
-        alert(
-            "Digite o conteúdo dos slides."
-        );
-
-        return;
-
-    }
-
-    const blocos =
-        texto
-        .split(/\n\s*\n/)
-        .map(x=>x.trim())
-        .filter(Boolean);
-
-    slidesData =
-        blocos.map(
-            (bloco,index)=>{
-
-                const linhas =
-                    bloco
-                    .split("\n")
-                    .map(x=>x.trim())
-                    .filter(Boolean);
-
-                return {
-
-                    id:
-                        Date.now() +
-                        "-" +
-                        index,
-
-                    titulo:
-                        linhas[0] ||
-                        `Slide ${index+1}`,
-
-                    conteudo:
-                        linhas.slice(1).join("\n"),
-
-                    imagem:"",
-                    imagemOriginal:"",
-                    autor:"",
-                    licenca:"",
-                    carregando:true
-
-                };
-
-            }
-        );
-
-    slideAtual = 0;
-
-    renderSlides();
-
-    salvarProjetoLocal();
-
-    slidesData.forEach(
-        (slide,index)=>{
-            buscarImagemSlide(index);
-        }
+    document.addEventListener(
+        'keydown',
+        tecladoApresentacao
     );
 
 }
 
 
-async function buscarImagemSlide(index){
+function mostrarSlideApresentacao(){
 
-    const slide =
-        slidesData[index];
-
-    if(!slide){
-        return;
-    }
-
-    slide.carregando =
-        true;
-
-    renderSlides();
-
-    try{
-
-        const foto =
-            await buscarImagemWikimedia(
-                slide.titulo
-            );
-
-        if(foto){
-
-            slide.imagem =
-                foto.url;
-
-            slide.imagemOriginal =
-                foto.original;
-
-            slide.autor =
-                foto.autor;
-
-            slide.licenca =
-                foto.licenca;
-
-        }
-
-    }catch(erro){
-
-        console.error(
-            "Imagem:",
-            erro
-        );
-
-    }
-
-    slide.carregando =
-        false;
-
-    renderSlides();
-
-    salvarProjetoLocal();
-
-}
-
-
-async function trocarImagem(index){
-
-    const slide =
-        slidesData[index];
-
-    if(!slide){
-        return;
-    }
-
-    slide.imagem = "";
-    slide.imagemOriginal = "";
-    slide.autor = "";
-    slide.licenca = "";
-    slide.carregando = true;
-
-    renderSlides();
-
-    try{
-
-        const foto =
-            await buscarImagemWikimedia(
-                slide.titulo +
-                " " +
-                Date.now()
-            );
-
-        if(foto){
-
-            slide.imagem =
-                foto.url;
-
-            slide.imagemOriginal =
-                foto.original;
-
-            slide.autor =
-                foto.autor;
-
-            slide.licenca =
-                foto.licenca;
-
-        }
-
-    }catch(erro){
-
-        console.error(erro);
-
-        alert(
-            "Não foi possível trocar a imagem."
-        );
-
-    }
-
-    slide.carregando =
-        false;
-
-    renderSlides();
-
-    salvarProjetoLocal();
-
-}
-
-
-function renderSlides(){
-
-    const container =
+    const area =
         document.getElementById(
-            "slidesPreview"
+            'presentationSlide'
         );
 
-    container.innerHTML = "";
 
-    if(!slidesData.length){
-
-        container.innerHTML = `
-            <div class="empty-slides">
-                🎞️<br><br>
-                Seus slides aparecerão aqui.
-            </div>
-        `;
-
+    if(!area || !slides[indiceApresentacao])
         return;
 
-    }
 
-    slidesData.forEach(
-        (slide,index)=>{
+    const slide =
+        slides[indiceApresentacao];
 
-            const div =
-                document.createElement(
-                    "div"
-                );
 
-            div.className =
-                "slide";
+    const estilo =
+        slide.estilo ||
+        estiloSlide;
 
-            let imagem = "";
 
-            if(slide.imagem){
+    let conteudo='';
 
-                imagem = `
 
-                    <img
-                        src="${escaparAtributo(slide.imagem)}"
-                        alt="${escaparAtributo(slide.titulo)}"
-                    >
+    if(
+        estilo === 'full' &&
+        slide.imagem
+    ){
 
-                `;
+        conteudo = `
 
-            }else{
+            <div class="slide-full">
 
-                imagem = `
+                <img
+                    src="${slide.imagem}"
+                    alt=""
+                >
 
-                    <div style="
-                        height:100%;
-                        min-height:260px;
-                        display:flex;
-                        align-items:center;
-                        justify-content:center;
-                        color:#7f8b83;
-                        text-align:center;
-                    ">
-
-                        <div>
-
-                            <div style="
-                                font-size:45px;
-                                margin-bottom:10px;
-                            ">
-                                🖼️
-                            </div>
-
-                            ${
-                                slide.carregando
-                                ? "Buscando imagem..."
-                                : "Imagem não disponível"
-                            }
-
-                        </div>
-
-                    </div>
-
-                `;
-
-            }
-
-            const credito =
-                slide.autor
-                ? `
-                    Foto:
-                    ${escapar(slide.autor)}
-                    ${slide.licenca
-                        ? " • " + escapar(slide.licenca)
-                        : ""
-                    }
-                `
-                : "";
-
-            div.innerHTML = `
-
-                <div class="slide-image">
-
-                    ${imagem}
-
-                    <div class="image-status">
-
-                        ${
-                            slide.carregando
-                            ? "🔎 Buscando imagem..."
-                            : slide.imagem
-                                ? "✓ Imagem encontrada"
-                                : "Sem imagem"
-                        }
-
-                    </div>
-
-                    ${
-                        credito
-                        ? `
-                            <div class="slide-credit">
-                                ${credito}
-                            </div>
-                        `
-                        : ""
-                    }
-
-                </div>
-
-                <div class="slide-content">
-
-                    <div class="slide-number">
-                        SLIDE ${index+1}
-                    </div>
+                <div class="overlay">
 
                     <h2>
                         ${escapar(slide.titulo)}
@@ -2587,140 +1477,86 @@ function renderSlides(){
 
                 </div>
 
-                <div class="slide-tools">
-
-                    <button
-                        onclick="trocarImagem(${index})"
-                    >
-                        🔄 Trocar
-                    </button>
-
-                </div>
-
-            `;
-
-            container.appendChild(div);
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   APRESENTAÇÃO
-===================================================== */
-
-function apresentarSlides(){
-
-    if(!slidesData.length){
-
-        alert(
-            "Gere os slides primeiro."
-        );
-
-        return;
-
-    }
-
-    slideAtual = 0;
-
-    const presentation =
-        document.getElementById(
-            "presentation"
-        );
-
-    presentation.classList.add(
-        "active"
-    );
-
-    renderPresentation();
-
-    document.body.style.overflow =
-        "hidden";
-
-    /*
-       Tenta entrar em tela cheia.
-    */
-
-    const elemento =
-        document.documentElement;
-
-    if(
-        elemento.requestFullscreen
-    ){
-
-        elemento.requestFullscreen()
-            .catch(()=>{});
-
-    }
-
-}
-
-
-function renderPresentation(){
-
-    if(!slidesData.length){
-        return;
-    }
-
-    const slide =
-        slidesData[slideAtual];
-
-    document.getElementById(
-        "presentationCounter"
-    ).textContent =
-        `${slideAtual+1} / ${slidesData.length}`;
-
-    document.getElementById(
-        "presentationTitle"
-    ).textContent =
-        slide.titulo;
-
-    const imagem =
-        slide.imagem
-        ? `
-            <img
-                src="${escaparAtributo(slide.imagem)}"
-                alt="${escaparAtributo(slide.titulo)}"
-            >
-        `
-        : `
-            <div style="
-                height:100%;
-                display:flex;
-                align-items:center;
-                justify-content:center;
-                font-size:70px;
-                color:#78837c;
-            ">
-                🖼️
             </div>
+
         `;
 
-    document.getElementById(
-        "presentationSlide"
-    ).innerHTML = `
+    }else if(
+        estilo === 'right' &&
+        slide.imagem){
 
-        <div class="presentation-image">
+    conteudo = `
 
-            ${imagem}
+        <div class="slide-right">
+
+            <div class="slide-content">
+
+                <h2>
+                    ${escapar(slide.titulo)}
+                </h2>
+
+                <p>
+                    ${escapar(slide.conteudo)}
+                </p>
+
+            </div>
+
+            <img
+                src="${slide.imagem}"
+                alt=""
+            >
 
         </div>
 
-        <div class="presentation-content">
+    `;
 
-            <div class="number">
-                SLIDE ${slideAtual+1}
+}else if(estilo === 'text'){
+
+    conteudo = `
+
+        <div class="slide-text-only">
+
+            <div class="slide-content">
+
+                <h2>
+                    ${escapar(slide.titulo)}
+                </h2>
+
+                <p>
+                    ${escapar(slide.conteudo)}
+                </p>
+
             </div>
 
-            <h1>
+        </div>
+
+    `;
+
+}else{
+
+    conteudo = `
+
+        <div class="slide-content">
+
+            <h2>
                 ${escapar(slide.titulo)}
-            </h1>
+            </h2>
 
             <p>
                 ${escapar(slide.conteudo)}
             </p>
+
+            ${
+                slide.imagem
+                ? `
+                    <img
+                        src="${slide.imagem}"
+                        class="slide-image"
+                        alt=""
+                    >
+                  `
+                : ''
+            }
 
         </div>
 
@@ -2729,273 +1565,250 @@ function renderPresentation(){
 }
 
 
-function slideProximo(){
+area.innerHTML = `
 
-    if(
-        slideAtual <
-        slidesData.length - 1
-    ){
+    <div class="slide-canvas">
 
-        slideAtual++;
+        ${conteudo}
 
-        renderPresentation();
+    </div>
 
-    }
+    <div
+        style="
+            text-align:center;
+            color:#aaa;
+            margin-top:10px;
+            font-size:13px;
+        "
+    >
+        Slide ${indiceApresentacao + 1}
+        de ${slides.length}
+    </div>
+
+`;
 
 }
 
+
+/* ================= SLIDE ANTERIOR ================= */
 
 function slideAnterior(){
 
-    if(slideAtual > 0){
+    if(indiceApresentacao > 0){
 
-        slideAtual--;
+        indiceApresentacao--;
 
-        renderPresentation();
+        mostrarSlideApresentacao();
 
     }
 
 }
 
+
+/* ================= PRÓXIMO SLIDE ================= */
+
+function slideProximo(){
+
+    if(
+        indiceApresentacao <
+        slides.length - 1
+    ){
+
+        indiceApresentacao++;
+
+        mostrarSlideApresentacao();
+
+    }
+
+}
+
+
+/* ================= TECLADO ================= */
+
+function tecladoApresentacao(event){
+
+    const tela =
+        document.getElementById(
+            'presentation'
+        );
+
+    if(!tela)
+        return;
+
+    if(event.key === 'ArrowRight'){
+
+        slideProximo();
+
+    }
+
+    if(event.key === 'ArrowLeft'){
+
+        slideAnterior();
+
+    }
+
+    if(event.key === 'Escape'){
+
+        fecharApresentacao();
+
+    }
+
+}
+
+
+/* ================= FECHAR APRESENTAÇÃO ================= */
 
 function fecharApresentacao(){
 
-    document.getElementById(
-        "presentation"
-    ).classList.remove(
-        "active"
+    const tela =
+        document.getElementById(
+            'presentation'
+        );
+
+    if(tela){
+
+        tela.remove();
+
+    }
+
+    document.removeEventListener(
+        'keydown',
+        tecladoApresentacao
     );
 
-    document.body.style.overflow =
-        "";
-
-    if(
-        document.fullscreenElement &&
-        document.exitFullscreen
-    ){
-
-        document.exitFullscreen()
-            .catch(()=>{});
-
-    }
-
 }
 
 
-document.addEventListener(
-    "keydown",
-    function(event){
+/* ================= SALVAR PROJETO ================= */
 
-        const presentation =
-            document.getElementById(
-                "presentation"
-            );
+function salvarProjeto(){
 
-        if(
-            !presentation.classList.contains(
-                "active"
-            )
-        ){
+    if(!slides.length){
 
-            return;
+        alert(
+            'Não há slides para salvar.'
+        );
 
-        }
-
-        if(
-            event.key === "ArrowRight" ||
-            event.key === " "
-        ){
-
-            event.preventDefault();
-
-            slideProximo();
-
-        }
-
-        if(
-            event.key === "ArrowLeft"
-        ){
-
-            event.preventDefault();
-
-            slideAnterior();
-
-        }
-
-        if(
-            event.key === "Escape"
-        ){
-
-            fecharApresentacao();
-
-        }
+        return;
 
     }
-);
 
+    const projeto = {
 
-/* =====================================================
-   SALVAR PROJETO
-===================================================== */
+        nome:'KFTools',
 
-function dadosProjeto(){
+        versao:'1.0',
 
-    return {
+        estilo:estiloSlide,
 
-        versao:"1.0",
-
-        criadoEm:
-            new Date().toISOString(),
-
-        slides:
-            slidesData.map(
-                slide=>({
-
-                    id:slide.id,
-                    titulo:slide.titulo,
-                    conteudo:slide.conteudo,
-                    imagem:slide.imagem,
-                    imagemOriginal:
-                        slide.imagemOriginal,
-                    autor:slide.autor,
-                    licenca:slide.licenca
-
-                })
-            )
+        slides:slides
 
     };
-
-}
-
-
-function salvarProjetoLocal(){
-
-    if(!slidesData.length){
-        return;
-    }
 
     try{
 
         localStorage.setItem(
-            "kftools_projeto_slides",
-            JSON.stringify(
-                dadosProjeto()
-            )
+            'KFToolsProjeto',
+            JSON.stringify(projeto)
         );
+
+        document.getElementById(
+            'slidesStatus'
+        ).innerHTML =
+            `<div class="status-ok">
+                Projeto salvo neste dispositivo.
+            </div>`;
 
     }catch(erro){
 
-        console.warn(
-            "Não foi possível salvar localmente.",
-            erro
-        );
-
-    }
-
-}
-
-
-function salvarProjeto(){
-
-    if(!slidesData.length){
-
         alert(
-            "Gere os slides primeiro."
+            'Não foi possível salvar o projeto.'
         );
-
-        return;
 
     }
 
-    salvarProjetoLocal();
-
-    alert(
-        "✅ Projeto salvo neste navegador!"
-    );
-
 }
 
+
+/* ================= BAIXAR PROJETO ================= */
 
 function baixarProjeto(){
 
-    if(!slidesData.length){
+    if(!slides.length){
 
         alert(
-            "Gere os slides primeiro."
+            'Não há slides para baixar.'
         );
 
         return;
 
     }
 
+    const projeto = {
+
+        nome:'KFTools',
+
+        versao:'1.0',
+
+        estilo:estiloSlide,
+
+        slides:slides
+
+    };
+
     const dados =
         JSON.stringify(
-            dadosProjeto(),
+            projeto,
             null,
             2
         );
 
-    const blob =
+    const arquivo =
         new Blob(
             [dados],
             {
-                type:"application/json"
+                type:'application/json'
             }
         );
 
     const url =
         URL.createObjectURL(
-            blob
+            arquivo
         );
 
     const link =
-        document.createElement(
-            "a"
-        );
+        document.createElement('a');
 
-    link.href =
-        url;
+    link.href = url;
 
     link.download =
-        "kftools-apresentacao.json";
+        'KFTools-projeto.json';
 
-    document.body.appendChild(
-        link
-    );
+    document.body.appendChild(link);
 
     link.click();
 
     link.remove();
 
-    URL.revokeObjectURL(
-        url
-    );
+    URL.revokeObjectURL(url);
 
 }
 
 
-function abrirProjeto(){
+/* ================= ABRIR PROJETO ================= */
 
-    document.getElementById(
-        "arquivoProjeto"
-    ).click();
-
-}
-
-
-function carregarProjeto(event){
+function abrirProjeto(event){
 
     const arquivo =
-        event.target.files[0];
+        event.target.files?.[0];
 
-    if(!arquivo){
+    if(!arquivo)
         return;
-    }
 
     const leitor =
         new FileReader();
 
-    leitor.onload=function(){
+    leitor.onload = function(){
 
         try{
 
@@ -3005,87 +1818,87 @@ function carregarProjeto(event){
                 );
 
             if(
-                !projeto.slides ||
+                !projeto ||
                 !Array.isArray(
                     projeto.slides
                 )
             ){
 
                 throw new Error(
-                    "Projeto inválido"
+                    'Formato inválido'
                 );
 
             }
 
-            slidesData =
-                projeto.slides.map(
-                    (slide,index)=>({
+            slides =
+                projeto.slides.map(slide => ({
 
-                        id:
-                            slide.id ||
-                            Date.now()+"-"+index,
+                    titulo:
+                        slide.titulo ||
+                        'Novo slide',
 
-                        titulo:
-                            slide.titulo ||
-                            "Slide "+(index+1),
+                    conteudo:
+                        slide.conteudo ||
+                        '',
 
-                        conteudo:
-                            slide.conteudo ||
-                            "",
+                    imagem:
+                        slide.imagem ||
+                        '',
 
-                        imagem:
-                            slide.imagem ||
-                            "",
+                    fonte:
+                        slide.fonte ||
+                        '',
 
-                        imagemOriginal:
-                            slide.imagemOriginal ||
-                            "",
+                    pagina:
+                        slide.pagina ||
+                        '',
 
-                        autor:
-                            slide.autor ||
-                            "",
+                    autor:
+                        slide.autor ||
+                        '',
 
-                        licenca:
-                            slide.licenca ||
-                            "",
+                    licenca:
+                        slide.licenca ||
+                        '',
 
-                        carregando:false
+                    estilo:
+                        slide.estilo ||
+                        projeto.estilo ||
+                        'classic'
 
-                    })
-                );
+                }));
 
-            slideAtual = 0;
+            estiloSlide =
+                projeto.estilo ||
+                'classic';
+
+            document
+                .querySelectorAll(
+                    '.style-option'
+                )
+                .forEach(el => {
+
+                    el.classList.toggle(
+                        'selected',
+                        el.dataset.style ===
+                        estiloSlide
+                    );
+
+                });
+
+            renderizarSlides();
 
             document.getElementById(
-                "slideTexto"
-            ).value =
-                slidesData
-                .map(
-                    slide =>
-                        slide.titulo +
-                        (
-                            slide.conteudo
-                            ? "\n" +
-                              slide.conteudo
-                            : ""
-                        )
-                )
-                .join("\n\n");
-
-            renderSlides();
-
-            salvarProjetoLocal();
-
-            alert(
-                "✅ Apresentação carregada!"
-            );
+                'slidesStatus'
+            ).innerHTML =
+                `<div class="status-ok">
+                    Projeto aberto com sucesso.
+                </div>`;
 
         }catch(erro){
 
-            console.error(erro);
-
             alert(
-                "❌ Esse arquivo não é um projeto válido do KFTools."
+                'Esse arquivo não é um projeto KFTools válido.'
             );
 
         }
@@ -3096,459 +1909,183 @@ function carregarProjeto(event){
         arquivo
     );
 
-    event.target.value = "";
+    event.target.value='';
 
 }
 
 
-/* =====================================================
-   EXPORTAR SLIDES PARA PDF
-===================================================== */
-
-function exportarSlidesPDF(){
-
-    if(!slidesData.length){
-
-        alert(
-            "Gere os slides primeiro."
-        );
-
-        return;
-
-    }
-
-    const paginas =
-        slidesData.map(
-            (slide,index)=>{
-
-                const imagem =
-                    slide.imagem
-                    ? `
-                        <img
-                            src="${escaparAtributo(slide.imagem)}"
-                        >
-                    `
-                    : `
-                        <div class="sem-imagem">
-                            🖼️
-                        </div>
-                    `;
-
-                return `
-
-                    <section class="pdf-slide">
-
-                        <div class="pdf-image">
-
-                            ${imagem}
-
-                        </div>
-
-                        <div class="pdf-content">
-
-                            <div class="number">
-                                SLIDE ${index+1}
-                            </div>
-
-                            <h1>
-                                ${escapar(slide.titulo)}
-                            </h1>
-
-                            <p>
-                                ${escapar(slide.conteudo)}
-                            </p>
-
-                        </div>
-
-                    </section>
-
-                `;
-
-            }
-        ).join("");
-
-    const janela =
-        window.open(
-            "",
-            "_blank"
-        );
-
-    if(!janela){
-
-        alert(
-            "O navegador bloqueou a janela de exportação."
-        );
-
-        return;
-
-    }
-
-    janela.document.write(`
-
-        <!DOCTYPE html>
-
-        <html lang="pt-BR">
-
-        <head>
-
-        <meta charset="UTF-8">
-
-        <title>KFTools — Apresentação</title>
-
-        <style>
-
-        @page{
-            size:A4 landscape;
-            margin:0;
-        }
-
-        *{
-            box-sizing:border-box;
-        }
-
-        html,
-        body{
-            margin:0;
-            padding:0;
-            background:#101512;
-            font-family:Arial,Helvetica,sans-serif;
-        }
-
-        .pdf-slide{
-
-            width:297mm;
-            height:210mm;
-
-            display:grid;
-
-            grid-template-columns:50% 50%;
-
-            overflow:hidden;
-
-            page-break-after:always;
-            break-after:page;
-
-            background:#101512;
-
-        }
-
-        .pdf-slide:last-child{
-
-            page-break-after:auto;
-            break-after:auto;
-
-        }
-
-        .pdf-image{
-
-            position:relative;
-
-            width:100%;
-            height:100%;
-
-            overflow:hidden;
-
-            background:#172019;
-
-            display:flex;
-            align-items:center;
-            justify-content:center;
-
-        }
-
-        .pdf-image img{
-
-            width:100%;
-            height:100%;
-
-            object-fit:cover;
-
-            display:block;
-
-        }
-
-        .sem-imagem{
-
-            font-size:60px;
-            color:#78837c;
-
-        }
-
-        .pdf-content{
-
-            padding:15% 10%;
-
-            display:flex;
-
-            flex-direction:column;
-
-            justify-content:center;
-
-            overflow:hidden;
-
-            color:white;
-
-        }
-
-        .number{
-
-            color:#22c55e;
-
-            font-size:13px;
-
-            font-weight:bold;
-
-            letter-spacing:3px;
-
-            margin-bottom:20px;
-
-        }
-
-        h1{
-
-            font-size:42pt;
-
-            line-height:1.05;
-
-            margin:0 0 22px;
-
-        }
-
-        p{
-
-            font-size:16pt;
-
-            line-height:1.5;
-
-            color:#bdc8c0;
-
-            white-space:pre-line;
-
-            margin:0;
-
-        }
-
-        </style>
-
-        </head>
-
-        <body>
-
-        ${paginas}
-
-        <script>
-
-        window.onload=function(){
-
-            /*
-               Aguarda imagens carregarem antes
-               de abrir a impressão.
-            */
-
-            const imagens =
-                Array.from(
-                    document.images
-                );
-
-            Promise.all(
-                imagens.map(
-                    img =>
-                        img.complete
-                        ? Promise.resolve()
-                        : new Promise(
-                            resolve=>{
-                                img.onload=resolve;
-                                img.onerror=resolve;
-                            }
-                        )
-                )
-            ).then(function(){
-
-                setTimeout(
-                    function(){
-                        window.print();
-                    },
-                    500
-                );
-
-            });
-
-        };
-
-        <\/script>
-
-        </body>
-
-        </html>
-
-    `);
-
-    janela.document.close();
-
-}
-
-
-/* =====================================================
-   LIMPAR SLIDES
-===================================================== */
+/* ================= LIMPAR SLIDES ================= */
 
 function limparSlides(){
 
-    if(slidesData.length){
+    if(!slides.length)
+        return;
 
-        const confirmar =
-            confirm(
-                "Tem certeza que deseja apagar esta apresentação?"
-            );
+    if(
+        !confirm(
+            'Tem certeza que deseja apagar todos os slides?'
+        )
+    ){
 
-        if(!confirmar){
-            return;
-        }
+        return;
 
     }
 
-    document.getElementById(
-        "slideTexto"
-    ).value = "";
+    slides=[];
 
     document.getElementById(
-        "slidesPreview"
-    ).innerHTML = `
+        'slidesArea'
+    ).innerHTML='';
 
-        <div class="empty-slides">
-            🎞️<br><br>
-            Seus slides aparecerão aqui.
-        </div>
+    document.getElementById(
+        'slidesStatus'
+    ).innerHTML='';
 
-    `;
+    document.getElementById(
+        'slideTexto'
+    ).value='';
 
-    slidesData = [];
+}
 
-    slideAtual = 0;
 
-    localStorage.removeItem(
-        "kftools_projeto_slides"
+/* ================= BIBLIOTECA PDF ================= */
+
+function carregarBibliotecaPDF(){
+
+    return new Promise(
+        (resolve,reject) => {
+
+            if(
+                window.jspdf &&
+                window.jspdf.jsPDF
+            ){
+
+                resolve(
+                    window.jspdf.jsPDF
+                );
+
+                return;
+
+            }
+
+            const script =
+                document.createElement(
+                    'script'
+                );
+
+            script.src =
+                'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+
+            script.onload = () => {
+
+                if(
+                    window.jspdf &&
+                    window.jspdf.jsPDF
+                ){
+
+                    resolve(
+                        window.jspdf.jsPDF
+                    );
+
+                }else{
+
+                    reject(
+                        new Error(
+                            'Biblioteca PDF não carregada.'
+                        )
+                    );
+
+                }
+
+            };
+
+            script.onerror = () => {
+
+                reject(
+                    new Error(
+                        'Falha ao carregar biblioteca PDF.'
+                    )
+                );
+
+            };
+
+            document.head.appendChild(
+                script
+            );
+
+        }
     );
 
 }
 
 
-/* =====================================================
-   SEGURANÇA
-===================================================== */
+/* ================= SALVAR PDF ================= */
 
-function escapar(texto){
-
-    return String(texto ?? "")
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-
-}
-
-
-function escaparAtributo(texto){
-
-    return escapar(texto);
-
-}
-
-
-/* =====================================================
-   RECUPERAR PROJETO SALVO
-===================================================== */
-
-function recuperarProjetoLocal(){
+async function salvarPDF(){
 
     try{
 
-        const salvo =
-            localStorage.getItem(
-                "kftools_projeto_slides"
+        const jsPDF =
+            await carregarBibliotecaPDF();
+
+        const pdf =
+            new jsPDF();
+
+        const texto =
+            document
+                .getElementById('editor')
+                .innerText
+                .trim();
+
+        if(!texto){
+
+            alert(
+                'Digite algum texto antes de salvar o PDF.'
             );
-
-        if(!salvo){
-            return;
-        }
-
-        const projeto =
-            JSON.parse(
-                salvo
-            );
-
-        if(
-            !projeto.slides ||
-            !Array.isArray(
-                projeto.slides
-            ) ||
-            !projeto.slides.length
-        ){
 
             return;
 
         }
 
-        slidesData =
-            projeto.slides.map(
-                (slide,index)=>({
-
-                    id:
-                        slide.id ||
-                        Date.now()+"-"+index,
-
-                    titulo:
-                        slide.titulo ||
-                        "Slide "+(index+1),
-
-                    conteudo:
-                        slide.conteudo ||
-                        "",
-
-                    imagem:
-                        slide.imagem ||
-                        "",
-
-                    imagemOriginal:
-                        slide.imagemOriginal ||
-                        "",
-
-                    autor:
-                        slide.autor ||
-                        "",
-
-                    licenca:
-                        slide.licenca ||
-                        "",
-
-                    carregando:false
-
-                })
+        const linhas =
+            pdf.splitTextToSize(
+                texto,
+                180
             );
 
-        document.getElementById(
-            "slideTexto"
-        ).value =
-            slidesData
-            .map(
-                slide =>
-                    slide.titulo +
-                    (
-                        slide.conteudo
-                        ? "\n" +
-                          slide.conteudo
-                        : ""
-                    )
-            )
-            .join("\n\n");
+        let y=20;
 
-        renderSlides();
+        linhas.forEach(linha => {
+
+            if(y > 280){
+
+                pdf.addPage();
+
+                y=20;
+
+            }
+
+            pdf.text(
+                linha,
+                15,
+                y
+            );
+
+            y += 8;
+
+        });
+
+        pdf.save(
+            'KFTools-texto.pdf'
+        );
 
     }catch(erro){
 
-        console.warn(
-            "Projeto local inválido.",
+        alert(
+            'Não foi possível gerar o PDF.'
+        );
+
+        console.error(
             erro
         );
 
@@ -3557,17 +2094,313 @@ function recuperarProjetoLocal(){
 }
 
 
-/* =====================================================
-   INICIALIZAÇÃO
-===================================================== */
+/* ================= SALVAR CURRÍCULO ================= */
+
+async function salvarCV(){
+
+    gerarCV();
+
+    try{
+
+        const jsPDF =
+            await carregarBibliotecaPDF();
+
+        const elemento =
+            document.getElementById(
+                'cvPreview'
+            );
+
+        const pdf =
+            new jsPDF({
+                orientation:'portrait',
+                unit:'mm',
+                format:'a4'
+            });
+
+        const texto =
+            elemento.innerText
+                .trim();
+
+        const linhas =
+            pdf.splitTextToSize(
+                texto,
+                180
+            );
+
+        let y=20;
+
+        linhas.forEach(linha => {
+
+            if(y > 280){
+
+                pdf.addPage();
+
+                y=20;
+
+            }
+
+            pdf.text(
+                linha,
+                15,
+                y
+            );
+
+            y += 7;
+
+        });
+
+        pdf.save(
+            'KFTools-curriculo.pdf'
+        );
+
+    }catch(erro){
+
+        alert(
+            'Não foi possível gerar o currículo em PDF.'
+        );
+
+        console.error(
+            erro
+        );
+
+    }
+
+}
+
+
+/* ================= LIMPAR CURRÍCULO ================= */
+
+function limparCV(){
+
+    const campos = [
+
+        'cvNome',
+        'cvObjetivo',
+        'cvEmail',
+        'cvTelefone',
+        'cvCidade',
+        'cvLinkedin',
+        'cvResumo',
+        'cvFormacao',
+        'cvExperiencia',
+        'cvCursos'
+
+    ];
+
+    campos.forEach(id => {
+
+        const campo =
+            document.getElementById(id);
+
+        if(campo){
+
+            campo.value='';
+
+        }
+
+    });
+
+    document.getElementById(
+        'cvPreview'
+    ).innerHTML = `
+
+        <h1>
+            Seu Nome
+        </h1>
+
+        <p>
+            Seu objetivo profissional
+        </p>
+
+        <h2>
+            Contato
+        </h2>
+
+        <p>
+            Preencha seus dados acima.
+        </p>
+
+        <h2>
+            Resumo profissional
+        </h2>
+
+        <p>
+            Seu resumo aparecerá aqui.
+        </p>
+
+    `;
+
+}
+
+
+/* ================= EXPORTAR SLIDES PDF ================= */
+
+async function exportarSlidesPDF(){
+
+    if(!slides.length){
+
+        alert(
+            'Crie pelo menos um slide primeiro.'
+        );
+
+        return;
+
+    }
+
+    try{
+
+        const jsPDF =
+            await carregarBibliotecaPDF();
+
+        const pdf =
+            new jsPDF({
+
+                orientation:'landscape',
+
+                unit:'mm',
+
+                format:'a4'
+
+            });
+
+        slides.forEach(
+            (slide,index) => {
+
+                if(index > 0){
+
+                    pdf.addPage();
+
+                }
+
+                const titulo =
+                    slide.titulo ||
+                    'Novo slide';
+
+                const conteudo =
+                    slide.conteudo ||
+                    '';
+
+                pdf.setFontSize(
+                    26
+                );
+
+                pdf.text(
+                    titulo,
+                    15,
+                    25
+                );
+
+                pdf.setFontSize(
+                    15
+                );
+
+                const linhas =
+                    pdf.splitTextToSize(
+                        conteudo,
+                        260
+                    );
+
+                let y=42;
+
+                linhas.forEach(
+                    linha => {
+
+                        if(y > 185){
+
+                            return;
+
+                        }
+
+                        pdf.text(
+                            linha,
+                            15,
+                            y
+                        );
+
+                        y += 9;
+
+                    }
+                );
+
+                pdf.setFontSize(
+                    9
+                );
+
+                pdf.text(
+                    `KFTools • Slide ${index+1}`,
+                    15,
+                    195
+                );
+
+            }
+        );
+
+        pdf.save(
+            'KFTools-apresentacao.pdf'
+        );
+
+    }catch(erro){
+
+        alert(
+            'Não foi possível exportar os slides.'
+        );
+
+        console.error(
+            erro
+        );
+
+    }
+
+}
+
+
+/* ================= INICIALIZAÇÃO ================= */
 
 document.addEventListener(
-    "DOMContentLoaded",
-    function(){
+    'DOMContentLoaded',
+    () => {
 
-        atualizarPDF();
+        try{
 
-        recuperarProjetoLocal();
+            const salvo =
+                localStorage.getItem(
+                    'KFToolsProjeto'
+                );
+
+            if(salvo){
+
+                const projeto =
+                    JSON.parse(
+                        salvo
+                    );
+
+                if(
+                    projeto &&
+                    Array.isArray(
+                        projeto.slides
+                    )
+                ){
+
+                    slides =
+                        projeto.slides;
+
+                    estiloSlide =
+                        projeto.estilo ||
+                        'classic';
+
+                    renderizarSlides();
+
+                }
+
+            }
+
+        }catch(erro){
+
+            console.log(
+                'Nenhum projeto salvo carregado.'
+            );
+
+        }
 
     }
 );
@@ -3575,4 +2408,5 @@ document.addEventListener(
 </script>
 
 </body>
-    </html>
+
+</html>
